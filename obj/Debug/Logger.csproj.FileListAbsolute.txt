@@ -1,0 +1,6 @@
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.exe.config
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.exe
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.pdb
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger.exe
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger.pdb
