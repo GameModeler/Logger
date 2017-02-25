@@ -21,7 +21,6 @@ namespace GMLogger.Loggers
         public ILogger GetLogger(string name)
         {
             return Loggers.Find(logger => logger.Name == name);
-            //TODO in the createLogger method check if a name is already used.
         }
 
         /// <summary>

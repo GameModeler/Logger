@@ -4,6 +4,9 @@ using GMLogger.Utils;
 
 namespace GMLogger.Appenders
 {
+    /// <summary>
+    /// Display logs into file
+    /// </summary>
     public class FileAppender : IAppender
     {
 

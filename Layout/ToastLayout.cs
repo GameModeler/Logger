@@ -9,6 +9,9 @@ using Windows.UI.Notifications;
 
 namespace GMLogger.Layout
 {
+    /// <summary>
+    /// Represent a toast
+    /// </summary>
     public class ToastLayout
     {
         public ToastTemplateType Template { get; }

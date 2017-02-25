@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GMLogger.Utils
 {
+    /// <summary>
+    /// Types of appenders
+    /// </summary>
     public enum AppenderType
     {
         NONE,

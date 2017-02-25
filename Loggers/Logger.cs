@@ -23,8 +23,14 @@ namespace GMLogger.Loggers
 
         private static int nextId;
 
+        /// <summary>
+        /// Parent logger
+        /// </summary>
         public string Parent { get; set; }
 
+        /// <summary>
+        /// Logger's Id
+        /// </summary>
         public int Id { get; private set; }
 
         /// <summary>
@@ -39,6 +45,9 @@ namespace GMLogger.Loggers
         /// </summary>
         public Level Level { get; set; }
 
+        /// <summary>
+        /// The logger Manager
+        /// </summary>
         public LoggerManager LoggerManager { get; }
 
         /// <summary>
@@ -101,12 +110,19 @@ namespace GMLogger.Loggers
             AppenderManager.AddAppender(AppenderType.CONSOLE);
         }
 
+        /// <summary>
+        /// Reset the logger appanders
+        /// </summary>
         public void Reset()
         {
             SetDefaultLogger();
             AppenderManager.AppenderList.Clear();
         }
 
+        /// <summary>
+        /// Call the appender from the logger
+        /// </summary>
+        /// <param name="log"></param>
         public void CallAppenders(Log log)
         {
             foreach(IAppender appender in AppenderManager.AppenderList)
@@ -119,6 +135,10 @@ namespace GMLogger.Loggers
 
         #region ILog methods
 
+        /// <summary>
+        /// Log a log with a message
+        /// </summary>
+        /// <param name="msg"></param>
         public void Log(string msg)
         {
             Log log = LoggerManager.MakeLog(this, msg, Level.LOG, null);
@@ -126,6 +146,11 @@ namespace GMLogger.Loggers
 
         }
 
+        /// <summary>
+        /// Log a log with message and exception
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
         public void Log(string msg, Exception e)
         {
             Log log = LoggerManager.MakeLog(this, msg, Level.LOG, e);
@@ -133,6 +158,10 @@ namespace GMLogger.Loggers
         }
 
 
+        /// <summary>
+        /// Log a log error with message
+        /// </summary>
+        /// <param name="msg"></param>
         public void Error(string msg)
         {
             if(Level <= Level.ERROR)
@@ -142,6 +171,12 @@ namespace GMLogger.Loggers
             } 
         }
 
+
+        /// <summary>
+        /// Log a log error with message and exception
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
         public void Error(string msg, Exception e)
         {
             if (Level <= Level.ERROR)
@@ -151,6 +186,10 @@ namespace GMLogger.Loggers
             }
         }
 
+        /// <summary>
+        /// Log a log info with message
+        /// </summary>
+        /// <param name="msg"></param>
         public void Info(string msg)
         {
             if (Level <= Level.INFO)
@@ -160,6 +199,11 @@ namespace GMLogger.Loggers
             }
         }
 
+        /// <summary>
+        /// Log a log info with message and exception
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
         public void Info(string msg, Exception e)
         {
             if (Level <= Level.INFO)
@@ -169,6 +213,11 @@ namespace GMLogger.Loggers
             }             
         }
 
+
+        /// <summary>
+        /// Log a warn log with message
+        /// </summary>
+        /// <param name="msg"></param>
         public void Warn(string msg)
         {
             if(Level <= Level.WARN)
@@ -178,6 +227,11 @@ namespace GMLogger.Loggers
             }           
         }
 
+        /// <summary>
+        /// Log a warn log with message and exception
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
         public void Warn(string msg, Exception e)
         {
             if(Level <= Level.WARN)
@@ -187,6 +241,10 @@ namespace GMLogger.Loggers
             }          
         }
 
+        /// <summary>
+        /// Log a log debug with message
+        /// </summary>
+        /// <param name="msg"></param>
         public void Debug(string msg)
         {
             if(Level <= Level.DEBUG)
@@ -196,6 +254,11 @@ namespace GMLogger.Loggers
             }
         }
 
+        /// <summary>
+        /// Log a log debug with message and exception
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
         public void Debug(string msg, Exception e)
         {
             if(Level <= Level.DEBUG)
@@ -205,6 +268,11 @@ namespace GMLogger.Loggers
             }         
         }
 
+
+        /// <summary>
+        /// Log a log trace with message
+        /// </summary>
+        /// <param name="msg"></param>
         public void Trace(string msg)
         {
             if (Level <= Level.TRACE)
@@ -214,6 +282,11 @@ namespace GMLogger.Loggers
             }
         }
 
+        /// <summary>
+        /// Log a log trace with message and exception
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
         public void Trace(string msg, Exception e)
         {
             if (Level <= Level.TRACE)
@@ -223,26 +296,46 @@ namespace GMLogger.Loggers
             }
         }
 
+        /// <summary>
+        /// To be implemented
+        /// </summary>
+        /// <returns></returns>
         public bool isDebugEnabled()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool isErrorEnabled()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool isInfoEnabled()
         {
             throw new NotImplementedException();
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool isTraceEnabled()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool isWarnEnabled()
         {
             throw new NotImplementedException();
@@ -250,6 +343,11 @@ namespace GMLogger.Loggers
 
         #endregion
 
+
+        /// <summary>
+        /// Make a deep copy of the logger
+        /// </summary>
+        /// <returns></returns>
         public ILogger DeepCopy()
         {
             ILogger copyLogger = (Logger)this.MemberwiseClone();

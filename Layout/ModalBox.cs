@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace GMLogger.Layout
 {
+    /// <summary>
+    /// Represent a windows Message Box
+    /// </summary>
     public class ModalBox
     {
         public string Text { get; set; }
@@ -21,6 +24,12 @@ namespace GMLogger.Layout
 
         bool hasIcon = false;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <param name="buttons"></param>
+        /// <param name="icon"></param>
         public ModalBox(string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
         {            
             Caption = caption;
@@ -29,6 +38,11 @@ namespace GMLogger.Layout
             hasIcon = true;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <param name="buttons"></param>
         public ModalBox(string caption, MessageBoxButtons buttons)
         {
             Caption = caption;

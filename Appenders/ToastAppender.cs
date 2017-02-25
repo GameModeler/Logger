@@ -11,6 +11,9 @@ using Windows.UI.Notifications;
 
 namespace Logger.Appenders
 {
+    /// <summary>
+    /// Display logs into Toast
+    /// </summary>
     public class ToastAppender : IAppender
     {
         private const string DEFAULT_TOAST_NAME = "GM_TOAST_APPENDER";
@@ -29,8 +32,6 @@ namespace Logger.Appenders
 
         public void DoAppend(Log log)
         {
-            //string toCaption = LogPatterns.FormateCaption(ToastLayout.Caption, log);
-
             ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);
 
             var toast = new ToastNotification(ToastLayout.ToastXml);

@@ -24,8 +24,6 @@ namespace Logger.Appenders
 
         public string Layout { get; set; }
 
-        //public dynamic Database = new ExpandoObject();
-
         public DbEntityManager<Log> Database { get; private set; }
 
         public string DbName { get; set; }

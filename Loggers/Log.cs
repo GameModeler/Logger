@@ -18,6 +18,7 @@ namespace GMLogger.Loggers
         private static int nextId;
 
         public string Message { get; private set; }
+
         [NotMapped]
         public DateTime Timestamp { get; private set; }
         public string LoggerName { get; private set;  }

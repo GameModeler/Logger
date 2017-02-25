@@ -11,6 +11,10 @@ using System.Reflection;
 
 namespace Logger.Appenders
 {
+    /// <summary>
+    /// Display logs into a custom message box
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MessageBoxCustomAppender<T> : IAppender where T : new()
     {
 
@@ -27,6 +31,11 @@ namespace Logger.Appenders
             Name = name == null ? DEFAULT_MESSAGE_BOX_CUSTOM_NAME : name;
         }
 
+
+        /// <summary>
+        /// Append log
+        /// </summary>
+        /// <param name="log"></param>
         public void DoAppend(Log log)
         { 
             obj = new T();

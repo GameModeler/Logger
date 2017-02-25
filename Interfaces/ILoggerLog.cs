@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace GMLogger.Loggers
 {
     /// <summary>
+    /// Logger's methods
     /// Inspired from org.slf4j.Logger interface.
     /// </summary>
     public interface ILoggerLog

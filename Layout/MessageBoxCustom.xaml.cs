@@ -9,6 +9,9 @@ using System.Windows.Input; // Keyboard
 
 namespace GMLogger.Layout
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class MessageBoxCustom : Window
     {
 

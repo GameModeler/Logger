@@ -28,12 +28,14 @@ namespace GMLogger.Appenders
         /// Add an appender to the list of appenders.
         /// </summary>
         /// <param name="appender"></param>
-        public void AddAppender(IAppender appender)
+        public IAppender AddAppender(IAppender appender)
         {
             if (appender != null)
             {
                 appenderList.Add(appender);
             }
+
+            return appender;
         }
 
         /// <summary>
@@ -77,7 +79,6 @@ namespace GMLogger.Appenders
 
             } else
             {
-                //gmLogger.Error("An appender with the name " + name + " already exits");
                 return null;
             }
         }
@@ -94,7 +95,6 @@ namespace GMLogger.Appenders
             }
             else
             {
-                //gmLogger.Error("An appender with the name " + name + " already exits");
                 return null;
             }
         }
@@ -162,11 +162,10 @@ namespace GMLogger.Appenders
                 case AppenderType.MESSAGE_BOX_CUSTOM:
 
                     var d1 = typeof(MessageBoxCustomAppender<>);
-                   // Type clazzType = clazz.GetType();
                     var makeme = d1.MakeGenericType(clazz);
-                    //object o = Activator.CreateInstance(makeme);
 
                     return (IAppender) Activator.CreateInstance(makeme, name);
+
                 default:
                     return new ConsoleAppender(name);
             }

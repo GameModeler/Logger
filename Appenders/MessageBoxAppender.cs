@@ -31,6 +31,10 @@ namespace Logger.Appenders
             Name = name == null ? DEFAULT_MESSAGE_BOX_NAME : name;
         }
 
+        /// <summary>
+        /// Append the log
+        /// </summary>
+        /// <param name="log"></param>
         public void DoAppend(Log log)
         {
             string toCaption = LogPatterns.Reformate(Box.Caption, log);

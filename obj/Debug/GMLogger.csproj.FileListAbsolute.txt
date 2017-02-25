@@ -63,3 +63,4 @@ C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Simple.Data.Ado.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Simple.Data.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Simple.Data.Sqlite.dll
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.XML

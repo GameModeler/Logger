@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GMLogger.Utils
 {
+    /// <summary>
+    /// Levels
+    /// </summary>
     public enum Level
     {
         [StringValue("TRACE")]
@@ -24,7 +27,7 @@ namespace GMLogger.Utils
 
     }
 
-    static class LevelColol
+    static class LevelColor
     {
 
         public static ConsoleColor GetColor(this Level level)

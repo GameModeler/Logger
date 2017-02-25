@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GMLogger.Layout
 {
+    /// <summary>
+    /// Elements of a logger
+    /// </summary>
     public enum LogElements
     {
         [StringValue("TIMESTAMP")]

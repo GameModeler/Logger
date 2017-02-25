@@ -20,35 +20,6 @@ namespace GMLogger.Utils
             return string.Format(pattern, log.Timestamp, log.Level.GetStringValue(), log.LoggerName, log.Message, stackTrace);
         }
 
-        //public static string FormateCaption(string caption, ILog log)
-        //{
-
-        //    if(LogElements.TIMESTAMP.GetStringValue().Equals(caption))
-        //    {
-        //        return string.Format("{0:T}", log.Timestamp);
-        //    }
-
-        //    if(LogElements.EXCEPTION.GetStringValue().Equals(caption))
-        //    {
-        //        return log.Exception.StackTrace;
-        //    }
-
-        //    if(LogElements.LEVEL.GetStringValue().Equals(caption))
-        //    {
-        //        return log.Level.GetStringValue();
-        //    }
-        //    if (LogElements.LOGGER_NAME.GetStringValue().Equals(caption))
-        //    {
-        //        return log.LoggerName;
-        //    }
-        //    if(LogElements.MESSAGE.GetStringValue().Equals(caption))
-        //    {
-        //        return log.Message;
-        //    }
-
-        //    return Reformate(caption, log);
-        //}
-
         public static void BuildXmlTemplate(this XmlDocument toastXml, List<string> lines, ILog log)
         {
             // Fill in the text elements
