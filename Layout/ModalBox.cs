@@ -13,11 +13,24 @@ namespace GMLogger.Layout
     /// </summary>
     public class ModalBox
     {
+        /// <summary>
+        /// Message Box Text
+        /// </summary>
         public string Text { get; set; }
+
+        /// <summary>
+        /// Message Box Caption
+        /// </summary>
         public string Caption { get; set; }
 
+        /// <summary>
+        /// Message box Icon
+        /// </summary>
         public MessageBoxIcon Icon { get; set; }
 
+        /// <summary>
+        /// Message Box Buttons
+        /// </summary>
         public MessageBoxButtons Buttons { get; set; }
 
         private Dictionary<DialogResult, Action> buttonsActions = new Dictionary<DialogResult, Action>();
@@ -49,6 +62,11 @@ namespace GMLogger.Layout
             Buttons = buttons;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <param name="icon"></param>
         public ModalBox(string caption, MessageBoxIcon icon)
         {
             Caption = caption;
@@ -57,16 +75,26 @@ namespace GMLogger.Layout
             hasIcon = true;
         }
 
+        /// <summary>
+        /// Construcor
+        /// </summary>
+        /// <param name="caption"></param>
         public ModalBox(string caption)
         {
             Caption = caption;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ModalBox()
         {
             Caption = LogElements.LOGGER_NAME.GetStringValue();
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public bool HasIcon
         {
             get
@@ -75,11 +103,19 @@ namespace GMLogger.Layout
             }
         }
 
+        /// <summary>
+        /// Add action to the buttons
+        /// </summary>
+        /// <param name="buttonName"></param>
+        /// <param name="doAction"></param>
         public void setAction(DialogResult buttonName, Action doAction)
         {
             buttonsActions.Add(buttonName, doAction);
         }
 
+        /// <summary>
+        /// Dictionnary of button associated with their actions
+        /// </summary>
         public Dictionary<DialogResult, Action> ButtonAction
         {
             get {

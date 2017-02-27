@@ -440,6 +440,16 @@
             A Logger.
             </summary>
         </member>
+        <member name="P:GMLogger.Loggers.Logger.Parent">
+            <summary>
+            Parent logger
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Logger.Id">
+            <summary>
+            Logger's Id
+            </summary>
+        </member>
         <member name="P:GMLogger.Loggers.Logger.Name">
             <summary>
             The name of this logger.
@@ -450,6 +460,11 @@
             The assigned levelInt of this logger.
             Can be null.
             If null, a level is inherited from a parent.
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Logger.LoggerManager">
+            <summary>
+            The logger Manager
             </summary>
         </member>
         <member name="P:GMLogger.Loggers.Logger.AppenderManager">
@@ -477,6 +492,131 @@
             <summary>
             Add an appender from a custom IAppender implementation.
             </summary>		l
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Reset">
+            <summary>
+            Reset the logger appanders
+            </summary>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.CallAppenders(GMLogger.Loggers.Log)">
+            <summary>
+            Call the appender from the logger
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Log(System.String)">
+            <summary>
+            Log a log with a message
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Log(System.String,System.Exception)">
+            <summary>
+            Log a log with message and exception
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Error(System.String)">
+            <summary>
+            Log a log error with message
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Error(System.String,System.Exception)">
+            <summary>
+            Log a log error with message and exception
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Info(System.String)">
+            <summary>
+            Log a log info with message
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Info(System.String,System.Exception)">
+            <summary>
+            Log a log info with message and exception
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Warn(System.String)">
+            <summary>
+            Log a warn log with message
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Warn(System.String,System.Exception)">
+            <summary>
+            Log a warn log with message and exception
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Debug(System.String)">
+            <summary>
+            Log a log debug with message
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Debug(System.String,System.Exception)">
+            <summary>
+            Log a log debug with message and exception
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Trace(System.String)">
+            <summary>
+            Log a log trace with message
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.Trace(System.String,System.Exception)">
+            <summary>
+            Log a log trace with message and exception
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.isDebugEnabled">
+            <summary>
+            To be implemented
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.isErrorEnabled">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.isInfoEnabled">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.isTraceEnabled">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.isWarnEnabled">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.Logger.DeepCopy">
+            <summary>
+            Make a deep copy of the logger
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:GMLogger.Loggers.LoggerManager.GetLogger(System.String)">
             <summary>
@@ -535,6 +675,21 @@
             <summary>
             Represent a windows Message Box
             </summary>
+        </member>
+        <member name="M:GMLogger.Layout.ModalBox.#ctor(System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            
+            </summary>
+            <param name="caption"></param>
+            <param name="buttons"></param>
+            <param name="icon"></param>
+        </member>
+        <member name="M:GMLogger.Layout.ModalBox.#ctor(System.String,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="caption"></param>
+            <param name="buttons"></param>
         </member>
         <member name="T:GMLogger.Layout.ToastLayout">
             <summary>

@@ -14,7 +14,9 @@ namespace GMLogger.Layout
     /// </summary>
     public partial class MessageBoxCustom : Window
     {
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MessageBoxCustom()
         {
             InitializeComponent();

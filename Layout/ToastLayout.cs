@@ -14,15 +14,32 @@ namespace GMLogger.Layout
     /// </summary>
     public class ToastLayout
     {
+        /// <summary>
+        /// Toast Template
+        /// </summary>
         public ToastTemplateType Template { get; }
+
+        /// <summary>
+        /// Toast xml Document
+        /// </summary>
         public XmlDocument ToastXml { get; }
 
+        /// <summary>
+        /// Toast Caption
+        /// </summary>
         public string Caption { get; }
 
-        //public List<LogElements> Elements { get; }
-
+        /// <summary>
+        /// Toast Elements
+        /// </summary>
         public List<string> Elements { get; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="elem1"></param>
+        /// <param name="elem2"></param>
+        /// <param name="elem3"></param>
         public ToastLayout(string elem1, string elem2, string elem3)
         {
             Elements = new List<string>();
@@ -35,6 +52,11 @@ namespace GMLogger.Layout
             ToastXml = ToastNotificationManager.GetTemplateContent(Template);
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="elem1"></param>
+        /// <param name="elem2"></param>
         public ToastLayout(string elem1, string elem2)
         {
             Elements = new List<string>();
@@ -46,6 +68,10 @@ namespace GMLogger.Layout
             ToastXml = ToastNotificationManager.GetTemplateContent(Template);
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="caption"></param>
         public ToastLayout(string caption)
         {
             Elements = new List<string>();
@@ -56,6 +82,9 @@ namespace GMLogger.Layout
             ToastXml = ToastNotificationManager.GetTemplateContent(Template);
         }
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public ToastLayout()
         {
             Elements = new List<string>();

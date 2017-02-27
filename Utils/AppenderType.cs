@@ -11,14 +11,35 @@ namespace GMLogger.Utils
     /// </summary>
     public enum AppenderType
     {
-        NONE,
+
+        /// <summary>
+        /// Console type
+        /// </summary>
         CONSOLE,
+
+        /// <summary>
+        /// Message box type
+        /// </summary>
         MESSAGE_BOX,
+
+        /// <summary>
+        /// Custom message box type
+        /// </summary>
         MESSAGE_BOX_CUSTOM,
-        CURRENT_FOLDER,
-        TEMP_FOLDER,
+
+        /// <summary>
+        /// Toast type
+        /// </summary>
         TOAST,
+
+        /// <summary>
+        /// Database type
+        /// </summary>
         DATABASE,
+
+        /// <summary>
+        /// File type
+        /// </summary>
         FILE
     }
 }

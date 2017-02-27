@@ -12,14 +12,29 @@ namespace GMLogger.Layout
     /// </summary>
     public enum LogElements
     {
+        /// <summary>
+        /// log's timestamp
+        /// </summary>
         [StringValue("TIMESTAMP")]
         TIMESTAMP = 0,
+        /// <summary>
+        /// log level
+        /// </summary>
         [StringValue("LEVEL")]
         LEVEL = 1,
+        /// <summary>
+        /// log's logger's name
+        /// </summary>
         [StringValue("LOGGER_NAME")]
         LOGGER_NAME = 2,
+        /// <summary>
+        /// log's message
+        /// </summary>
         [StringValue("MESSAGE")]
         MESSAGE = 3,
+        /// <summary>
+        /// exception
+        /// </summary>
         [StringValue("EXCEPTION")]
         EXCEPTION = 4
     }

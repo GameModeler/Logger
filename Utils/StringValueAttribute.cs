@@ -38,6 +38,9 @@ namespace GMLogger.Utils
         #endregion
     }
 
+    /// <summary>
+    /// EnumString class
+    /// </summary>
     public static class EnumString
     {
 

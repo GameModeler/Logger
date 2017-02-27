@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>
+        @PACKAGENUGETNAME
+	</id>
+    <authors>
+        @OWNER
+	</authors>
+    <owners>
+        @OWNER
+	</owners>
+    <version>
+        @VERSION
+    </version>
+    <projectUrl>
+        @DOCUMENTATION_URL
+    </projectUrl>
+    <licenseUrl>
+        @TOS_URL#tos
+    </licenseUrl>
+    <iconUrl>
+        @ICON_URL
+    </iconUrl>
+
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>desc</description>
+    <releaseNotes>See the release notes on the project page.</releaseNotes>
+    <copyright>Copyright © GameModeler</copyright>
+    <tags>online desc</tags>
+	</metadata>
+</package>
