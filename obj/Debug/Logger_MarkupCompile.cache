@@ -1,7 +1,7 @@
 ﻿Logger
 
 
-exe
+library
 C#
 .cs
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 1-1525910514
 4-331847248
-44648447635
-108668276261
+30700935208
+1091447677250
 myXaml.xaml;
 
 False

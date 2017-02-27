@@ -1,15 +1,6 @@
-﻿using GMLogger.DataBase.Database;
-using GMLogger.DataBase.Interfaces;
-using GMLogger.DataBase.Utils;
-using GMLogger.Interfaces;
+﻿using GMLogger.Interfaces;
 using GMLogger.Loggers;
 using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logger.Appenders
 {
@@ -19,41 +10,41 @@ namespace Logger.Appenders
     /// </summary>
     public class DataBaseAppender : IAppender
     {
-        private const string DEFAULT_DATABASE_NAME = "GM_DB_LOGGER";
-        public string Name { get; set; }
+        //private const string DEFAULT_DATABASE_NAME = "GM_DB_LOGGER";
+        //public string Name { get; set; }
 
-        public string Layout { get; set; }
+        //public string Layout { get; set; }
 
-        public DbEntityManager<Log> Database { get; private set; }
+        //public GmDbManager<Log> Database { get; private set; }
 
-        public string DbName { get; set; }
+        //public string DbName { get; set; }
 
-        public IDbSettings Settings { get; set; }
+        //public IDbSettings Settings { get; set; }
 
-        public DataBaseAppender(string name)
-        {
-            Name = name == null ? DEFAULT_DATABASE_NAME : name;
-        }
-
-        /// <summary>
-        /// Create a DataBase Appender with a data base settings and a provider
-        /// </summary>
-        /// <param name="dbSetting"></param>
-        /// <param name="provider"></param>
-        //public DataBaseAppender(IDbSettings dbSettings, ProviderType provider, Type type = null)
+        //public DataBaseAppender(string name)
         //{
-        //    logType = type == null ? type = typeof(Log) : type;
-
-        //    //logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
-
-        //    DatabaseManager.Instance.SetProvider(provider);
-
-        //    /// Create db with the dbSettings if not already yet
-        //    //Database = new DbEntityManager<>(dbSettings);
-        //    Type genericListType = typeof(DbEntityManager<>);
-        //    Type specificListType = genericListType.MakeGenericType(logType);
-        //    Database = Activator.CreateInstance(specificListType, dbSettings);
+        //    Name = name == null ? DEFAULT_DATABASE_NAME : name;
         //}
+
+        //    /// <summary>
+        //    /// Create a DataBase Appender with a data base settings and a provider
+        //    /// </summary>
+        //    /// <param name="dbSetting"></param>
+        //    /// <param name="provider"></param>
+        //    public DataBaseAppender(IDbSettings dbSettings, ProviderType provider, Type type = null)
+        //    {
+        //        logType = type == null ? type = typeof(Log) : type;
+
+        //        //logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
+
+        //        DatabaseManager.Instance.SetProvider(provider);
+
+        //        /// Create db with the dbSettings if not already yet
+        //        //Database = new DbEntityManager<>(dbSettings);
+        //        Type genericListType = typeof(DbEntityManager<>);
+        //        Type specificListType = genericListType.MakeGenericType(logType);
+        //        Database = Activator.CreateInstance(specificListType, dbSettings);
+        //    }
 
         /// <summary>
         /// Create a DataBase Appender with a data base name and a provider
@@ -168,23 +159,52 @@ namespace Logger.Appenders
         //    Database = Activator.CreateInstance(specificListType);
         //}
 
-        public async void DoAppend(Log log)
-        { 
-            await Database.Insert(log);
-        }
+        //public async void DoAppend(Log log)
+        //{ 
+        //    await Database.Insert(log);
+        //}
 
 
-        public void AttachDB(IDbSettings dbsettings, ProviderType provider)
+        //public void AttachDB(IDbSettings dbsettings, ProviderType provider)
+        //{
+        //    DatabaseManager.Instance.SetProvider(provider);
+        //    Database = new DbEntityManager<Log>(dbsettings);
+        //}
+
+        //public void AttachDB(IDbSettings dbsettings)
+        //{
+        //    Database = new DbEntityManager<Log>(dbsettings);
+        //}
+        public string Layout
         {
-            DatabaseManager.Instance.SetProvider(provider);
-            Database = new DbEntityManager<Log>(dbsettings);
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        public void AttachDB(IDbSettings dbsettings)
+        public string Name
         {
-            Database = new DbEntityManager<Log>(dbsettings);
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
+        public void DoAppend(Log log)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

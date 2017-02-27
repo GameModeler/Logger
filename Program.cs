@@ -1,16 +1,10 @@
 ﻿using GMLogger.Appenders;
-using GMLogger.DataBase.Database;
-using GMLogger.DataBase.Entities;
-using GMLogger.DataBase.Interfaces;
-using GMLogger.DataBase.Utils;
 using GMLogger.Interfaces;
 using GMLogger.Layout;
 using GMLogger.Loggers;
 using GMLogger.Utils;
 using Logger.Appenders;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Windows.Forms;
 
 namespace GMLogger
@@ -184,10 +178,18 @@ namespace GMLogger
             /************ DATABASE **************/
 
             // Database information
-            //DbSettings settingdb2 = new DbSettings();
+            //MySqlSettings settingdb2 = new MySqlSettings();
             //settingdb2.DatabaseName = "db2";
             //settingdb2.Server = "localhost";
             //settingdb2.UserId = "root";
+
+            //GmDbManager dbManager = GmDbManager.Instance;
+
+            //var sqlparking = dbContext
+            //                          .Context(settingdb2)
+            //                          .Context(sqlDbSettings)
+            //                          .MySqlContext(settingdb2);
+
 
             //DatabaseManager.Instance.SetProvider(ProviderType.MySQL);
 
@@ -198,7 +200,7 @@ namespace GMLogger
 
             //DataBaseAppender myDbApp = (DataBaseAppender)myLogger7.AddAppender(AppenderType.DATABASE);
 
-           // myDbApp.AttachDB(settingdb2);
+            //myDbApp.AttachDB(settingdb2);
 
             //myLogger7.Error("Game Modeler !");
 

@@ -10,7 +10,7 @@
             A DataBaseAppender matches one and only one data base.
             </summary>
         </member>
-        <member name="M:Logger.Appenders.DataBaseAppender.DoAppend(GMLogger.Loggers.Log)">
+        <member name="P:Logger.Appenders.DataBaseAppender.Layout">
             <summary>
             Create a DataBase Appender with a provider 
             </summary>
@@ -49,10 +49,21 @@
             Display logs into file
             </summary>
         </member>
+        <member name="T:GMLogger.Appenders.AppenderManager">
+            <summary>
+            Appender manager
+            </summary>
+        </member>
         <member name="F:GMLogger.Appenders.AppenderManager.appenderList">
             <summary>
             List of appenders.
             </summary>
+        </member>
+        <member name="M:GMLogger.Appenders.AppenderManager.#ctor(GMLogger.Interfaces.ILogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
         </member>
         <member name="M:GMLogger.Appenders.AppenderManager.AddAppender(GMLogger.Interfaces.IAppender)">
             <summary>
@@ -82,6 +93,23 @@
             <param name="type"></param>
             <returns></returns>
         </member>
+        <member name="M:GMLogger.Appenders.AppenderManager.AddAppender(GMLogger.Utils.AppenderType,System.Type,System.String)">
+            <summary>
+            Add an appender the a Logger
+            </summary>
+            <param name="type"></param>
+            <param name="clazz"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Appenders.AppenderManager.AddAppender(System.Type,System.String)">
+            <summary>
+            Add an appender to the Logger
+            </summary>
+            <param name="clazz"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="P:GMLogger.Appenders.AppenderManager.AppenderList">
             <summary>
             Get the list of appenders.
@@ -92,6 +120,7 @@
             Create a new appender from its type.
             </summary>
             <param name="type"></param>
+            <param name="name"></param>
             <returns></returns>
         </member>
         <member name="M:GMLogger.Appenders.AppenderManager.CreateAppender(GMLogger.Utils.AppenderType,System.Type,System.String)">
@@ -99,6 +128,8 @@
             Create a new appender from its type.
             </summary>
             <param name="type"></param>
+            <param name="clazz"></param>
+            <param name="name"></param>
             <returns></returns>
         </member>
         <member name="T:GMLogger.Appenders.ConsoleAppender">
@@ -138,175 +169,6 @@
         <member name="M:GMLogger.Appenders.ConsoleAppender.ResetConsole">
             <summary>
             Reset console parameters
-            </summary>
-        </member>
-        <member name="T:GMLogger.DataBase.Database.ConnectionStringBuilder">
-            <summary>
-            Build the database connection string
-            </summary>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DatabaseManager.GetDatabase(System.String)">
-            <summary>
-            Get database from a database name
-            </summary>
-            <param name="dbName"></param>
-            <returns></returns>
-        </member>
-        <member name="P:GMLogger.DataBase.Database.DatabaseManager.Databases">
-            <summary>
-            Get all the databases
-            </summary>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DatabaseManager.SearchInDatabases(System.String,System.String)">
-            <summary>
-            Provide a way to look for database information into the list of databases
-            </summary>
-            <param name="crible"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="P:GMLogger.DataBase.Database.DatabaseManager.Provider">
-            <summary>
-            Access the provider
-            Get the default provider if any provider was provided
-            </summary>
-        </member>
-        <member name="T:GMLogger.DataBase.Database.DbConfig">
-            <summary>
-            Used to set provider configuration and connection string building
-            This class must be inherited from; you cannot instantiate it directly.
-            </summary>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbConfig.ConfigPorvider(GMLogger.DataBase.Utils.ProviderType)">
-            <summary>
-            Set the database provider
-            </summary>
-            <param name="provider"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbConfig.ProviderConnectionString(GMLogger.DataBase.Utils.ProviderType,GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Set the database connexion string
-            </summary>
-            <param name="provider"></param>
-            <param name="settings"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbConfig.BuildMySQLConnectionString(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Build MySQL connection string
-            </summary>
-            <param name="settings"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbConfig.BuildSQLConnectionString(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Build SQL connection string
-            </summary>
-            <param name="settings"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbConfig.BuildSQLiteConnectionString(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Build SQLite connection string
-            </summary>
-            <param name="settings"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbEntityManager`1.#ctor(GMLogger.DataBase.Interfaces.IDbSettings,GMLogger.DataBase.Utils.ProviderType)">
-            <summary>
-            Create a database with a given provider and settings
-            </summary>
-            <param name="settings"></param>
-            <param name="provider"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbEntityManager`1.#ctor(GMLogger.DataBase.Utils.ProviderType)">
-            <summary>
-            Create a database with a given provider
-            Used default settings
-            </summary>
-            <param name="provider"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbEntityManager`1.#ctor(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Create a database with a given settings
-            </summary>
-            <param name="settings"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbEntityManager`1.#ctor">
-            <summary>
-            Default constructor
-            Use default provider if any provider is provided
-            Use default settings
-            </summary>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbEntityManager`1.InitDb(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Create the database if not exists already
-            Add the database into the list of databases
-            Set the settings information of the database
-            </summary>
-            <param name="dbSettings"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbEntityManager`1.SetSettings(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Set the database information
-            </summary>
-            <param name="dbSettings"></param>
-        </member>
-        <member name="P:GMLogger.DataBase.Database.DbEntityManager`1.Settings">
-            <summary>
-            Get the information of the database
-            </summary>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbSettings.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Constructor
-            All params are optionals
-            </summary>
-            <param name="databaseName"></param>
-            <param name="userId"></param>
-            <param name="password"></param>
-            <param name="port"></param>
-            <param name="server"></param>
-            <param name="connectionString"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbSettings.#ctor(System.String,GMLogger.DataBase.Utils.ProviderType)">
-            <summary>
-            Default settings from a given provider
-            </summary>
-            <param name="dbName"></param>
-            <param name="provider"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbSettings.MySqlSettings(System.String)">
-            <summary>
-            MySQL default database settings
-            </summary>
-            <param name="dbName"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbSettings.LocalDbSettings(System.String)">
-            <summary>
-            LocalDb default database settings
-            </summary>
-            <param name="dbName"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Database.DbSettings.SQLiteSettings(System.String)">
-            <summary>
-            SQLite default database settings
-            </summary>
-            <param name="dbName"></param>
-        </member>
-        <member name="M:GMLogger.DataBase.Utils.DataBaseUtils.IsAllNullOrEmpty(GMLogger.DataBase.Interfaces.IDbSettings)">
-            <summary>
-            Check if an object have all of its string properties empty
-            </summary>
-            <param name="myObject"></param>
-            <returns>true if all of the object's string properties are empty,
-            false otherwisse</returns>
-        </member>
-        <member name="T:GMLogger.DataBase.Utils.ProviderType">
-            <summary>
-            Enum of the different provider
             </summary>
         </member>
         <member name="P:GMLogger.Interfaces.IAppender.Name">
@@ -427,13 +289,165 @@
             Inspired from org.slf4j.Logger interface.
             </summary>
         </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Log(System.String)">
+            <summary>
+            To log with a log level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Log(System.String,System.Exception)">
+            <summary>
+            To log with a log level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Error(System.String)">
+            <summary>
+            To log with an error level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Info(System.String)">
+            <summary>
+            To log with an Info level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Info(System.String,System.Exception)">
+            <summary>
+            To log with a Info level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Warn(System.String)">
+            <summary>
+            To log with a warm level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Warn(System.String,System.Exception)">
+            <summary>
+            To log with a Warn level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Debug(System.String)">
+            <summary>
+            To log with a debug level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Debug(System.String,System.Exception)">
+            <summary>
+            To log with a debug level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Trace(System.String)">
+            <summary>
+            To log with a Trace level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.Trace(System.String,System.Exception)">
+            <summary>
+            To log with a Trace level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.isDebugEnabled">
+            <summary>
+            True if debug level is enable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.isErrorEnabled">
+            <summary>
+            True if Error level is enable
+            </summary>
+            <returns></returns>                     
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.isInfoEnabled">
+            <summary>
+            True if Info level is enable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.isTraceEnabled">
+            <summary>
+            True if trace level is enable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.ILoggerLog.isWarnEnabled">
+            <summary>
+            True if warn level is enable
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:GMLogger.Loggers.Log">
             <summary>
             A log
             </summary>
         </member>
         <member name="P:GMLogger.Loggers.Log.Id">
-            Add an id ?
+            <summary>
+            Log's Id
+            </summary>
+        </member>
+        <member name="F:GMLogger.Loggers.Log.nextId">
+            <summary>
+            Next Id to increment id for the next log
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.Message">
+            <summary>
+            Log's message
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.Timestamp">
+            <summary>
+            Log's timestamp
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.LoggerName">
+            <summary>
+            Log's logger's name
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.Exception">
+            <summary>
+            Log's Exception
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.ThreadId">
+            <summary>
+            Log's thread's id
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.Clazz">
+            <summary>
+            Log's clazz
+            </summary>
+        </member>
+        <member name="P:GMLogger.Loggers.Log.Level">
+            <summary>
+            Log's level
+            </summary>
+        </member>
+        <member name="M:GMLogger.Loggers.Log.#ctor(GMLogger.Interfaces.ILogger,System.String,GMLogger.Utils.Level,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="msg"></param>
+            <param name="logAlerte"></param>
+            <param name="e"></param>
         </member>
         <member name="T:GMLogger.Loggers.Logger">
             <summary>
@@ -653,9 +667,55 @@
             <param name="e"></param>
             <returns></returns>
         </member>
+        <member name="T:GMLogger.Loggers.LoggerManagerBase">
+            <summary>
+            Logger Manager Base
+            </summary>
+        </member>
+        <member name="M:GMLogger.Loggers.LoggerManagerBase.CreateLogger(System.String,GMLogger.Utils.Level,System.Type)">
+            <summary>
+            Create a logger
+            </summary>
+            <param name="name"></param>
+            <param name="level"></param>
+            <param name="clazz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Loggers.LoggerManagerBase.DuplicateLogger(System.String)">
+            <summary>
+            Duplicate a logger
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="T:GMLogger.Layout.LogElements">
             <summary>
             Elements of a logger
+            </summary>
+        </member>
+        <member name="F:GMLogger.Layout.LogElements.TIMESTAMP">
+            <summary>
+            log's timestamp
+            </summary>
+        </member>
+        <member name="F:GMLogger.Layout.LogElements.LEVEL">
+            <summary>
+            log level
+            </summary>
+        </member>
+        <member name="F:GMLogger.Layout.LogElements.LOGGER_NAME">
+            <summary>
+            log's logger's name
+            </summary>
+        </member>
+        <member name="F:GMLogger.Layout.LogElements.MESSAGE">
+            <summary>
+            log's message
+            </summary>
+        </member>
+        <member name="F:GMLogger.Layout.LogElements.EXCEPTION">
+            <summary>
+            exception
             </summary>
         </member>
         <member name="T:GMLogger.Layout.MessageBoxCustom">
@@ -666,6 +726,11 @@
             MessageBoxCustom
             </summary>
         </member>
+        <member name="M:GMLogger.Layout.MessageBoxCustom.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
         <member name="M:GMLogger.Layout.MessageBoxCustom.InitializeComponent">
             <summary>
             InitializeComponent
@@ -674,6 +739,26 @@
         <member name="T:GMLogger.Layout.ModalBox">
             <summary>
             Represent a windows Message Box
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ModalBox.Text">
+            <summary>
+            Message Box Text
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ModalBox.Caption">
+            <summary>
+            Message Box Caption
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ModalBox.Icon">
+            <summary>
+            Message box Icon
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ModalBox.Buttons">
+            <summary>
+            Message Box Buttons
             </summary>
         </member>
         <member name="M:GMLogger.Layout.ModalBox.#ctor(System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
@@ -691,9 +776,90 @@
             <param name="caption"></param>
             <param name="buttons"></param>
         </member>
+        <member name="M:GMLogger.Layout.ModalBox.#ctor(System.String,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="caption"></param>
+            <param name="icon"></param>
+        </member>
+        <member name="M:GMLogger.Layout.ModalBox.#ctor(System.String)">
+            <summary>
+            Construcor
+            </summary>
+            <param name="caption"></param>
+        </member>
+        <member name="M:GMLogger.Layout.ModalBox.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ModalBox.HasIcon">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GMLogger.Layout.ModalBox.setAction(System.Windows.Forms.DialogResult,System.Action)">
+            <summary>
+            Add action to the buttons
+            </summary>
+            <param name="buttonName"></param>
+            <param name="doAction"></param>
+        </member>
+        <member name="P:GMLogger.Layout.ModalBox.ButtonAction">
+            <summary>
+            Dictionnary of button associated with their actions
+            </summary>
+        </member>
         <member name="T:GMLogger.Layout.ToastLayout">
             <summary>
             Represent a toast
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ToastLayout.Template">
+            <summary>
+            Toast Template
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ToastLayout.ToastXml">
+            <summary>
+            Toast xml Document
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ToastLayout.Caption">
+            <summary>
+            Toast Caption
+            </summary>
+        </member>
+        <member name="P:GMLogger.Layout.ToastLayout.Elements">
+            <summary>
+            Toast Elements
+            </summary>
+        </member>
+        <member name="M:GMLogger.Layout.ToastLayout.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="elem1"></param>
+            <param name="elem2"></param>
+            <param name="elem3"></param>
+        </member>
+        <member name="M:GMLogger.Layout.ToastLayout.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="elem1"></param>
+            <param name="elem2"></param>
+        </member>
+        <member name="M:GMLogger.Layout.ToastLayout.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="caption"></param>
+        </member>
+        <member name="M:GMLogger.Layout.ToastLayout.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:GMLogger.Utils.Level">
@@ -701,10 +867,130 @@
             Levels
             </summary>
         </member>
+        <member name="F:GMLogger.Utils.Level.TRACE">
+            <summary>
+            Trace level
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.Level.DEBUG">
+            <summary>
+            Debug level
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.Level.INFO">
+            <summary>
+            Info level
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.Level.WARN">
+            <summary>
+            Warn level
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.Level.ERROR">
+            <summary>
+            Error level
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.Level.LOG">
+            <summary>
+            Log level
+            </summary>
+        </member>
+        <member name="T:GMLogger.Utils.LoggerUtils">
+            <summary>
+            Util class for the logger
+            </summary>
+        </member>
+        <member name="M:GMLogger.Utils.LoggerUtils.IsALoggerName(System.Collections.Generic.List{GMLogger.Interfaces.ILogger},System.String)">
+            <summary>
+            Check if a name string matches a logger's name
+            </summary>
+            <param name="list"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Utils.LoggerUtils.IsAnAppenderName(System.Collections.Generic.SynchronizedCollection{GMLogger.Interfaces.IAppender},System.String)">
+            <summary>
+            Check if a name string matches an appender's name
+            </summary>
+            <param name="list"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
         <member name="T:GMLogger.Utils.AppenderType">
             <summary>
             Types of appenders
             </summary>
+        </member>
+        <member name="F:GMLogger.Utils.AppenderType.CONSOLE">
+            <summary>
+            Console type
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.AppenderType.MESSAGE_BOX">
+            <summary>
+            Message box type
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.AppenderType.MESSAGE_BOX_CUSTOM">
+            <summary>
+            Custom message box type
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.AppenderType.TOAST">
+            <summary>
+            Toast type
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.AppenderType.DATABASE">
+            <summary>
+            Database type
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.AppenderType.FILE">
+            <summary>
+            File type
+            </summary>
+        </member>
+        <member name="T:GMLogger.Utils.LogPatternConstants">
+            <summary>
+            Constants for log pattern
+            </summary>
+        </member>
+        <member name="F:GMLogger.Utils.LogPatternConstants.DEFAULT_PATTERN">
+            <summary>
+            Default log pattern
+            </summary>
+        </member>
+        <member name="T:GMLogger.Utils.LogPatterns">
+            <summary>
+            Util Log Pattern class
+            </summary>
+        </member>
+        <member name="M:GMLogger.Utils.LogPatterns.Reformate(System.String,GMLogger.Interfaces.ILog)">
+            <summary>
+            Reformate the string pattern from the log
+            </summary>
+            <param name="pattern"></param>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GMLogger.Utils.LogPatterns.BuildXmlTemplate(Windows.Data.Xml.Dom.XmlDocument,System.Collections.Generic.List{System.String},GMLogger.Interfaces.ILog)">
+            <summary>
+            Build the xmlTemplate for toast appender
+            </summary>
+            <param name="toastXml"></param>
+            <param name="lines"></param>
+            <param name="log"></param>
+        </member>
+        <member name="M:GMLogger.Utils.LogPatterns.StrRef(GMLogger.Layout.LogElements,System.String)">
+            <summary>
+            Use to build the log pattern
+            </summary>
+            <param name="elem"></param>
+            <param name="option"></param>
+            <returns></returns>
         </member>
         <member name="T:GMLogger.Utils.ObjectCopier">
             <summary>
@@ -737,6 +1023,11 @@
             Constructor used to init a StringValue Attribute
             </summary>
             <param name="value"></param>
+        </member>
+        <member name="T:GMLogger.Utils.EnumString">
+            <summary>
+            EnumString class
+            </summary>
         </member>
         <member name="M:GMLogger.Utils.EnumString.GetStringValue(System.Enum)">
             <summary>

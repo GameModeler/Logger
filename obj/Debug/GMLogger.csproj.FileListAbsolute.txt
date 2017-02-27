@@ -1,5 +1,3 @@
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.exe.config
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.exe
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.pdb
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\EntityFramework.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\EntityFramework.SqlServer.dll
@@ -7,7 +5,6 @@ C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\EntityFramework.xml
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger.exe
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger.pdb
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\x86\sqlite3.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\x64\sqlite3.dll
@@ -52,7 +49,6 @@ C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\System.Interactive.Async.xml
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\myXaml.g.cs
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger_Content.g.cs
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger_MarkupCompile.cache
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger_MarkupCompile.lref
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\myXaml.baml
@@ -64,3 +60,8 @@ C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Simple.Data.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Simple.Data.Sqlite.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.XML
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.dll.config
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\Logger.dll
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Debug\Logger.dll
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\GMDataBase.dll
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Debug\GMDataBase.pdb
