@@ -4,42 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GMLogger.Utils
+namespace Logger.Utils
 {
     /// <summary>
     /// Types of appenders
     /// </summary>
     public enum AppenderType
     {
-
-        /// <summary>
-        /// Console type
-        /// </summary>
+        NONE,
         CONSOLE,
-
-        /// <summary>
-        /// Message box type
-        /// </summary>
         MESSAGE_BOX,
-
-        /// <summary>
-        /// Custom message box type
-        /// </summary>
         MESSAGE_BOX_CUSTOM,
-
-        /// <summary>
-        /// Toast type
-        /// </summary>
+        CURRENT_FOLDER,
+        TEMP_FOLDER,
         TOAST,
-
-        /// <summary>
-        /// Database type
-        /// </summary>
         DATABASE,
-
-        /// <summary>
-        /// File type
-        /// </summary>
         FILE
     }
 }

@@ -1,45 +1,27 @@
-﻿using GMLogger.Utils;
+﻿using Logger.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GMLogger.Utils
+namespace Logger.Utils
 {
     /// <summary>
     /// Levels
     /// </summary>
     public enum Level
     {
-        /// <summary>
-        /// Trace level
-        /// </summary>
         [StringValue("TRACE")]
         TRACE,
-        /// <summary>
-        /// Debug level
-        /// </summary>
         [StringValue("DEBUG")]
         DEBUG,
-        /// <summary>
-        /// Info level
-        /// </summary>
         [StringValue("INFO")]
         INFO ,
-        /// <summary>
-        /// Warn level
-        /// </summary>
         [StringValue("WARN")]
         WARN ,
-        /// <summary>
-        /// Error level
-        /// </summary>
         [StringValue("ERROR")]
         ERROR,
-        /// <summary>
-        /// Log level
-        /// </summary>
         [StringValue("LOG")]
         LOG
 

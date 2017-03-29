@@ -1,6 +1,6 @@
-﻿using GMLogger.Loggers;
+﻿using Logger.Loggers;
 
-namespace GMLogger.Interfaces
+namespace Logger.Interfaces
 {
     public interface IAppender
     {

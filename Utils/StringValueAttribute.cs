@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GMLogger.Utils
+namespace Logger.Utils
 {
 
     /// <summary>
@@ -38,9 +38,6 @@ namespace GMLogger.Utils
         #endregion
     }
 
-    /// <summary>
-    /// EnumString class
-    /// </summary>
     public static class EnumString
     {
 

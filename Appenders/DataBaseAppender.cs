@@ -1,6 +1,12 @@
-﻿using GMLogger.Interfaces;
-using GMLogger.Loggers;
+﻿using Logger.Interfaces;
+using Logger.Loggers;
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Logger.Appenders
 {
@@ -8,14 +14,14 @@ namespace Logger.Appenders
     /// Display the log into a database
     /// A DataBaseAppender matches one and only one data base.
     /// </summary>
-    public class DataBaseAppender : IAppender
+    public class DataBaseAppender
     {
         //private const string DEFAULT_DATABASE_NAME = "GM_DB_LOGGER";
         //public string Name { get; set; }
 
         //public string Layout { get; set; }
 
-        //public GmDbManager<Log> Database { get; private set; }
+        //public DbEntityManager<Log> Database { get; private set; }
 
         //public string DbName { get; set; }
 
@@ -26,25 +32,25 @@ namespace Logger.Appenders
         //    Name = name == null ? DEFAULT_DATABASE_NAME : name;
         //}
 
-        //    /// <summary>
-        //    /// Create a DataBase Appender with a data base settings and a provider
-        //    /// </summary>
-        //    /// <param name="dbSetting"></param>
-        //    /// <param name="provider"></param>
-        //    public DataBaseAppender(IDbSettings dbSettings, ProviderType provider, Type type = null)
-        //    {
-        //        logType = type == null ? type = typeof(Log) : type;
+        /// <summary>
+        /// Create a DataBase Appender with a data base settings and a provider
+        /// </summary>
+        /// <param name="dbSetting"></param>
+        /// <param name="provider"></param>
+        //public DataBaseAppender(IDbSettings dbSettings, ProviderType provider, Type type = null)
+        //{
+        //    logType = type == null ? type = typeof(Log) : type;
 
-        //        //logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
+        //    //logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
 
-        //        DatabaseManager.Instance.SetProvider(provider);
+        //    DatabaseManager.Instance.SetProvider(provider);
 
-        //        /// Create db with the dbSettings if not already yet
-        //        //Database = new DbEntityManager<>(dbSettings);
-        //        Type genericListType = typeof(DbEntityManager<>);
-        //        Type specificListType = genericListType.MakeGenericType(logType);
-        //        Database = Activator.CreateInstance(specificListType, dbSettings);
-        //    }
+        //    /// Create db with the dbSettings if not already yet
+        //    //Database = new DbEntityManager<>(dbSettings);
+        //    Type genericListType = typeof(DbEntityManager<>);
+        //    Type specificListType = genericListType.MakeGenericType(logType);
+        //    Database = Activator.CreateInstance(specificListType, dbSettings);
+        //}
 
         /// <summary>
         /// Create a DataBase Appender with a data base name and a provider
@@ -175,36 +181,7 @@ namespace Logger.Appenders
         //{
         //    Database = new DbEntityManager<Log>(dbsettings);
         //}
-        public string Layout
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void DoAppend(Log log)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

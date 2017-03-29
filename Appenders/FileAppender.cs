@@ -1,8 +1,8 @@
-﻿using GMLogger.Interfaces;
-using GMLogger.Loggers;
-using GMLogger.Utils;
+﻿using Logger.Interfaces;
+using Logger.Loggers;
+using Logger.Utils;
 
-namespace GMLogger.Appenders
+namespace Logger.Appenders
 {
     /// <summary>
     /// Display logs into file

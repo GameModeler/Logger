@@ -1,7 +1,7 @@
-﻿using GMLogger.Interfaces;
-using GMLogger.Layout;
-using GMLogger.Loggers;
-using GMLogger.Utils;
+﻿using Logger.Interfaces;
+using Logger.Layout;
+using Logger.Loggers;
+using Logger.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;

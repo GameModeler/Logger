@@ -1,9 +1,9 @@
-﻿using GMLogger.Interfaces;
+﻿using Logger.Interfaces;
 using System;
 using System.Collections.Generic;
-using GMLogger.Utils;
+using Logger.Utils;
 
-namespace GMLogger.Loggers
+namespace Logger.Loggers
 {
     public class LoggerManager : LoggerManagerBase
     {

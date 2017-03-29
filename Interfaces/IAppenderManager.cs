@@ -1,8 +1,8 @@
-﻿using GMLogger.Utils;
+﻿using Logger.Utils;
 using System;
 using System.Collections.Generic;
 
-namespace GMLogger.Interfaces
+namespace Logger.Interfaces
 {
     public interface IAppenderManager
     {

@@ -1,15 +1,12 @@
-﻿using GMLogger.Interfaces;
+﻿using Logger.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GMLogger.Utils;
+using Logger.Utils;
 using Logger.Appenders;
 
-namespace GMLogger.Appenders
+namespace Logger.Appenders
 {
-    /// <summary>
-    /// Appender manager
-    /// </summary>
     public class AppenderManager : IAppenderManager
     {
        
@@ -20,10 +17,7 @@ namespace GMLogger.Appenders
 
         private ILogger Logger { get; }
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="logger"></param>
+
         public AppenderManager(ILogger logger)
         {
             Logger = logger;
@@ -89,13 +83,6 @@ namespace GMLogger.Appenders
             }
         }
 
-        /// <summary>
-        /// Add an appender the a Logger
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="clazz"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
         public IAppender AddAppender(AppenderType type, Type clazz, string name = null)
         {
             if (!AppenderList.IsAnAppenderName(name))
@@ -112,12 +99,6 @@ namespace GMLogger.Appenders
             }
         }
 
-        /// <summary>
-        /// Add an appender to the Logger
-        /// </summary>
-        /// <param name="clazz"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
         public IAppender AddAppender(Type clazz, string name = "")
         {
             IAppender appender = null;
@@ -148,7 +129,6 @@ namespace GMLogger.Appenders
         /// Create a new appender from its type.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="name"></param>
         /// <returns></returns>
         public IAppender CreateAppender(AppenderType type, string name)
         {
@@ -173,8 +153,6 @@ namespace GMLogger.Appenders
         /// Create a new appender from its type.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="clazz"></param>
-        /// <param name="name"></param>
         /// <returns></returns>
         public IAppender CreateAppender(AppenderType type, Type clazz, string name)
         {

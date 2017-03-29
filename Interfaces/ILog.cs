@@ -1,11 +1,11 @@
-﻿using GMLogger.Utils;
+﻿using Logger.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GMLogger.Interfaces
+namespace Logger.Interfaces
 {
     /// <summary>
     /// A log

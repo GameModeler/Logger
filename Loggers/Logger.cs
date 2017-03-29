@@ -1,6 +1,6 @@
-﻿using GMLogger.Appenders;
-using GMLogger.Interfaces;
-using GMLogger.Utils;
+﻿using Logger.Appenders;
+using Logger.Interfaces;
+using Logger.Utils;
 using Logger.Appenders;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GMLogger.Loggers
+namespace Logger.Loggers
 {
     /// <summary>
     /// A Logger.

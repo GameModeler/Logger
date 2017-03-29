@@ -1,11 +1,11 @@
-﻿using GMLogger.Interfaces;
+﻿using Logger.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GMLogger.Loggers;
-using GMLogger.Layout;
+using Logger.Loggers;
+using Logger.Layout;
 using System.Windows;
 using System.Reflection;
 

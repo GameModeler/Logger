@@ -7,16 +7,14 @@ using System.Windows; // Window, RoutedEventArgs, IInputElement, DependencyObjec
 using System.Windows.Controls; // Validation
 using System.Windows.Input; // Keyboard
 
-namespace GMLogger.Layout
+namespace Logger.Layout
 {
     /// <summary>
     /// 
     /// </summary>
     public partial class MessageBoxCustom : Window
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
+
         public MessageBoxCustom()
         {
             InitializeComponent();

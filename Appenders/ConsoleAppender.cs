@@ -1,9 +1,9 @@
-﻿using GMLogger.Interfaces;
-using GMLogger.Loggers;
-using GMLogger.Utils;
+﻿using Logger.Interfaces;
+using Logger.Loggers;
+using Logger.Utils;
 using System;
 
-namespace GMLogger.Appenders
+namespace Logger.Appenders
 {
     /// <summary>
     /// To display log into the console
