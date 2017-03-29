@@ -38,6 +38,9 @@ namespace Logger.Utils
         #endregion
     }
 
+    /// <summary>
+    /// Enum String
+    /// </summary>
     public static class EnumString
     {
 

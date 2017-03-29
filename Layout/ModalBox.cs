@@ -16,8 +16,14 @@ namespace Logger.Layout
         public string Text { get; set; }
         public string Caption { get; set; }
 
+        /// <summary>
+        /// Icon
+        /// </summary>
         public MessageBoxIcon Icon { get; set; }
 
+        /// <summary>
+        /// Buttons
+        /// </summary>
         public MessageBoxButtons Buttons { get; set; }
 
         private Dictionary<DialogResult, Action> buttonsActions = new Dictionary<DialogResult, Action>();
@@ -49,6 +55,11 @@ namespace Logger.Layout
             Buttons = buttons;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <param name="icon"></param>
         public ModalBox(string caption, MessageBoxIcon icon)
         {
             Caption = caption;
@@ -57,16 +68,26 @@ namespace Logger.Layout
             hasIcon = true;
         }
 
+        /// <summary>
+        /// Construcctor
+        /// </summary>
+        /// <param name="caption"></param>
         public ModalBox(string caption)
         {
             Caption = caption;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ModalBox()
         {
             Caption = LogElements.LOGGER_NAME.GetStringValue();
         }
 
+        /// <summary>
+        /// Checks if has icon
+        /// </summary>
         public bool HasIcon
         {
             get
@@ -75,11 +96,19 @@ namespace Logger.Layout
             }
         }
 
+        /// <summary>
+        /// Set an action to a button
+        /// </summary>
+        /// <param name="buttonName"></param>
+        /// <param name="doAction"></param>
         public void setAction(DialogResult buttonName, Action doAction)
         {
             buttonsActions.Add(buttonName, doAction);
         }
 
+        /// <summary>
+        /// Dictionnary of buttons and their actions
+        /// </summary>
         public Dictionary<DialogResult, Action> ButtonAction
         {
             get {

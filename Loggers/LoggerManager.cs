@@ -85,9 +85,9 @@ namespace Logger.Loggers
         /// <summary>
         /// Create a new Log
         /// </summary>
-        /// <param name="loggerName"></param>
-        /// <param name="clazz"></param>
+        /// <param name="logger"></param>
         /// <param name="msg"></param>
+        /// <param name="logAlerte"></param>
         /// <param name="e"></param>
         /// <returns></returns>
         public Log MakeLog(ILogger logger, string msg, Level logAlerte, Exception e = null)

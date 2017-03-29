@@ -10,11 +10,13 @@ using System.Windows.Input; // Keyboard
 namespace Logger.Layout
 {
     /// <summary>
-    /// 
+    /// Custom Message box example
     /// </summary>
     public partial class MessageBoxCustom : Window
     {
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MessageBoxCustom()
         {
             InitializeComponent();

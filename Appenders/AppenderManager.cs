@@ -7,6 +7,9 @@ using Logger.Appenders;
 
 namespace Logger.Appenders
 {
+    /// <summary>
+    /// Appender Manager
+    /// </summary>
     public class AppenderManager : IAppenderManager
     {
        
@@ -17,7 +20,10 @@ namespace Logger.Appenders
 
         private ILogger Logger { get; }
 
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="logger"></param>
         public AppenderManager(ILogger logger)
         {
             Logger = logger;
@@ -83,6 +89,13 @@ namespace Logger.Appenders
             }
         }
 
+        /// <summary>
+        /// Add an appender to the logger
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="clazz"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IAppender AddAppender(AppenderType type, Type clazz, string name = null)
         {
             if (!AppenderList.IsAnAppenderName(name))
@@ -99,6 +112,12 @@ namespace Logger.Appenders
             }
         }
 
+        /// <summary>
+        /// Add an appender to the logger
+        /// </summary>
+        /// <param name="clazz"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IAppender AddAppender(Type clazz, string name = "")
         {
             IAppender appender = null;
