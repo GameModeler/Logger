@@ -20,20 +20,30 @@ namespace Logger.Appenders
 
         private const string DEFAULT_MESSAGE_BOX_CUSTOM_NAME = "GM_MESSAGE_BOX_CUSTOM_APPENDER";
 
+
+        /// <summary>
+        /// Appender's layout
+        /// </summary>
         public string Layout { get; set; }
 
+        /// <summary>
+        /// Appender's name
+        /// </summary>
         public string Name { get; set; }
 
         private T obj; 
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
         public MessageBoxCustomAppender(string name)
         {
             Name = name == null ? DEFAULT_MESSAGE_BOX_CUSTOM_NAME : name;
         }
 
-
         /// <summary>
-        /// Append log
+        /// Appends the log
         /// </summary>
         /// <param name="log"></param>
         public void DoAppend(Log log)

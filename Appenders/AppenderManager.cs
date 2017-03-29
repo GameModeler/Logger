@@ -159,8 +159,8 @@ namespace Logger.Appenders
                     return new MessageBoxAppender(name);
                 case AppenderType.TOAST:
                     return new ToastAppender(name);
-                //case AppenderType.DATABASE:
-                //    return new DataBaseAppender(name);
+                case AppenderType.DATABASE:
+                    return new DataBaseAppender(name);
                 case AppenderType.FILE:
                     return new FileAppender(name);
                 default:

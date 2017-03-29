@@ -38,7 +38,7 @@ namespace Logger.Appenders
         }
 
         /// <summary>
-        /// Append the log
+        /// Appends the log
         /// </summary>
         /// <param name="log"></param>
         public void DoAppend(Log log)

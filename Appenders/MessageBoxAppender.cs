@@ -18,12 +18,25 @@ namespace Logger.Appenders
     {
         private const string DEFAULT_MESSAGE_BOX_NAME = "GM_MESSAGE_BOX_APPENDER";
 
+        /// <summary>
+        /// Appender layout
+        /// </summary>
         public string Layout { get; set; }
 
+        /// <summary>
+        /// Message box 
+        /// </summary>
         public ModalBox Box { get; set; }
 
+        /// <summary>
+        /// Appender's name
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
         public MessageBoxAppender(string name)
         {
             Layout = LogPatternConstants.DEFAULT_PATTERN;
@@ -32,7 +45,7 @@ namespace Logger.Appenders
         }
 
         /// <summary>
-        /// Append the log
+        /// Appends the log
         /// </summary>
         /// <param name="log"></param>
         public void DoAppend(Log log)

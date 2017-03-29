@@ -1,12 +1,8 @@
-﻿using Logger.Interfaces;
+﻿using DataBase.Database;
+using DataBase.Database.DbSettings.Interface;
+using Logger.Interfaces;
 using Logger.Loggers;
 using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logger.Appenders
 {
@@ -14,174 +10,65 @@ namespace Logger.Appenders
     /// Display the log into a database
     /// A DataBaseAppender matches one and only one data base.
     /// </summary>
-    public class DataBaseAppender
+    public class DataBaseAppender : IAppender
     {
-        //private const string DEFAULT_DATABASE_NAME = "GM_DB_LOGGER";
-        //public string Name { get; set; }
-
-        //public string Layout { get; set; }
-
-        //public DbEntityManager<Log> Database { get; private set; }
-
-        //public string DbName { get; set; }
-
-        //public IDbSettings Settings { get; set; }
-
-        //public DataBaseAppender(string name)
-        //{
-        //    Name = name == null ? DEFAULT_DATABASE_NAME : name;
-        //}
+        private const string DEFAULT_DATABASE_NAME = "GM_DB_LOGGER";
 
         /// <summary>
-        /// Create a DataBase Appender with a data base settings and a provider
+        /// Appender name
         /// </summary>
-        /// <param name="dbSetting"></param>
-        /// <param name="provider"></param>
-        //public DataBaseAppender(IDbSettings dbSettings, ProviderType provider, Type type = null)
-        //{
-        //    logType = type == null ? type = typeof(Log) : type;
-
-        //    //logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
-
-        //    DatabaseManager.Instance.SetProvider(provider);
-
-        //    /// Create db with the dbSettings if not already yet
-        //    //Database = new DbEntityManager<>(dbSettings);
-        //    Type genericListType = typeof(DbEntityManager<>);
-        //    Type specificListType = genericListType.MakeGenericType(logType);
-        //    Database = Activator.CreateInstance(specificListType, dbSettings);
-        //}
+        public string Name { get; set; }
 
         /// <summary>
-        /// Create a DataBase Appender with a data base name and a provider
+        /// Log layout
         /// </summary>
-        /// <param name="dbName"></param>
-        /// <param name="provider"></param>
-        //public DataBaseAppender(string dbName, ProviderType provider, Type type = null)
-        //{
-        //    //logType = type == null ? type = typeof(Log) : type;
-        //    logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
-
-        //    DatabaseManager.Instance.SetProvider(provider);
-        //    IDbSettings dbSettings = new DbSettings(dbName);
-
-        //    /// Create db with the dbSettings if not already yet
-        //    Database = new DbEntityManager<ILog>(dbSettings);
-
-        //}
+        public string Layout { get; set; }
 
         /// <summary>
-        /// Create a DataBase Appender with a provider 
+        /// Database Manager
         /// </summary>
-        /// <param name="provider"></param>
-        //public DataBaseAppender(ProviderType provider, Type type = null)
-        //{
-        //    //logType = type == null ? type = typeof(Log) : type;
-        //    logType = this.GetType().GetTypeInfo().GenericTypeArguments[0];
+        private DbManager dbManager = DbManager.Instance;
 
-        //    DatabaseManager.Instance.SetProvider(provider);
-
-        //    /// Create db with the dbSettings if not already yet
-        //    Database = new DbEntityManager<ILog>();
-
-        //}
+        private GlobalContext<Log> dbContext;
 
 
-        //public void DoAppenderDB<T>(ILog log)
-        //{
+        /// <summary>
+        /// Database Name
+        /// </summary>
+        public string DbName { get; set; }
 
-        //    DatabaseManager.Instance.SetProvider(Provider);
-        //    IDbSettings dbSettings = new DbSettings(DbName);
+        // public IDbSettings Settings { get; set; }
 
-        //    //Type genericListType = typeof(DbEntityManager<>);
-        //    //Type specificListType = genericListType.MakeGenericType(logType);
-        //    //Database = Activator.CreateInstance(specificListType, dbSettings);
-        //    DbEntityManager<ILog> db2 = new DbEntityManager<ILog>(dbSettings);
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        public DataBaseAppender(string name)
+        {
 
-        //    db2.Insert(log);
-        //}
+            dbContext = dbManager.ContextFactory<Log>();
+            Name = name == null ? DEFAULT_DATABASE_NAME : name;
+        }
 
+        /// <summary>
+        /// Attach a database to the appender
+        /// </summary>
+        /// <param name="settings"></param>
+        public void AttachDB(IDbSettings settings)
+        {
+            dbContext.Context(settings);
+        }
 
-        //public void setDataBase<T>(IDbSettings dbSettings, ProviderType provider, T type) where T : ILog
-        //{
-        //    logType = type.GetType();
+        /// <summary>
+        /// Appends the log
+        /// </summary>
+        /// <param name="log"></param>
+        public async void DoAppend(Log log)
+        {
+            await dbContext.InsertAsync(log);
 
-
-
-        //    /// Create db with the dbSettings if not already yet
-        //    Type genericListType = typeof(DbEntityManager<>);
-        //    Type specificListType = genericListType.MakeGenericType(logType);
-        //    Database = Activator.CreateInstance(specificListType, dbSettings);
-        //}
-
-        //public void setDataBase<T>(string dbName, ProviderType provider, T type) where T : ILog
-        //{
-
-        //    logType = type.GetType();
-
-        //    DatabaseManager.Instance.SetProvider(provider);
-        //    IDbSettings dbSettings = new DbSettings(dbName);
-
-        //    /// Create db with the dbSettings if not already yet
-        //    //Database = new DbEntityManager<>(dbSettings);
-        //    Type genericListType = typeof(DbEntityManager<>);
-        //    Type specificListType = genericListType.MakeGenericType(logType);
-        //    Database = Activator.CreateInstance(specificListType, dbSettings);
-        //}
-
-        //public void setDataBase(ProviderType provider, Type type = null)
-        //{
-        //    //if(type is ILog)
-        //    //{
-        //        logType = type == null ? type = typeof(Log) : type;
-
-        //        DatabaseManager.Instance.SetProvider(provider);
-
-        //        /// Create db with the dbSettings if not already yet
-        //        Type genericListType = typeof(DbEntityManager<>);
-        //        Type specificListType = genericListType.MakeGenericType(logType);
-
-
-        //    try
-        //    {
-        //        Database = Activator.CreateInstance(specificListType);
-        //    }
-        //    catch (TargetInvocationException e)
-        //    {
-        //        throw e.InnerException;
-        //    }
-
-        //    //}
-        //}
-
-        //public void setDataBase<T>(T type) where T : ILog
-        //{
-        //    logType = type.GetType();
-        //    DatabaseManager.Instance.SetProvider(provider);
-
-        //    /// Create db with the dbSettings if not already yet
-        //    Type genericListType = typeof(DbEntityManager<>);
-        //    Type specificListType = genericListType.MakeGenericType(logType);
-        //    Database = Activator.CreateInstance(specificListType);
-        //}
-
-        //public async void DoAppend(Log log)
-        //{ 
-        //    await Database.Insert(log);
-        //}
-
-
-        //public void AttachDB(IDbSettings dbsettings, ProviderType provider)
-        //{
-        //    DatabaseManager.Instance.SetProvider(provider);
-        //    Database = new DbEntityManager<Log>(dbsettings);
-        //}
-
-        //public void AttachDB(IDbSettings dbsettings)
-        //{
-        //    Database = new DbEntityManager<Log>(dbsettings);
-        //}
-
+            throw new NotImplementedException();
+        }
     }
 }
 

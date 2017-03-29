@@ -24,7 +24,6 @@ namespace Logger.Loggers
         /// <summary>
         /// Timestamp
         /// </summary>
-        [NotMapped]
         public DateTime Timestamp { get; private set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Logger.Loggers
         /// <summary>
         /// Exception
         /// </summary>
-        [NotMapped]
         public Exception Exception { get; private set; }
 
         /// <summary>
@@ -51,7 +49,6 @@ namespace Logger.Loggers
         /// <summary>
         /// Log's level
         /// </summary>
-        [NotMapped]
         public Level Level { get; private set; }
 
         /// <summary>

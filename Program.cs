@@ -3,11 +3,10 @@ using Logger.Interfaces;
 using Logger.Layout;
 using Logger.Loggers;
 using Logger.Utils;
-using Logger.Appenders;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Windows.Forms;
+using DataBase.Database.DbSettings;
+using DataBase.Database.DbSettings.DbClasses;
 
 namespace Logger
 {
@@ -180,30 +179,27 @@ namespace Logger
             /************ DATABASE **************/
 
             // Database information
-            //DbSettings settingdb2 = new DbSettings();
-            //settingdb2.DatabaseName = "db2";
-            //settingdb2.Server = "localhost";
-            //settingdb2.UserId = "root";
 
-            //DatabaseManager.Instance.SetProvider(ProviderType.MySQL);
+            MySqlDatabase dbSettings = DatabaseFactory.MySqlDb.Set
+                                                      .DatabaseName("logDb")
+                                                      .Server("localhost")
+                                                      .UserId("root").ToMySqlDatabase;
 
             // Create a logger
-            Loggers.Logger myLogger7 = (Loggers.Logger)loggerManager.CreateLogger("testLogger7");
+            Loggers.Logger myLog = (Loggers.Logger)loggerManager.CreateLogger("myLog");
 
             // Create a database Appender (correspond à une base de donnée)
+            DataBaseAppender myDbApp = (DataBaseAppender)myLog.AddAppender(AppenderType.DATABASE);
+            myDbApp.AttachDB(dbSettings);
 
-            //DataBaseAppender myDbApp = (DataBaseAppender)myLogger7.AddAppender(AppenderType.DATABASE);
-
-           // myDbApp.AttachDB(settingdb2);
-
-            //myLogger7.Error("Game Modeler !");
+            myLog.Error("Game Modeler !");
 
             ////////////// TESTS 8 ////////////////////
 
             /************ MESSAGE_BOX_CUSTOM with Xaml file **************/
 
             // Create a logger
-           
+            Loggers.Logger myLogger7 = (Loggers.Logger)loggerManager.CreateLogger("testLogger7");
             // Create a database Appender (correspond à une base de donnée)
 
             IAppender myMBCApp = myLogger7.AddAppender(AppenderType.MESSAGE_BOX_CUSTOM, typeof(MessageBoxCustom));

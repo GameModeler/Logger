@@ -1,0 +1,1725 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataBase</name>
+    </assembly>
+    <members>
+        <member name="M:DataBase.Binary.BinaryManager.WriteToBinaryFile``1(System.String,System.String,``0,System.Boolean)">
+            <summary>
+            Write T object in binary file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">T object to write</param>
+            <param name="append">append</param>
+        </member>
+        <member name="M:DataBase.Binary.BinaryManager.ReadFromBinaryFile``1(System.String,System.String)">
+            <summary>
+            Read from binary file and convert in T object
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <returns>T object</returns>
+        </member>
+        <member name="M:DataBase.Character.CharacterManager.WriteToCharacterFile``1(System.String,System.String,``0,System.Boolean,System.String)">
+            <summary>
+            Write T object in character in character file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">T object to write</param>
+            <param name="append">append</param>
+            <param name="delimiter">delimite the differents attributes of T object</param>
+        </member>
+        <member name="M:DataBase.Character.CharacterManager.ReadFromCharacterFile``1(System.String,System.String,System.Char)">
+            <summary>
+            Read character from character file and convert in T object list
+            </summary>
+            <typeparam name="T">Object List to read</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="delimiter">delimite the differents attributes</param>
+            <returns>list T object</returns>
+        </member>
+        <member name="T:DataBase.Criterias.Criteria">
+            <summary>
+            Criteria
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.Criteria.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.Criteria.#ctor(DataBase.Criterias.DbAction,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="action"></param>
+            <param name="dbSelector"></param>
+        </member>
+        <member name="M:DataBase.Criterias.Criteria.AddDbLink(System.String,DataBase.Criterias.DbLinks,DataBase.Criterias.LinkCondition)">
+            <summary>
+            Add a database link
+            </summary>
+            <param name="table"></param>
+            <param name="link"></param>
+            <param name="condition"></param>
+        </member>
+        <member name="M:DataBase.Criterias.Criteria.AddCriterion(DataBase.Criterias.Criterion)">
+            <summary>
+            Add a criterion
+            </summary>
+            <param name="criterion"></param>
+        </member>
+        <member name="M:DataBase.Criterias.Criteria.MySQLCompute">
+            <summary>
+            Compute the criteria into MySqL query
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Criterias.Criterion">
+            <summary>
+            Criterion
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.Criterion.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.Criterion.#ctor(DataBase.Criterias.DbVerb,System.String,DataBase.Criterias.DbOperator,System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="verb"></param>
+            <param name="dbColumn"></param>
+            <param name="dbOperator"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:DataBase.Criterias.Criterion.MySQLCompute">
+            <summary>
+            Compute the criterion into MySql query
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Criterias.DbAction">
+            <summary>
+            Database actions
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbAction.SELECT">
+            <summary>
+            Select action
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbAction.DELETE">
+            <summary>
+            Delete action
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbAction.UPDATE">
+            <summary>
+            Update action
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbConstraint">
+            <summary>
+            Database constraint
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbConstraint.PRIMARY_KEY">
+            <summary>
+            Primary key constraint
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbDataBase">
+            <summary>
+            Database operation
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbDataBase.CREATE">
+            <summary>
+            Create database
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbDataBase.DROP">
+            <summary>
+            Drop database
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbLinks">
+            <summary>
+            Database links
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbLinks.INNERJOIN">
+            <summary>
+            Inner join
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbLinks.FROM">
+            <summary>
+            From
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbOperator">
+            <summary>
+            Database operator
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.EQUAL">
+            <summary>
+            Equal
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.SUPERIOR">
+            <summary>
+            Superior
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.INFERIOR">
+            <summary>
+            Inferior
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.SUPERIOREQUAL">
+            <summary>
+            Superior or equal
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.INFERIOREQUAL">
+            <summary>
+            Inferior or equal
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.IN">
+            <summary>
+            In
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.NOTIN">
+            <summary>
+            Not in
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.ISNULL">
+            <summary>
+            Is null
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.ISNOTNULL">
+            <summary>
+            Is not null
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbOperator.LIKE">
+            <summary>
+            Like
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbSelector">
+            <summary>
+            Database selector
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbSelector.ALL">
+            <summary>
+            All
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbSelector.NONE">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbTablesLinks">
+            <summary>
+            Database tables links
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.DbTablesLinks.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.DbTablesLinks.#ctor(System.String,DataBase.Criterias.DbLinks,DataBase.Criterias.LinkCondition)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="table"></param>
+            <param name="link"></param>
+            <param name="condition"></param>
+        </member>
+        <member name="M:DataBase.Criterias.DbTablesLinks.Add(System.String,DataBase.Criterias.DbLinks,DataBase.Criterias.LinkCondition)">
+            <summary>
+            Add a database link
+            </summary>
+            <param name="table"></param>
+            <param name="link"></param>
+            <param name="condition"></param>
+        </member>
+        <member name="M:DataBase.Criterias.DbTablesLinks.MySQLCompute">
+            <summary>
+            Compute the database link into MySql query
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Criterias.DbTypes">
+            <summary>
+            Database type
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbTypes.VARCHAR">
+            <summary>
+            Varchar
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbTypes.INT">
+            <summary>
+            Int
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbTypes.DATE">
+            <summary>
+            Date
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.DbVerb">
+            <summary>
+            Database verb
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbVerb.AND">
+            <summary>
+            And
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbVerb.OR">
+            <summary>
+            Or
+            </summary>
+        </member>
+        <member name="F:DataBase.Criterias.DbVerb.EMPTY">
+            <summary>
+            Empty
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.Field">
+            <summary>
+            Field
+            </summary>
+        </member>
+        <member name="T:DataBase.Criterias.LinkCondition">
+            <summary>
+            Link condition
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.LinkCondition.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Criterias.LinkCondition.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="columnStart"></param>
+            <param name="columnArrive"></param>
+        </member>
+        <member name="M:DataBase.Criterias.LinkCondition.MySQLCompute">
+            <summary>
+            Compute the link into MySql query
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Csv.CsvManager.WriteToCsvFile``1(System.String,System.String,``0,System.Boolean)">
+            <summary>
+            Write object in csv file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">object to write</param>
+            <param name="append">append</param>
+        </member>
+        <member name="M:DataBase.Csv.CsvManager.ReadFromCsvFile``1(System.String,System.String)">
+            <summary>
+            Read T object from csv file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <returns>T object</returns>
+        </member>
+        <member name="T:DataBase.Database.DbContexts.DbContextBase`1">
+            <summary>
+            Base context
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbContexts.DbContextBase`1.DbSetT">
+            <summary>
+            The DbSet
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.#ctor(System.Data.Common.DbConnection,System.Boolean)">
+            <summary>
+            Create a database with a given provider and settings
+            </summary>
+            <param name="connection"></param>
+            <param name="option"></param>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.InsertAsync(`0)">
+            <summary>
+            Inserts an entity asynchronously
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts entities asynchronously
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.UpdateAsync(`0)">
+            <summary>
+            Updates an entity asynchronously
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates entities asynchronously
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.GetAsync(System.Int32)">
+            <summary>
+            Gets an entity asynchronously
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.GetAsync">
+            <summary>
+            Gets entities asynchronously
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.DeleteAsync(`0)">
+            <summary>
+            Deletes an entity asynchronously
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Deletes entities asynchronously
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.CustomQueryAsync(DataBase.Criterias.Criteria)">
+            <summary>
+            Allows to execute a custom query asynchronously
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Insert(`0)">
+            <summary>
+            Inserts an entity synchronously
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Insert(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts entities asynchronously
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Update(`0)">
+            <summary>
+            Updates an entity synchronously
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Update(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates entities synchronously
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Get(System.Int32)">
+            <summary>
+            Gets an entity synchronously
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Get">
+            <summary>
+            Gets all entities synchronously
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Delete(`0)">
+            <summary>
+            Delete an entity synchronously
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.Delete(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Delete entities 
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.CustomQuery(DataBase.Criterias.Criteria)">
+            <summary>
+            Allows to execute a custom query synchronously
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.DbContextBase`1.waitForDbSetLocal">
+            <summary>
+            Workaround to wait for DbSet.Local to be defined
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1">
+            <summary>
+            Asynchrone CRUD methods
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.InsertAsync(`0)">
+            <summary>
+            Inserts an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.UpdateAsync(`0)">
+            <summary>
+            Updates an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.GetAsync(System.Int32)">
+            <summary>
+            Gets an entity
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.GetAsync">
+            <summary>
+            Gets entities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.DeleteAsync(`0)">
+            <summary>
+            Deletes an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Deletes entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.IAsyncCrudMethods`1.CustomQueryAsync(DataBase.Criterias.Criteria)">
+            <summary>
+            Allows to execute a custom query
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1">
+            <summary>
+            Synchrone CRUD methods
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Insert(`0)">
+            <summary>
+            Inserts an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Insert(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Update(`0)">
+            <summary>
+            Updates an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Update(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Get(System.Int32)">
+            <summary>
+            Gets an entity
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Get">
+            <summary>
+            Gets entities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Delete(`0)">
+            <summary>
+            Deletes an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.Delete(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Deletes entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.Interface.ISyncCrudMethods`1.CustomQuery(DataBase.Criterias.Criteria)">
+            <summary>
+            Allows to execute a custom query
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbContexts.Interface.IDbContexts">
+            <summary>
+            DbContext interface
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbContexts.Interface.IDbContexts.Provider">
+            <summary>
+            Provider
+            </summary>
+        </member>
+        <member name="T:DataBase.Database.DbContexts.MySqlContext`1">
+            <summary>
+            The MySql Database Context
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:DataBase.Database.DbContexts.MySqlContext`1.Provider">
+            <summary>
+            The Provider
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.MySqlContext`1.#ctor(DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.MySqlContext`1.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Method called during the model creation
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="M:DataBase.Database.DbContexts.SqliteContext`1.#ctor(DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            Construcor
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.DatabaseFactory">
+            <summary>
+            Database facotry
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DatabaseFactory.DatabaseSettings``1(System.String)">
+            <summary>
+            Sets a new Database settings from a IDbSettings
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dnName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DatabaseFactory.MySqlDb">
+            <summary>
+            Sets a MySql database
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DatabaseFactory.SqLiteDb">
+            <summary>
+            Sets a SqLite database
+            </summary>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.DbClasses.MySqlDatabase">
+            <summary>
+            MySql Database settings implementation
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.DatabaseName">
+            <summary>
+            Database name
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.Server">
+            <summary>
+            Server
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.Port">
+            <summary>
+            Port
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.UserId">
+            <summary>
+            User id
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.ConnectionString">
+            <summary>
+            Connection string
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.Provider">
+            <summary>
+            Provider
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.Set">
+            <summary>
+            Initialize the fluent API
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            All params are optionals
+            </summary>
+            <param name="databaseName"></param>
+            <param name="userId"></param>
+            <param name="password"></param>
+            <param name="port"></param>
+            <param name="server"></param>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.MySqlDbDefault(System.String)">
+            <summary>
+            MySQL default database settings
+            </summary>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.MySqlDatabase.ToConnectionString">
+            <summary>
+            Build the database connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase">
+            <summary>
+            Sqlite database settings
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.DatabaseName">
+            <summary>
+            Database name
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.DataSource">
+            <summary>
+            Data source
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.Version">
+            <summary>
+            Database version
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.New">
+            <summary>
+            New
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.UseUTF16Encoding">
+            <summary>
+            Database UTF16 encoding
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.Provider">
+            <summary>
+            Provider
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.Set">
+            <summary>
+            Initialize the fluent API
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.#ctor(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Constructor
+            All params are optionals
+            </summary>
+            <param name="databaseName"></param>
+            <param name="dataSource"></param>
+            <param name="password"></param>
+            <param name="version"></param>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.#ctor(System.String)">
+            <summary>
+            Default settings from a given provider
+            </summary>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.SqLiteDbDefault(System.String)">
+            <summary>
+            MySQL default database settings
+            </summary>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.DbClasses.SqLiteDatabase.ToConnectionString">
+            <summary>
+            Build the database connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI">
+            <summary>
+            MySql Fluent API
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.#ctor(DataBase.Database.DbSettings.DbClasses.MySqlDatabase)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.ConnectionString(System.String)">
+            <summary>
+            Sets MySql Database Connection String
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.DatabaseName(System.String)">
+            <summary>
+            Sets MySql Database's nama
+            </summary>
+            <param name="databaseName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.Password(System.String)">
+            <summary>
+            Sets MySql Database Password
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.Port(System.Int32)">
+            <summary>
+            Sets Mysql Database Port
+            </summary>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.Server(System.String)">
+            <summary>
+            Sets Mysql Database Server address
+            </summary>
+            <param name="server"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.UserId(System.String)">
+            <summary>
+            Sets Mysql Database User's id
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.ToConnectionString">
+            <summary>
+            Build the Mysql database connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.FluentInterface.MySqlDatabaseFI.ToMySqlDatabase">
+            <summary>
+            Convert to MySqlDatabse type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.FluentInterface.IMySqlDatabaseFI">
+            <summary>
+            MySql Fluent Interface
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.IMySqlDatabaseFI.Server(System.String)">
+            <summary>
+            Server adresse
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.IMySqlDatabaseFI.Port(System.Int32)">
+            <summary>
+            Server's port
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.IMySqlDatabaseFI.UserId(System.String)">
+            <summary>
+            User's id
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.IMySqlDatabaseFI.Password(System.String)">
+            <summary>
+            User's password
+            </summary>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI">
+            <summary>
+            SqLite Fluent API
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.#ctor(DataBase.Database.DbSettings.DbClasses.SqLiteDatabase)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sqliteDb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.DatabaseName(System.String)">
+            <summary>
+            Sets the sqlite database name
+            </summary>
+            <param name="databaseName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.DataSource(System.String)">
+            <summary>
+            Sets the sqlite data source
+            </summary>
+            <param name="dataSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.Version(System.Int32)">
+            <summary>
+            Sets the sqlite database version
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.New(System.Boolean)">
+            <summary>
+            Sets the sqlite database UTF16 encoding
+            </summary>
+            <param name="isNew"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.UseUTF16Encoding(System.Boolean)">
+            <summary>
+            Sets the sqlite database UTF16 encoding
+            </summary>
+            <param name="useUTF16encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.Port(System.String)">
+            <summary>
+            Sets the sqlite database port
+            </summary>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.Password(System.String)">
+            <summary>
+            Sets the sqlite database user password
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.LegacyFormat(System.Boolean)">
+            <summary>
+            Sets the sqlite database legacy formate
+            </summary>
+            <param name="legacyFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.Pooling(System.Boolean)">
+            <summary>
+            Sets the sqlite database pooling
+            </summary>
+            <param name="pooling"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.MaxPoolSize(System.Int32)">
+            <summary>
+            Sets the sqlite database max pool size
+            </summary>
+            <param name="maxPoolSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.ReadOnly(System.Boolean)">
+            <summary>
+            Sets the sqlite database as readonly
+            </summary>
+            <param name="readOnly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.DateTimeFormat(System.String)">
+            <summary>
+            Sets the sqlite database time format
+            </summary>
+            <param name="dateTimeFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.CacheSize(System.Int32)">
+            <summary>
+            Sets the sqlite database cache size
+            </summary>
+            <param name="cacheSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.ToConnectionString">
+            <summary>
+            Build the SqLite database connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.FluentInterface.SqLiteDatabaseFI.ToSqLiteDatabase">
+            <summary>
+            Convert to SqLiteDatabase type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.IDbSettingsFI.ToConnectionString">
+            <summary>
+            Build the database connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.Interface.IMySqlDatabase">
+            <summary>
+            MySql Database settings interface
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IMySqlDatabase.Server">
+            <summary>
+            Server adresse
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IMySqlDatabase.Port">
+            <summary>
+            Server's port
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IMySqlDatabase.UserId">
+            <summary>
+            User's id
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IMySqlDatabase.Password">
+            <summary>
+            User's password
+            </summary>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.Interface.ISqLiteDatabase">
+            <summary>
+            SqLite database settings interface
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.DatabaseName">
+            <summary>
+            SqLite database name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.DataSource">
+            <summary>
+            SqLite data source
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.Version">
+            <summary>
+            SqLite database version
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.New">
+            <summary>
+            SqLite database UTF16 encoding option
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.UseUTF16Encoding">
+            <summary>
+            SqLite database UTF16 encoding
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.Port">
+            <summary>
+            SqLite database port
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.Password">
+            <summary>
+            SqLite database user password
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.LegacyFormat">
+            <summary>
+            SqLite database legacy formate option
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.Pooling">
+            <summary>
+            SqLite database pooling option
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.MaxPoolSize">
+            <summary>
+            SqLite database max pool size
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.ReadOnly">
+            <summary>
+            SqLite database readonly option
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.DateTimeFormat">
+            <summary>
+            SqLite database time format
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.ISqLiteDatabase.CacheSize">
+            <summary>
+            SqLite database cache size
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI">
+            <summary>
+            SqLite Fluent Interface
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.DatabaseName(System.String)">
+            <summary>
+            Sets the sqlite database name
+            </summary>
+            <param name="databaseName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.DataSource(System.String)">
+            <summary>
+            Sets the sqlite data source
+            </summary>
+            <param name="dataSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.Version(System.Int32)">
+            <summary>
+            Sets the sqlite database version
+            </summary>
+            <param name="version"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.New(System.Boolean)">
+            <summary>
+            Sets the sqlite database UTF16 encoding
+            </summary>
+            <param name="isNew"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.UseUTF16Encoding(System.Boolean)">
+            <summary>
+            Sets the sqlite database UTF16 encoding
+            </summary>
+            <param name="useUTF16encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.Port(System.String)">
+            <summary>
+            Sets the sqlite database port
+            </summary>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.Password(System.String)">
+            <summary>
+            Sets the sqlite database user password
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.LegacyFormat(System.Boolean)">
+            <summary>
+            Sets the sqlite database legacy formate
+            </summary>
+            <param name="legacyFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.Pooling(System.Boolean)">
+            <summary>
+            Sets the sqlite database pooling
+            </summary>
+            <param name="pooling"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.MaxPoolSize(System.Int32)">
+            <summary>
+            Sets the sqlite database max pool size
+            </summary>
+            <param name="maxPoolSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.ReadOnly(System.Boolean)">
+            <summary>
+            Sets the sqlite database as readonly
+            </summary>
+            <param name="readOnly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.DateTimeFormat(System.String)">
+            <summary>
+            Sets the sqlite database time format
+            </summary>
+            <param name="dateTimeFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.ISqLiteDatabaseFI.CacheSize(System.Int32)">
+            <summary>
+            Sets the sqlite database cache size
+            </summary>
+            <param name="cacheSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbSettings.Interface.IDbSettings">
+            <summary>
+            General database settings interface
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IDbSettings.DatabaseName">
+            <summary>
+            Name of the database
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IDbSettings.ConnectionString">
+            <summary>
+            Database connection string
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbSettings.Interface.IDbSettings.Provider">
+            <summary>
+            Database provider
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbSettings.Interface.IDbSettings.ToConnectionString">
+            <summary>
+            Build the database connection string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.GlobalContext`1">
+            <summary>
+            Global context
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:DataBase.Database.GlobalContext`1.DatabaseContexts">
+            <summary>
+            List of contexts
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Context(DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            Global Context to chained database
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.MySqlContext(DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            MySQL contexts
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.SqlLiteContext(DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            SQLite contexts
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.InsertAsync(`0)">
+            <summary>
+            Insert item Asynchrone method
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Insert(`0)">
+            <summary>
+            Insert item Synchrone method
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Insert items Asynchrone method
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Insert(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Insert items Synchrone method
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.UpdateAsync(`0)">
+            <summary>
+            Update item Asynchrone method
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Update(`0)">
+            <summary>
+            Update item Synchrone method
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Update items Asynchrone method
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Update(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Update items Synchrone method
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.GetAsync(System.Int32)">
+            <summary>
+            Get item Asynchrone method
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Get(System.Int32)">
+            <summary>
+            Get item Synchrone method
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.GetAsync">
+            <summary>
+            Get all items Asynchrone method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Get">
+            <summary>
+            Get all items Synchrone method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.DeleteAsync(`0)">
+            <summary>
+            Delete item Asynchrone method
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Delete(`0)">
+            <summary>
+            Delete item Synchrone method
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Delete items Asynchrone method
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.Delete(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Delete items Synchrone method
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.CustomQueryAsync(DataBase.Criterias.Criteria)">
+            <summary>
+            Custom Query Asynchrone method
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.GlobalContext`1.CustomQuery(DataBase.Criterias.Criteria)">
+            <summary>
+            Custom Query Synchrone method
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.DbManager">
+            <summary>
+            To manage databases
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbManager.Databases">
+            <summary>
+            List of databases
+            </summary>
+        </member>
+        <member name="P:DataBase.Database.DbManager.NbDefaultDb">
+            <summary>
+            Number for database default name
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbManager.GetAndIncrNbDefaultDb">
+            <summary>
+            Return and incrcement the database default number
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DataBase.Database.DbManager.Instance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DataBase.Database.DbManager.GetDatabase(System.String)">
+            <summary>
+            Get database from a database name
+            </summary>
+            <param name="dbName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Dynamic.DynamicManager.CreateObjectByDatabase(System.String,System.String,System.String,System.String)">
+            <summary>
+            Create IDictionnary object from mysql database
+            </summary>
+            <param name="user">mysql user</param>
+            <param name="pwd">mysql password</param>
+            <param name="database">mysql database</param>
+            <param name="table">mysql table</param>
+            <returns>IDictionnary object</returns>
+        </member>
+        <member name="M:DataBase.Dynamic.DynamicManager.CreateMySqlCommandArray(System.String,MySql.Data.MySqlClient.MySqlConnection,System.Boolean)">
+            <summary>
+            Create mysql command array
+            </summary>
+            <param name="myExecuteQuery">mysql query</param>
+            <param name="myConnection">MysqlConnection connection</param>
+            <param name="openclose">open and close mysql connection</param>
+            <returns>array of mysql return</returns>
+        </member>
+        <member name="M:DataBase.Dynamic.DynamicManager.CreateMySqlCommandDict(System.String,MySql.Data.MySqlClient.MySqlConnection,System.Boolean)">
+            <summary>
+            Create mysql command Dictionnary
+            </summary>
+            <param name="myExecuteQuery">mysql query</param>
+            <param name="myConnection">MysqlConnection connection</param>
+            <param name="openclose">open and close mysql connection</param>
+            <returns>Dictionnary of mysql return</returns>
+        </member>
+        <member name="M:DataBase.Json.JsonManager.WriteToJsonFile``1(System.String,System.String,``0,System.Boolean)">
+            <summary>
+            Write T object to json file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">object to write</param>
+            <param name="append">append</param>
+        </member>
+        <member name="M:DataBase.Json.JsonManager.ReadFromJsonFile``1(System.String,System.String)">
+            <summary>
+            Read from json file and convert in T object
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Sql.SqlManager.ConvertObjectInScript``1(``0,System.Boolean,System.String,System.Boolean,System.Boolean,System.String,System.String)">
+            <summary>
+            Convert T object in sql script
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="objectToWrite">T object to write</param>
+            <param name="append">append</param>
+            <param name="dbName">database Name</param>
+            <param name="createDB">create database or not</param>
+            <param name="execute">execute or not script</param>
+            <returns>return script</returns>
+        </member>
+        <member name="M:DataBase.Sql.SqlManager.ExecuteStringSql(System.String,System.String,System.String)">
+            <summary>
+            Execute Sql script
+            </summary>
+            <param name="script">mysql script</param>
+            <param name="user">mysql user</param>
+            <param name="pwd">password mysql</param>
+        </member>
+        <member name="M:DataBase.Sql.SqlManager.WriteToSqlFile``1(System.String,System.String,``0,System.Boolean,System.String,System.Boolean,System.Boolean,System.String,System.String)">
+            <summary>
+            Write to Sql file and execute this script
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">T object to write</param>
+            <param name="append">append</param>
+            <param name="dbName">database name</param>
+            <param name="createDB">create database or not</param>
+            <param name="execute">execute query or not</param>
+            <param name="user">mysql user</param>
+            <param name="pwd">mysql password</param>
+        </member>
+        <member name="T:DataBase.Utils.ConnectionStringBuilder">
+            <summary>
+            Build the database connection string
+            </summary>
+        </member>
+        <member name="M:DataBase.Utils.ConnectionStringBuilder.BuildConnectionString(DataBase.Utils.ProviderType,DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            Build the database connection string
+            </summary>
+            <param name="provider"></param>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Utils.ConnectionStringBuilder.GetDefaultDbName(System.Int32)">
+            <summary>
+            Get default database name
+            </summary>
+            <param name="nb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Utils.ConnectionStringBuilder.BuildMySQLConnectionString(DataBase.Database.DbSettings.DbClasses.MySqlDatabase)">
+            <summary>
+            Build MySQL connection string
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Utils.ConnectionStringBuilder.BuildSQLiteConnectionString(DataBase.Database.DbSettings.DbClasses.SqLiteDatabase)">
+            <summary>
+            Build SQLite connection string
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Utils.DataBaseUtils">
+            <summary>
+             Util class for the DataBase Module
+            </summary>
+        </member>
+        <member name="M:DataBase.Utils.DataBaseUtils.IsAllNullOrEmpty(DataBase.Database.DbSettings.Interface.IDbSettings)">
+            <summary>
+            Check if an object have all of its string properties empty
+            </summary>
+            <param name="myObject"></param>
+            <returns>true if all of the object's string properties are empty,
+            false otherwisse</returns>
+        </member>
+        <member name="M:DataBase.Utils.DataBaseUtils.BuildDataSource(System.String,System.String)">
+            <summary>
+            Concatene database' server and port
+            </summary>
+            <param name="server"></param>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Utils.DataBaseUtils.CreateModel(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Create a model from a DbModelBuilder
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="M:DataBase.Utils.DataBaseUtils.UpdateKey``2(System.Collections.Generic.IDictionary{``0,``1},``0,``0)">
+            <summary>
+            Rename the key of a dictionary
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="dic"></param>
+            <param name="fromKey"></param>
+            <param name="toKey"></param>
+        </member>
+        <member name="T:DataBase.Utils.PersistentAttribute">
+            <summary>
+            Persistant attribute
+            </summary>
+        </member>
+        <member name="T:DataBase.Utils.ProviderType">
+            <summary>
+            Enum of the different provider
+            </summary>
+        </member>
+        <member name="T:DataBase.Utils.StringValueAttribute">
+            <summary>
+            This attribute is used to represent a string value
+            for a value in an enum.
+            </summary>
+        </member>
+        <member name="P:DataBase.Utils.StringValueAttribute.StringValue">
+            <summary>
+            Holds the stringvalue for a value in an enum.
+            </summary>
+        </member>
+        <member name="M:DataBase.Utils.StringValueAttribute.#ctor(System.String)">
+            <summary>
+            Constructor used to init a StringValue Attribute
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:DataBase.Utils.EnumString.GetStringValue(System.Enum)">
+            <summary>
+            Will get the string value for a given enums value, this will
+            only work if you assign the StringValue attribute to
+            the items in your enum.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Xml.XmlManager.WriteToXmlFile``1(System.String,System.String,``0,System.Boolean)">
+            <summary>
+            Write T object in xml file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">object to write</param>
+            <param name="append">append</param>
+        </member>
+        <member name="M:DataBase.Xml.XmlManager.ReadFromXmlFile``1(System.String,System.String)">
+            <summary>
+            Read from xml file and convert in T object
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">fileName</param>
+            <returns>T object</returns>
+        </member>
+        <member name="M:DataBase.Yaml.YamlManager.WriteToYamlFile``1(System.String,System.String,``0,System.Boolean)">
+            <summary>
+            Write T object to json file
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">file name</param>
+            <param name="objectToWrite">object to write</param>
+            <param name="append">append</param>
+        </member>
+        <member name="M:DataBase.Yaml.YamlManager.ReadFromYamlFile``1(System.String,System.String)">
+            <summary>
+            Read from json file and convert in T object
+            </summary>
+            <typeparam name="T">T object</typeparam>
+            <param name="path">path</param>
+            <param name="fileName">fileName</param>
+            <returns>T object</returns>
+        </member>
+    </members>
+</doc>

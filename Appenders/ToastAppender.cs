@@ -18,18 +18,35 @@ namespace Logger.Appenders
     {
         private const string DEFAULT_TOAST_NAME = "GM_TOAST_APPENDER";
 
+        /// <summary>
+        /// Appender's name
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Appender's layout
+        /// </summary>
         public string Layout {get; set;}
 
+        /// <summary>
+        /// Toast layout
+        /// </summary>
         public ToastLayout ToastLayout { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name"></param>
         public ToastAppender(string name)
         {
             ToastLayout = new ToastLayout();
             Name = name == null ? DEFAULT_TOAST_NAME : name;
         }
 
+        /// <summary>
+        /// Appends the log
+        /// </summary>
+        /// <param name="log"></param>
         public void DoAppend(Log log)
         {
             ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);
