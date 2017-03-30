@@ -23,7 +23,8 @@ namespace Logger.Utils
         /// <returns></returns>
         public static string Reformate(string pattern, ILog log)
         {
-            string stackTrace = log.Exception == null ? "" : log.Exception.StackTrace;
+
+            string stackTrace = log.Exception == null ? "" : log.Exception;
 
             return string.Format(pattern, log.Timestamp, log.Level.GetStringValue(), log.LoggerName, log.Message, stackTrace);
         }

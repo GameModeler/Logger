@@ -14,8 +14,6 @@ C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Microsoft.Extensions.Options.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Remotion.Linq.dll
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Simple.Data.Ado.dll
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Simple.Data.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\System.Collections.Immutable.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\System.Interactive.Async.dll

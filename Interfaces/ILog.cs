@@ -38,8 +38,8 @@ namespace Logger.Interfaces
         Level Level { get; }
 
         /// <summary>
-        /// Log's exception
+        /// Log's exception stacktrace
         /// </summary>
-        Exception Exception { get; }
+        String Exception { get; }
     }
 }

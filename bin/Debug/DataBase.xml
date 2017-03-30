@@ -1631,11 +1631,12 @@
             <param name="port"></param>
             <returns></returns>
         </member>
-        <member name="M:DataBase.Utils.DataBaseUtils.CreateModel(System.Data.Entity.DbModelBuilder)">
+        <member name="M:DataBase.Utils.DataBaseUtils.CreateModel(System.Data.Entity.DbModelBuilder,System.Data.Entity.DbContext)">
             <summary>
             Create a model from a DbModelBuilder
             </summary>
             <param name="modelBuilder"></param>
+            <param name="context"></param>
         </member>
         <member name="M:DataBase.Utils.DataBaseUtils.UpdateKey``2(System.Collections.Generic.IDictionary{``0,``1},``0,``0)">
             <summary>
@@ -1650,6 +1651,16 @@
         <member name="T:DataBase.Utils.PersistentAttribute">
             <summary>
             Persistant attribute
+            </summary>
+        </member>
+        <member name="M:DataBase.Utils.PersistentAttribute.#ctor(System.String[])">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:DataBase.Utils.PersistentAttribute.DbNames">
+            <summary>
+            Define DbName property
             </summary>
         </member>
         <member name="T:DataBase.Utils.ProviderType">

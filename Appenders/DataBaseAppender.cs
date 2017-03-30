@@ -31,14 +31,6 @@ namespace Logger.Appenders
 
         private GlobalContext<Log> dbContext;
 
-
-        /// <summary>
-        /// Database Name
-        /// </summary>
-        public string DbName { get; set; }
-
-        // public IDbSettings Settings { get; set; }
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -67,7 +59,6 @@ namespace Logger.Appenders
         {
             await dbContext.InsertAsync(log);
 
-            throw new NotImplementedException();
         }
     }
 }

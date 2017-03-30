@@ -1,4 +1,5 @@
-﻿using Logger.Interfaces;
+﻿using DataBase.Utils;
+using Logger.Interfaces;
 using Logger.Utils;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,6 +10,7 @@ namespace Logger.Loggers
     /// <summary>
     /// A log
     /// </summary>
+    [Persistent("logDb")]
     public class Log : ILog
     {
         /// Add an id ?
@@ -34,7 +36,7 @@ namespace Logger.Loggers
         /// <summary>
         /// Exception
         /// </summary>
-        public Exception Exception { get; private set; }
+        public String Exception { get; private set; }
 
         /// <summary>
         /// Thread's id
@@ -66,9 +68,16 @@ namespace Logger.Loggers
             Clazz = logger.GetType().FullName;
             Level = logAlerte;
             Message = msg;
-            Exception = e;
+
+            // Exception = e != null ? e.StackTrace : null;
+            //Exception = e;
             Timestamp = DateTime.Now;
             ThreadId = Thread.CurrentThread.ManagedThreadId; // ?
+
+            if(e != null)
+            {
+                Exception = e.StackTrace;
+            }
 
         }
     }

@@ -25,11 +25,6 @@
             Database Manager
             </summary>
         </member>
-        <member name="P:Logger.Appenders.DataBaseAppender.DbName">
-            <summary>
-            Database Name
-            </summary>
-        </member>
         <member name="M:Logger.Appenders.DataBaseAppender.#ctor(System.String)">
             <summary>
             Constructor
@@ -364,7 +359,7 @@
         </member>
         <member name="P:Logger.Interfaces.ILog.Exception">
             <summary>
-            Log's exception
+            Log's exception stacktrace
             </summary>
         </member>
         <member name="T:Logger.Interfaces.ILogger">
