@@ -212,7 +212,12 @@ namespace Logger
 
             /************ FILE APPENDER **************/
 
-            IAppender myFileApp = myLogger7.AddAppender(AppenderType.FILE);
+            var myFileApp = (FileAppender)myLogger7.AddAppender(AppenderType.FILE);
+
+            myFileApp.Set.Name("testLoggerXml.yaml")
+                         .Path(@"C:\Users\")
+                         .Type(FileAppenderType.YAML);
+
             myLogger7.Error("test du logger");
         }
     }

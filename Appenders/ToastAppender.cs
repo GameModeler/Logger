@@ -21,7 +21,7 @@ namespace Logger.Appenders
         /// <summary>
         /// Appender's name
         /// </summary>
-        public string Name { get; set; }
+        public string AppenderName { get; set; }
 
         /// <summary>
         /// Appender's layout
@@ -40,7 +40,7 @@ namespace Logger.Appenders
         public ToastAppender(string name)
         {
             ToastLayout = new ToastLayout();
-            Name = name == null ? DEFAULT_TOAST_NAME : name;
+            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_TOAST_NAME : name;
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Logger.Appenders
             ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);
 
             var toast = new ToastNotification(ToastLayout.ToastXml);
-            ToastNotificationManager.CreateToastNotifier(Name).Show(toast);
+            ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
         }
     }
 }

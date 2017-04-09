@@ -28,7 +28,7 @@ namespace Logger.Utils
         /// <returns></returns>
         public static bool IsAnAppenderName(this SynchronizedCollection<IAppender> list, string name)
         {
-            return list.Any(li => li.Name == name);
+            return list.Any(li => li.AppenderName == name);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Logger.Appenders
         /// <summary>
         /// Appender's name
         /// </summary>
-        public string Name { get; set; }
+        public string AppenderName { get; set; }
 
         /// <summary>
         /// Constructor
@@ -41,7 +41,7 @@ namespace Logger.Appenders
         {
             Layout = LogPatternConstants.DEFAULT_PATTERN;
             Box = new ModalBox();
-            Name = name == null ? DEFAULT_MESSAGE_BOX_NAME : name;
+            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_MESSAGE_BOX_NAME : name;
         }
 
         /// <summary>

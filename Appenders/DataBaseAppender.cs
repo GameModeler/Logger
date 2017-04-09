@@ -1,5 +1,6 @@
 ﻿using DataBase.Database;
-using DataBase.Database.DbSettings.Interface;
+using DataBase.Database.DbContexts;
+using DataBase.Database.DbSettings.Interfaces;
 using Logger.Interfaces;
 using Logger.Loggers;
 using System;
@@ -17,7 +18,7 @@ namespace Logger.Appenders
         /// <summary>
         /// Appender name
         /// </summary>
-        public string Name { get; set; }
+        public string AppenderName { get; set; }
 
         /// <summary>
         /// Log layout
@@ -29,7 +30,10 @@ namespace Logger.Appenders
         /// </summary>
         private DbManager dbManager = DbManager.Instance;
 
-        private GlobalContext<Log> dbContext;
+        /// <summary>
+        /// Universal context
+        /// </summary>
+        private  UniversalContext dbContext;
 
         /// <summary>
         /// Constructor
@@ -38,8 +42,8 @@ namespace Logger.Appenders
         public DataBaseAppender(string name)
         {
 
-            dbContext = dbManager.ContextFactory<Log>();
-            Name = name == null ? DEFAULT_DATABASE_NAME : name;
+            //dbContext = dbManager.ContextFactory<Log>();
+            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_DATABASE_NAME : name;
         }
 
         /// <summary>
@@ -48,7 +52,8 @@ namespace Logger.Appenders
         /// <param name="settings"></param>
         public void AttachDB(IDbSettings settings)
         {
-            dbContext.Context(settings);
+            dbContext = dbManager.CreateContext(settings);
+            //dbContext.Context(settings);
         }
 
         /// <summary>
@@ -57,7 +62,7 @@ namespace Logger.Appenders
         /// <param name="log"></param>
         public async void DoAppend(Log log)
         {
-            await dbContext.InsertAsync(log);
+            await dbContext.Entity<Log>().InsertAsync(log);
 
         }
     }

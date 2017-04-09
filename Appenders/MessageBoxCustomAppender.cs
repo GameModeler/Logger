@@ -29,7 +29,7 @@ namespace Logger.Appenders
         /// <summary>
         /// Appender's name
         /// </summary>
-        public string Name { get; set; }
+        public string AppenderName { get; set; }
 
         private T obj; 
 
@@ -39,7 +39,7 @@ namespace Logger.Appenders
         /// <param name="name"></param>
         public MessageBoxCustomAppender(string name)
         {
-            Name = name == null ? DEFAULT_MESSAGE_BOX_CUSTOM_NAME : name;
+            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_MESSAGE_BOX_CUSTOM_NAME : name;
         }
 
         /// <summary>

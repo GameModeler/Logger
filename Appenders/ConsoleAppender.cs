@@ -13,7 +13,7 @@ namespace Logger.Appenders
         /// <summary>
         /// Name of the appender
         /// </summary>
-        public string Name { get; set; }
+        public string AppenderName { get; set; }
 
         /// <summary>
         /// Default name of the appender
@@ -34,7 +34,7 @@ namespace Logger.Appenders
         public ConsoleAppender(string name)
         {
             Layout = LogPatternConstants.DEFAULT_PATTERN;
-            Name = name == null ? DEFAULT_CONSOLE_NAME : name;
+            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_CONSOLE_NAME : name;
         }
 
         /// <summary>

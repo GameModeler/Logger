@@ -1,8 +1,7 @@
-﻿using DataBase.Utils;
+﻿using DataBase.Database.Utils;
 using Logger.Interfaces;
 using Logger.Utils;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading;
 
 namespace Logger.Loggers
@@ -10,7 +9,7 @@ namespace Logger.Loggers
     /// <summary>
     /// A log
     /// </summary>
-    [Persistent("logDb")]
+    [Persistent]
     public class Log : ILog
     {
         /// Add an id ?
@@ -21,37 +20,37 @@ namespace Logger.Loggers
         /// <summary>
         /// Message
         /// </summary>
-        public string Message { get; private set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// Timestamp
         /// </summary>
-        public DateTime Timestamp { get; private set; }
+        public DateTime Timestamp { get; set; }
 
         /// <summary>
         /// Logger's name
         /// </summary>
-        public string LoggerName { get; private set;  }
+        public string LoggerName { get; set;  }
 
         /// <summary>
         /// Exception
         /// </summary>
-        public String Exception { get; private set; }
+        public String Exception { get; set; }
 
         /// <summary>
         /// Thread's id
         /// </summary>
-        public int ThreadId { get; private set; }
+        public int ThreadId { get; set; }
 
         /// <summary>
         /// logger's class
         /// </summary>
-        public string Clazz { get; private set; }
+        public string Clazz { get; set; }
 
         /// <summary>
         /// Log's level
         /// </summary>
-        public Level Level { get; private set; }
+        public Level Level { get; set; }
 
         /// <summary>
         /// Constructor
@@ -69,8 +68,6 @@ namespace Logger.Loggers
             Level = logAlerte;
             Message = msg;
 
-            // Exception = e != null ? e.StackTrace : null;
-            //Exception = e;
             Timestamp = DateTime.Now;
             ThreadId = Thread.CurrentThread.ManagedThreadId; // ?
 
@@ -78,7 +75,11 @@ namespace Logger.Loggers
             {
                 Exception = e.StackTrace;
             }
-
         }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Log() {}
     }
 }

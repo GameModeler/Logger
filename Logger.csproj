@@ -58,6 +58,14 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.1.1.0\lib\netstandard1.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
       <Private>True</Private>
@@ -143,6 +151,8 @@
   <ItemGroup>
     <Compile Include="Appenders\DataBaseAppender.cs" />
     <Compile Include="Appenders\FileAppender.cs" />
+    <Compile Include="Appenders\FileAppenderFAPI\FileAppenderFApi.cs" />
+    <Compile Include="Appenders\FileAppenderFAPI\Interfaces\IFileAppenderFApi.cs" />
     <Compile Include="Appenders\MessageBoxAppender.cs" />
     <Compile Include="Appenders\MessageBoxCustomAppender.cs" />
     <Compile Include="Appenders\ToastAppender.cs" />
@@ -170,6 +180,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Utils\FileAppenderType.cs" />
     <Compile Include="Utils\Level.cs" />
     <Compile Include="Utils\LoggerUtils.cs" />
     <Compile Include="Utils\AppenderType.cs" />

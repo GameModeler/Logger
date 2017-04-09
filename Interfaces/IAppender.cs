@@ -7,7 +7,7 @@ namespace Logger.Interfaces
         /// <summary>
         /// Name of the appender
         /// </summary>
-        string Name { get; set; }
+        string AppenderName { get; set; }
 
         /// <summary>
         /// Layout of the appender

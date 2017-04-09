@@ -10,7 +10,7 @@
             A DataBaseAppender matches one and only one data base.
             </summary>
         </member>
-        <member name="P:Logger.Appenders.DataBaseAppender.Name">
+        <member name="P:Logger.Appenders.DataBaseAppender.AppenderName">
             <summary>
             Appender name
             </summary>
@@ -25,13 +25,18 @@
             Database Manager
             </summary>
         </member>
+        <member name="F:Logger.Appenders.DataBaseAppender.dbContext">
+            <summary>
+            Universal context
+            </summary>
+        </member>
         <member name="M:Logger.Appenders.DataBaseAppender.#ctor(System.String)">
             <summary>
             Constructor
             </summary>
             <param name="name"></param>
         </member>
-        <member name="M:Logger.Appenders.DataBaseAppender.AttachDB(DataBase.Database.DbSettings.Interface.IDbSettings)">
+        <member name="M:Logger.Appenders.DataBaseAppender.AttachDB(DataBase.Database.DbSettings.Interfaces.IDbSettings)">
             <summary>
             Attach a database to the appender
             </summary>
@@ -45,35 +50,114 @@
         </member>
         <member name="T:Logger.Appenders.FileAppender">
             <summary>
-            Display logs into file
-            </summary>
-        </member>
-        <member name="P:Logger.Appenders.FileAppender.Name">
-            <summary>
-            Appender name
-            </summary>
-        </member>
-        <member name="P:Logger.Appenders.FileAppender.FilePath">
-            <summary>
-            Appender File Path
+            File Appender
             </summary>
         </member>
         <member name="P:Logger.Appenders.FileAppender.Layout">
             <summary>
-            Log layout
+            Layout
+            </summary>
+        </member>
+        <member name="P:Logger.Appenders.FileAppender.AppenderName">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Logger.Appenders.FileAppender.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Logger.Appenders.FileAppender.Path">
+            <summary>
+            Appender File Path
+            </summary>
+        </member>
+        <member name="P:Logger.Appenders.FileAppender.Type">
+            <summary>
+            File type
             </summary>
         </member>
         <member name="M:Logger.Appenders.FileAppender.#ctor(System.String)">
             <summary>
-            Constructor
+            Constructeur
             </summary>
-            <param name="appenderName"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Logger.Appenders.FileAppender.FilePath(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
         </member>
         <member name="M:Logger.Appenders.FileAppender.DoAppend(Logger.Loggers.Log)">
             <summary>
             Appends the log
             </summary>
             <param name="log"></param>
+        </member>
+        <member name="P:Logger.Appenders.FileAppender.Set">
+            <summary>
+            Initialize the File Appender fluent API
+            </summary>
+        </member>
+        <member name="T:Logger.Appenders.FileAppenderFAPI.FileAppenderFApi">
+            <summary>
+            File Appender Api
+            </summary>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.FileAppenderFApi.#ctor(Logger.Appenders.FileAppender)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.FileAppenderFApi.Name(System.String)">
+            <summary>
+            Sets file's name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.FileAppenderFApi.Type(Logger.Utils.FileAppenderType)">
+            <summary>
+            Sets MySql Database's nama
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.FileAppenderFApi.Path(System.String)">
+            <summary>
+            Sets MySql Database Password
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logger.Appenders.FileAppenderFAPI.Interfaces.IFileAppenderFApi">
+            <summary>
+            File Appender Fluent Api
+            </summary>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.Interfaces.IFileAppenderFApi.Type(Logger.Utils.FileAppenderType)">
+            <summary>
+            File type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.Interfaces.IFileAppenderFApi.Name(System.String)">
+            <summary>
+            File name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logger.Appenders.FileAppenderFAPI.Interfaces.IFileAppenderFApi.Path(System.String)">
+            <summary>
+            File path
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
         </member>
         <member name="T:Logger.Appenders.MessageBoxAppender">
             <summary>
@@ -90,7 +174,7 @@
             Message box 
             </summary>
         </member>
-        <member name="P:Logger.Appenders.MessageBoxAppender.Name">
+        <member name="P:Logger.Appenders.MessageBoxAppender.AppenderName">
             <summary>
             Appender's name
             </summary>
@@ -118,7 +202,7 @@
             Appender's layout
             </summary>
         </member>
-        <member name="P:Logger.Appenders.MessageBoxCustomAppender`1.Name">
+        <member name="P:Logger.Appenders.MessageBoxCustomAppender`1.AppenderName">
             <summary>
             Appender's name
             </summary>
@@ -140,7 +224,7 @@
             Display logs into Toast
             </summary>
         </member>
-        <member name="P:Logger.Appenders.ToastAppender.Name">
+        <member name="P:Logger.Appenders.ToastAppender.AppenderName">
             <summary>
             Appender's name
             </summary>
@@ -252,7 +336,7 @@
             To display log into the console
             </summary>
         </member>
-        <member name="P:Logger.Appenders.ConsoleAppender.Name">
+        <member name="P:Logger.Appenders.ConsoleAppender.AppenderName">
             <summary>
             Name of the appender
             </summary>
@@ -286,7 +370,7 @@
             Reset console parameters
             </summary>
         </member>
-        <member name="P:Logger.Interfaces.IAppender.Name">
+        <member name="P:Logger.Interfaces.IAppender.AppenderName">
             <summary>
             Name of the appender
             </summary>
@@ -563,6 +647,11 @@
             <param name="msg"></param>
             <param name="logAlerte"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:Logger.Loggers.Log.#ctor">
+            <summary>
+            Default constructor
+            </summary>
         </member>
         <member name="T:Logger.Loggers.Logger">
             <summary>
@@ -944,6 +1033,46 @@
         <member name="M:Logger.Layout.ToastLayout.#ctor">
             <summary>
             Constructor
+            </summary>
+        </member>
+        <member name="T:Logger.Utils.FileAppenderType">
+            <summary>
+            File type extension
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.JSON">
+            <summary>
+            Json
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.YAML">
+            <summary>
+            Yaml
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.XML">
+            <summary>
+            Xml
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.BINARY">
+            <summary>
+            Binary
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.CSV">
+            <summary>
+            Csv
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.CHARACTER">
+            <summary>
+            Character
+            </summary>
+        </member>
+        <member name="F:Logger.Utils.FileAppenderType.TEXT">
+            <summary>
+            Text
             </summary>
         </member>
         <member name="T:Logger.Utils.Level">

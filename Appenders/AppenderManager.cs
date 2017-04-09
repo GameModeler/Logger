@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Logger.Utils;
-using Logger.Appenders;
 
 namespace Logger.Appenders
 {
@@ -60,7 +59,7 @@ namespace Logger.Appenders
         /// <returns></returns>
         public IAppender DetachAppender(string name) {
 
-            IAppender appender = appenderList.Where(app => app.Name == name).SingleOrDefault();
+            IAppender appender = appenderList.Where(app => app.AppenderName == name).SingleOrDefault();
             DetachAppender(appender);
 
             return appender;

@@ -1,0 +1,1 @@
+11:39:14 [ERROR] - testLogger7 : test du logger
