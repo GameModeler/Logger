@@ -3,7 +3,9 @@ using DataBase.Database.DbContexts;
 using DataBase.Database.DbSettings.Interfaces;
 using Logger.Interfaces;
 using Logger.Loggers;
+using Logger.Utils;
 using System;
+using System.Threading.Tasks;
 
 namespace Logger.Appenders
 {
@@ -14,6 +16,11 @@ namespace Logger.Appenders
     public class DataBaseAppender : IAppender
     {
         private const string DEFAULT_DATABASE_NAME = "GM_DB_LOGGER";
+
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
 
         /// <summary>
         /// Appender name
@@ -60,10 +67,20 @@ namespace Logger.Appenders
         /// Appends the log
         /// </summary>
         /// <param name="log"></param>
-        public async void DoAppend(Log log)
+        public void DoAppend(Log log)
         {
-            await dbContext.Entity<Log>().InsertAsync(log);
+            dbContext.Entity<Log>().Insert(log);
 
+        }
+
+        /// <summary>
+        /// Appends the log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public async Task DoAppendAsync(Log log)
+        {
+            await Task.Run (() =>  dbContext.Entity<Log>().InsertAsync(log));
         }
     }
 }

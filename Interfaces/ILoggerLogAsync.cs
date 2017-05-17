@@ -4,90 +4,90 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger.Loggers
+namespace Logger.Interfaces
 {
     /// <summary>
-    /// Logger's methods
-    /// Inspired from org.slf4j.Logger interface.
+    /// Async log methods
     /// </summary>
-    public interface ILoggerLog
+    public interface ILoggerLogAsync : ILoggerLogBase
     {
-        /// <summary>
-        /// Log a log with log level
-        /// </summary>
-        /// <param name="msg"></param>
-        void Log(string msg);
 
         /// <summary>
         /// Log a log with log level
         /// </summary>
         /// <param name="msg"></param>
+        Task<bool> LogAsync(string msg);
+
+        /// <summary>
+        /// Log a log with log level
+        /// </summary>
+        /// <param name="msg"></param>
         /// <param name="e"></param>
-        void Log(string msg, Exception e);
+        Task<bool> LogAsync(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with error level
         /// </summary>
         /// <param name="msg"></param>
-        void Error(string msg);
+        Task<bool> ErrorAsync(string msg);
 
         /// <summary>
         /// Logs a log with error level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        void Error(string msg, Exception e);
+        Task<bool> ErrorAsync(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with info level
         /// </summary>
         /// <param name="msg"></param>
-        void Info(string msg);
+        Task<bool> InfoAsync(string msg);
 
         /// <summary>
         /// Logs a log with info level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        void Info(string msg, Exception e);
+        Task<bool> InfoAsync(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with warn level
         /// </summary>
         /// <param name="msg"></param>
-        void Warn(string msg);
+        Task<bool> WarnAsync(string msg);
 
         /// <summary>
         /// Logs a log with warn level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        void Warn(string msg, Exception e);
+        Task<bool> WarnAsync(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with debug level
         /// </summary>
         /// <param name="msg"></param>
-        void Debug(string msg);
+        Task<bool> DebugAsync(string msg);
 
         /// <summary>
         /// Logs a log with debug level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        void Debug(string msg, Exception e);
+        Task<bool> DebugAsync(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with trace level
         /// </summary>
         /// <param name="msg"></param>
-        void Trace(string msg);
+        Task<bool> TraceAsync(string msg);
 
         /// <summary>
         /// Logs a log with trace level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        void Trace(string msg, Exception e);
+        Task<bool> TraceAsync(string msg, Exception e);
     }
 }

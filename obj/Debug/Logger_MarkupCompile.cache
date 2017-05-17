@@ -1,7 +1,7 @@
 ﻿Logger
 
 
-exe
+library
 C#
 .cs
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\Debug\
@@ -13,7 +13,7 @@ DEBUG;TRACE
 1-1525910514
 21015971882
 35-1128933742
-94344978015
+104777817021
 myXaml.xaml;
 
 False

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Logger.Interfaces
 {
+    /// <summary>
+    /// Appender manager
+    /// </summary>
     public interface IAppenderManager
     {
         /// <summary>
@@ -21,7 +24,7 @@ namespace Logger.Interfaces
         /// Detach an appender from the list of appenders 
         /// </summary>
         /// <param name="appedner"></param>
-        void DetachAppender(IAppender appedner);
+        void Detach(IAppender appedner);
 
         /// <summary>
         /// Create an appender

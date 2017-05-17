@@ -5,10 +5,19 @@ using Logger.Utils;
 
 namespace Logger.Loggers
 {
+    /// <summary>
+    /// Logger manager
+    /// </summary>
     public class LoggerManager : LoggerManagerBase
     {
+        /// <summary>
+        /// List of loggers
+        /// </summary>
         public List<ILogger> Loggers { get; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public LoggerManager()
         {
             Loggers = new List<ILogger>();

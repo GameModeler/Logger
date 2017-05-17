@@ -75,7 +75,7 @@
             </summary>
             <param name="criterion"></param>
         </member>
-        <member name="M:DataBase.Database.Criterias.Criteria.MySQLCompute">
+        <member name="M:DataBase.Database.Criterias.Criteria.Compute">
             <summary>
             Compute the criteria into MySqL query
             </summary>
@@ -100,9 +100,9 @@
             <param name="dbOperator"></param>
             <param name="value"></param>
         </member>
-        <member name="M:DataBase.Database.Criterias.Criterion.MySQLCompute">
+        <member name="M:DataBase.Database.Criterias.Criterion.Compute">
             <summary>
-            Compute the criterion into MySql query
+            Compute the criterion into a query
             </summary>
             <returns></returns>
         </member>
@@ -387,142 +387,6 @@
             Provider
             </summary>
         </member>
-        <member name="T:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1">
-            <summary>
-            Asynchrone CRUD methods
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.InsertAsync(`0)">
-            <summary>
-            Inserts an entity
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Inserts entities
-            </summary>
-            <param name="items"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.UpdateAsync(`0)">
-            <summary>
-            Updates an entity
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Updates entities
-            </summary>
-            <param name="items"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.GetAsync(System.Int32)">
-            <summary>
-            Gets an entity
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.GetAsync">
-            <summary>
-            Gets entities
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.DeleteAsync(`0)">
-            <summary>
-            Deletes an entity
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Deletes entities
-            </summary>
-            <param name="items"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.IAsyncCrudMethods`1.CustomQueryAsync(DataBase.Database.Criterias.Criteria)">
-            <summary>
-            Allows to execute a custom query
-            </summary>
-            <param name="criteria"></param>
-            <returns></returns>
-        </member>
-        <member name="T:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1">
-            <summary>
-            Synchrone CRUD methods
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Insert(`0)">
-            <summary>
-            Inserts an entity
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Insert(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Inserts entities
-            </summary>
-            <param name="items"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Update(`0)">
-            <summary>
-            Updates an entity
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Update(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Updates entities
-            </summary>
-            <param name="items"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Get(System.Int32)">
-            <summary>
-            Gets an entity
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Get">
-            <summary>
-            Gets entities
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Delete(`0)">
-            <summary>
-            Deletes an entity
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.Delete(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Deletes entities
-            </summary>
-            <param name="items"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DataBase.Database.DbContexts.Interfaces.ISyncCrudMethods`1.CustomQuery(DataBase.Database.Criterias.Criteria)">
-            <summary>
-            Allows to execute a custom query
-            </summary>
-            <param name="criteria"></param>
-            <returns></returns>
-        </member>
         <member name="T:DataBase.Database.DbContexts.MySqlContext">
             <summary>
             MySql Context
@@ -643,6 +507,147 @@
         <member name="M:DataBase.Database.DbContexts.Configurations.SqliteConfiguration.#ctor">
             <summary>
             Constructor
+            </summary>
+        </member>
+        <member name="T:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1">
+            <summary>
+            Asynchrone CRUD methods
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.InsertAsync(`0)">
+            <summary>
+            Inserts an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.UpdateAsync(`0)">
+            <summary>
+            Updates an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.GetAsync(System.Int32)">
+            <summary>
+            Gets an entity
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.GetAsync">
+            <summary>
+            Gets entities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.DeleteAsync(`0)">
+            <summary>
+            Deletes an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Deletes entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.IAsyncCrudMethods`1.CustomQueryAsync(DataBase.Database.Criterias.Criteria)">
+            <summary>
+            Allows to execute a custom query
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1">
+            <summary>
+            Synchrone CRUD methods
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Insert(`0)">
+            <summary>
+            Inserts an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Insert(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inserts entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Update(`0)">
+            <summary>
+            Updates an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Update(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Get(System.Int32)">
+            <summary>
+            Gets an entity
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Get">
+            <summary>
+            Gets entities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Delete(`0)">
+            <summary>
+            Deletes an entity
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.Delete(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Deletes entities
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DataBase.Database.Repositories.Interfaces.ISyncCrudMethods`1.CustomQuery(DataBase.Database.Criterias.Criteria)">
+            <summary>
+            Allows to execute a custom query
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataBase.Database.Repositories.Interfaces.IRepository">
+            <summary>
+            Repository interface
             </summary>
         </member>
         <member name="T:DataBase.Database.Repositories.GlobalRepository`1">
@@ -780,11 +785,6 @@
             </summary>
             <param name="criteria"></param>
             <returns></returns>
-        </member>
-        <member name="T:DataBase.Database.Repositories.Interfaces.IRepository">
-            <summary>
-            Repository interface
-            </summary>
         </member>
         <member name="T:DataBase.Database.Repositories.Repository`1">
             <summary>

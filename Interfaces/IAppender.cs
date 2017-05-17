@@ -1,7 +1,12 @@
 ﻿using Logger.Loggers;
+using Logger.Utils;
+using System.Threading.Tasks;
 
 namespace Logger.Interfaces
 {
+    /// <summary>
+    /// Appender interface
+    /// </summary>
     public interface IAppender
     {
         /// <summary>
@@ -19,6 +24,17 @@ namespace Logger.Interfaces
         /// </summary>
         /// <param name="log"></param>
         void DoAppend(Log log);
+
+        /// <summary>
+        /// Append log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        Task DoAppendAsync(Log log);
+
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        AppenderType AppenderType { get; }
 
     }
 }

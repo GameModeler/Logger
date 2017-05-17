@@ -8,6 +8,7 @@ using Logger.Loggers;
 using Logger.Layout;
 using System.Windows;
 using System.Reflection;
+using Logger.Utils;
 
 namespace Logger.Appenders
 {
@@ -20,6 +21,10 @@ namespace Logger.Appenders
 
         private const string DEFAULT_MESSAGE_BOX_CUSTOM_NAME = "GM_MESSAGE_BOX_CUSTOM_APPENDER";
 
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
 
         /// <summary>
         /// Appender's layout
@@ -52,6 +57,21 @@ namespace Logger.Appenders
 
             MethodInfo showDMethod = obj.GetType().GetMethod("ShowDialog");
             showDMethod.Invoke(obj, null);
+        }
+
+        /// <summary>
+        /// Appends the log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public async Task DoAppendAsync(Log log)
+        {
+            obj = new T();
+
+            await Task.Run(() => {
+                MethodInfo showDMethod = obj.GetType().GetMethod("ShowDialog");
+                showDMethod.Invoke(obj, null);
+            });
         }
     }
 }

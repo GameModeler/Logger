@@ -8,8 +8,8 @@ using DataBase.Xml;
 using DataBase.Csv;
 using DataBase.Binary;
 using DataBase.Character;
-using Logger.Appenders.FileAppenderFAPI.Interfaces;
 using Logger.Appenders.FileAppenderFAPI;
+using System.Threading.Tasks;
 
 namespace Logger.Appenders
 {
@@ -20,6 +20,11 @@ namespace Logger.Appenders
     {
 
         private readonly FileAppenderFApi fileAppender;
+
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
 
         /// <summary>
         /// Layout
@@ -83,10 +88,20 @@ namespace Logger.Appenders
         /// <param name="log"></param>
         public void DoAppend(Log log)
         {
-            writeInTypeFile(log);
+            WriteInTypeFile(log);
         }
 
-        private void writeInTypeFile(Log log)
+        /// <summary>
+        /// Appends the log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public async Task DoAppendAsync(Log log)
+        {
+            await Task.Run(() => WriteInTypeFile(log));
+        }
+
+        private void WriteInTypeFile(Log log)
         {
             switch(Type)
             {

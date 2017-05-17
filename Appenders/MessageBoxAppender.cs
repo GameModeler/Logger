@@ -3,9 +3,6 @@ using Logger.Layout;
 using Logger.Loggers;
 using Logger.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +14,11 @@ namespace Logger.Appenders
     public class MessageBoxAppender : IAppender
     {
         private const string DEFAULT_MESSAGE_BOX_NAME = "GM_MESSAGE_BOX_APPENDER";
+
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
 
         /// <summary>
         /// Appender layout
@@ -53,6 +55,21 @@ namespace Logger.Appenders
             string toCaption = LogPatterns.Reformate(Box.Caption, log);
             string toLog = LogPatterns.Reformate(Layout, log);
             DisplayBox(Box, toCaption, toLog);
+        }
+
+        /// <summary>
+        /// Appends the log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public async Task DoAppendAsync(Log log)
+        {
+            await Task.Run(() => {
+
+                string toCaption = LogPatterns.Reformate(Box.Caption, log);
+                string toLog = LogPatterns.Reformate(Layout, log);
+                DisplayBox(Box, toCaption, toLog);
+            });
         }
 
         private DialogResult DisplayBox(ModalBox box, string capt, string logMsg)

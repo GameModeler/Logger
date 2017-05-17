@@ -10,6 +10,11 @@
             A DataBaseAppender matches one and only one data base.
             </summary>
         </member>
+        <member name="P:Logger.Appenders.DataBaseAppender.AppenderType">
+            <summary>
+            Appender's type
+            </summary>
+        </member>
         <member name="P:Logger.Appenders.DataBaseAppender.AppenderName">
             <summary>
             Appender name
@@ -51,6 +56,11 @@
         <member name="T:Logger.Appenders.FileAppender">
             <summary>
             File Appender
+            </summary>
+        </member>
+        <member name="P:Logger.Appenders.FileAppender.AppenderType">
+            <summary>
+            Appender's type
             </summary>
         </member>
         <member name="P:Logger.Appenders.FileAppender.Layout">
@@ -164,6 +174,11 @@
             Display a log into a MessageBox
             </summary>
         </member>
+        <member name="P:Logger.Appenders.MessageBoxAppender.AppenderType">
+            <summary>
+            Appender's type
+            </summary>
+        </member>
         <member name="P:Logger.Appenders.MessageBoxAppender.Layout">
             <summary>
             Appender layout
@@ -197,6 +212,11 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="P:Logger.Appenders.MessageBoxCustomAppender`1.AppenderType">
+            <summary>
+            Appender's type
+            </summary>
+        </member>
         <member name="P:Logger.Appenders.MessageBoxCustomAppender`1.Layout">
             <summary>
             Appender's layout
@@ -222,6 +242,11 @@
         <member name="T:Logger.Appenders.ToastAppender">
             <summary>
             Display logs into Toast
+            </summary>
+        </member>
+        <member name="P:Logger.Appenders.ToastAppender.AppenderType">
+            <summary>
+            Appender's type
             </summary>
         </member>
         <member name="P:Logger.Appenders.ToastAppender.AppenderName">
@@ -273,13 +298,19 @@
             </summary>
             <param name="appender"></param>
         </member>
-        <member name="M:Logger.Appenders.AppenderManager.DetachAppender(Logger.Interfaces.IAppender)">
+        <member name="M:Logger.Appenders.AppenderManager.Detach(Logger.Interfaces.IAppender)">
             <summary>
             Detach an appender from the list of appenders.
             </summary>
             <param name="appender"></param>
         </member>
-        <member name="M:Logger.Appenders.AppenderManager.DetachAppender(System.String)">
+        <member name="M:Logger.Appenders.AppenderManager.Detach(Logger.Utils.AppenderType)">
+            <summary>
+            Detach all appender from a type
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Logger.Appenders.AppenderManager.Detach(System.String)">
             <summary>
             Detach an appender from the list of appender from its name.
             </summary>
@@ -336,6 +367,11 @@
             To display log into the console
             </summary>
         </member>
+        <member name="P:Logger.Appenders.ConsoleAppender.AppenderType">
+            <summary>
+            Appender's type
+            </summary>
+        </member>
         <member name="P:Logger.Appenders.ConsoleAppender.AppenderName">
             <summary>
             Name of the appender
@@ -370,6 +406,11 @@
             Reset console parameters
             </summary>
         </member>
+        <member name="T:Logger.Interfaces.IAppender">
+            <summary>
+            Appender interface
+            </summary>
+        </member>
         <member name="P:Logger.Interfaces.IAppender.AppenderName">
             <summary>
             Name of the appender
@@ -386,6 +427,16 @@
             </summary>
             <param name="log"></param>
         </member>
+        <member name="P:Logger.Interfaces.IAppender.AppenderType">
+            <summary>
+            Appender's type
+            </summary>
+        </member>
+        <member name="T:Logger.Interfaces.IAppenderManager">
+            <summary>
+            Appender manager
+            </summary>
+        </member>
         <member name="P:Logger.Interfaces.IAppenderManager.AppenderList">
             <summary>
             List of appenders
@@ -397,7 +448,7 @@
             </summary>
             <param name="appender"></param>
         </member>
-        <member name="M:Logger.Interfaces.IAppenderManager.DetachAppender(Logger.Interfaces.IAppender)">
+        <member name="M:Logger.Interfaces.IAppenderManager.Detach(Logger.Interfaces.IAppender)">
             <summary>
             Detach an appender from the list of appenders 
             </summary>
@@ -716,6 +767,24 @@
             Reset the logger appanders
             </summary>
         </member>
+        <member name="M:Logger.Loggers.Logger.RemoveAppender(System.String)">
+            <summary>
+            Remove appender from its name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.RemoveAppender(Logger.Utils.AppenderType)">
+            <summary>
+            Remove all appenders from the given type
+            </summary>
+            <param name="appenderType"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.RemoveAppender(Logger.Interfaces.IAppender)">
+            <summary>
+            Remove appender
+            </summary>
+            <param name="appender"></param>
+        </member>
         <member name="M:Logger.Loggers.Logger.CallAppenders(Logger.Loggers.Log)">
             <summary>
             Call the appender from the logger
@@ -835,6 +904,21 @@
             Make a deep copy of the logger
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Logger.Loggers.LoggerManager">
+            <summary>
+            Logger manager
+            </summary>
+        </member>
+        <member name="P:Logger.Loggers.LoggerManager.Loggers">
+            <summary>
+            List of loggers
+            </summary>
+        </member>
+        <member name="M:Logger.Loggers.LoggerManager.#ctor">
+            <summary>
+            Constructor
+            </summary>
         </member>
         <member name="M:Logger.Loggers.LoggerManager.GetLogger(System.String)">
             <summary>

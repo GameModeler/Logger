@@ -1,10 +1,4 @@
-﻿using Logger.Interfaces;
-using Logger.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Logger.Utils;
 
 namespace Logger.Appenders.FileAppenderFAPI.Interfaces
 {

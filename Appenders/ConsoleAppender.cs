@@ -2,6 +2,7 @@
 using Logger.Loggers;
 using Logger.Utils;
 using System;
+using System.Threading.Tasks;
 
 namespace Logger.Appenders
 {
@@ -10,6 +11,11 @@ namespace Logger.Appenders
     /// </summary>
     public class ConsoleAppender : IAppender
     {
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
+
         /// <summary>
         /// Name of the appender
         /// </summary>
@@ -47,6 +53,23 @@ namespace Logger.Appenders
             Console.ForegroundColor = log.Level.GetColor();
             Console.WriteLine(toLog);
             ResetConsole();
+        }
+
+        /// <summary>
+        /// Appends the log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public async Task DoAppendAsync(Log log)
+        {
+            await Task.Run(() => {
+
+                string toLog = LogPatterns.Reformate(Layout, log);
+                Console.ForegroundColor = log.Level.GetColor();
+                Console.WriteLine(toLog);
+                ResetConsole();
+
+            });
         }
 
         /// <summary>

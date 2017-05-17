@@ -1,12 +1,8 @@
 ﻿using Logger.Appenders;
 using Logger.Interfaces;
 using Logger.Utils;
-using Logger.Appenders;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,11 +11,11 @@ namespace Logger.Loggers
     /// <summary>
     /// A Logger.
     /// </summary>
-    public class Logger : ILogger, ILoggerLog
+    public class Logger : ILogger, ILoggerLog, ILoggerLogAsync
     {
      
-        const string DEFAULT_NAME = "GM_LOGGER";
-        const Level DEFAULT_LEVEL = Level.TRACE;
+        private const string DEFAULT_NAME = "GM_LOGGER";
+        private const Level DEFAULT_LEVEL = Level.TRACE;
 
         private static int nextId;
 
@@ -68,7 +64,6 @@ namespace Logger.Loggers
             AppenderManager = new AppenderManager(this);
             Name = DEFAULT_NAME.Equals(name) ? DEFAULT_NAME : name;
             Level = DEFAULT_LEVEL;
-            AppenderManager.AddAppender(AppenderType.CONSOLE);
         }
 
         #endregion
@@ -79,9 +74,7 @@ namespace Logger.Loggers
         public IAppender AddAppender(AppenderType appenderType, string appenderName = null)
         {
             return AppenderManager.AddAppender(appenderType, appenderName);
-
         }
-
 
         /// <summary>
         /// Add an appender from AppenderType.
@@ -89,25 +82,14 @@ namespace Logger.Loggers
         public IAppender AddAppender(AppenderType appenderType, Type type, string appenderName = null)
         {
             return AppenderManager.AddAppender(appenderType, type, appenderName);
-
         }
-
 
         /// <summary>
         /// Add an appender from a custom IAppender implementation.
         /// </summary>		l
         public IAppender AddAppender(Type clazz, string appenderName = "")
         {
-
             return AppenderManager.AddAppender(clazz, appenderName);
-        }
-
-        private void SetDefaultLogger()
-        {
-            /// DEFAULT LOGGER SETTING ///
-            Level = DEFAULT_LEVEL;
-            Name = DEFAULT_NAME;
-            AppenderManager.AddAppender(AppenderType.CONSOLE);
         }
 
         /// <summary>
@@ -115,8 +97,35 @@ namespace Logger.Loggers
         /// </summary>
         public void Reset()
         {
-            SetDefaultLogger();
             AppenderManager.AppenderList.Clear();
+            Level = DEFAULT_LEVEL;           
+        }
+
+        /// <summary>
+        /// Remove appender from its name
+        /// </summary>
+        /// <param name="name"></param>
+        public void RemoveAppender(string name)
+        {
+            AppenderManager.Detach(name);
+        }
+
+        /// <summary>
+        /// Remove all appenders from the given type
+        /// </summary>
+        /// <param name="appenderType"></param>
+        public void RemoveAppender(AppenderType appenderType)
+        {
+            AppenderManager.Detach(appenderType);
+        }
+
+        /// <summary>
+        /// Remove appender
+        /// </summary>
+        /// <param name="appender"></param>
+        public void RemoveAppender(IAppender appender)
+        {
+            AppenderManager.Detach(appender);
         }
 
         /// <summary>
@@ -131,6 +140,24 @@ namespace Logger.Loggers
                 //appender.DoAppend(log);
                 appender.DoAppend(log);
             }
+        }
+
+        /// <summary>
+        /// Call the appender from the logger
+        /// </summary>
+        /// <param name="log"></param>
+        public List<Task> CallAppendersAsync(Log log)
+        {
+            List<Task> results = new List<Task>();
+            foreach (IAppender appender in AppenderManager.AppenderList)
+            {
+                // Dispay the log for each appender of the logger
+                //appender.DoAppend(log);
+                Task task = appender.DoAppendAsync(log);
+                results.Add(task);
+            }
+
+            return results;
         }
 
         #region ILog methods
@@ -302,7 +329,7 @@ namespace Logger.Loggers
         /// <returns></returns>
         public bool isDebugEnabled()
         {
-            throw new NotImplementedException();
+            return this.Level == Level.DEBUG;
         }
 
         /// <summary>
@@ -311,7 +338,7 @@ namespace Logger.Loggers
         /// <returns></returns>
         public bool isErrorEnabled()
         {
-            throw new NotImplementedException();
+            return this.Level == Level.ERROR;
         }
 
         /// <summary>
@@ -320,7 +347,7 @@ namespace Logger.Loggers
         /// <returns></returns>
         public bool isInfoEnabled()
         {
-            throw new NotImplementedException();
+            return this.Level == Level.INFO;
         }
         
         /// <summary>
@@ -329,7 +356,7 @@ namespace Logger.Loggers
         /// <returns></returns>
         public bool isTraceEnabled()
         {
-            throw new NotImplementedException();
+            return this.Level == Level.TRACE;
         }
 
         /// <summary>
@@ -338,7 +365,7 @@ namespace Logger.Loggers
         /// <returns></returns>
         public bool isWarnEnabled()
         {
-            throw new NotImplementedException();
+            return this.Level == Level.WARN;
         }
 
         #endregion
@@ -353,5 +380,171 @@ namespace Logger.Loggers
             ILogger copyLogger = (Logger)this.MemberwiseClone();
             return copyLogger;
         }
+
+
+        #region async methods
+
+        /// <summary>
+        /// Log a log with a message asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        public void LogAsync(string msg)
+        {
+            Log log = LoggerManager.MakeLog(this, msg, Level.LOG, null);
+            CallAppendersAsync(log);
+
+        }
+
+        /// <summary>
+        /// Log a log with message and exception asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        public void LogAsync(string msg, Exception e)
+        {
+            Log log = LoggerManager.MakeLog(this, msg, Level.LOG, e);
+            CallAppendersAsync(log);
+        }
+
+
+        /// <summary>
+        /// Log a log error with message asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        public void ErrorAysnc(string msg)
+        {
+            if (Level <= Level.ERROR)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.ERROR, null);
+                CallAppendersAsync(log);
+            }
+        }
+
+
+        /// <summary>
+        /// Log a log error with message and exception asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        public void ErrorAsync(string msg, Exception e)
+        {
+            if (Level <= Level.ERROR)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.ERROR, e);
+                CallAppendersAsync(log);
+            }
+        }
+
+        /// <summary>
+        /// Log a log info with message asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        public void InfoAsync(string msg)
+        {
+            if (Level <= Level.INFO)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.INFO, null);
+                CallAppendersAsync(log);
+            }
+        }
+
+        /// <summary>
+        /// Log a log info with message and asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        public void InfoAsync(string msg, Exception e)
+        {
+            if (Level <= Level.INFO)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.INFO, e);
+                CallAppenders(log);
+            }
+        }
+
+
+        /// <summary>
+        /// Log a warn log with message asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        public void WarnAsync(string msg)
+        {
+            if (Level <= Level.WARN)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.WARN, null);
+                CallAppendersAsync(log);
+            }
+        }
+
+        /// <summary>
+        /// Log a warn log with message and exception asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        public void WarnAsync(string msg, Exception e)
+        {
+            if (Level <= Level.WARN)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.WARN, e);
+                CallAppendersAsync(log);
+            }
+        }
+
+        /// <summary>
+        /// Log a log debug with message asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        public void DebugAsync(string msg)
+        {
+            if (Level <= Level.DEBUG)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.DEBUG, null);
+                CallAppendersAsync(log);
+            }
+        }
+
+        /// <summary>
+        /// Log a log debug with message and exception asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        public void DebugAsync(string msg, Exception e)
+        {
+            if (Level <= Level.DEBUG)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.DEBUG, e);
+                CallAppendersAsync(log);
+            }
+        }
+
+
+        /// <summary>
+        /// Log a log trace with message asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        public void TraceAsync(string msg)
+        {
+            if (Level <= Level.TRACE)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.TRACE, null);
+                CallAppendersAsync(log);
+            }
+        }
+
+        /// <summary>
+        /// Log a log trace with message and exception asynchronously
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="e"></param>
+        public void TraceAsync(string msg, Exception e)
+        {
+            if (Level <= Level.TRACE)
+            {
+                Log log = LoggerManager.MakeLog(this, msg, Level.TRACE, e);
+                CallAppendersAsync(log);
+            }
+        }
+
+        #endregion
     }
 }

@@ -3,9 +3,6 @@ using Logger.Layout;
 using Logger.Loggers;
 using Logger.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
 
@@ -17,6 +14,11 @@ namespace Logger.Appenders
     public class ToastAppender : IAppender
     {
         private const string DEFAULT_TOAST_NAME = "GM_TOAST_APPENDER";
+
+        /// <summary>
+        /// Appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
 
         /// <summary>
         /// Appender's name
@@ -53,6 +55,20 @@ namespace Logger.Appenders
 
             var toast = new ToastNotification(ToastLayout.ToastXml);
             ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
+        }
+
+        /// <summary>
+        /// Appends the log asynchronously
+        /// </summary>
+        /// <param name="log"></param>
+        /// <returns></returns>
+        public async Task DoAppendAsync(Log log)
+        {
+            await Task.Run(() => {
+                ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);
+                var toast = new ToastNotification(ToastLayout.ToastXml);
+                ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
+            });
         }
     }
 }

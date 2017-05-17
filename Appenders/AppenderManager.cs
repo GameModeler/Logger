@@ -47,9 +47,20 @@ namespace Logger.Appenders
         /// Detach an appender from the list of appenders.
         /// </summary>
         /// <param name="appender"></param>
-        public void DetachAppender(IAppender appender)
+        public void Detach(IAppender appender)
         {
             appenderList.Remove(appender);
+        }
+
+        /// <summary>
+        /// Detach all appender from a type
+        /// </summary>
+        /// <param name="type"></param>
+        public void Detach(AppenderType type)
+        {
+            List<IAppender> appenders = appenderList.ToList<IAppender>();
+            appenders.RemoveAll(app => app.AppenderType == type);
+
         }
 
         /// <summary>
@@ -57,12 +68,10 @@ namespace Logger.Appenders
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public IAppender DetachAppender(string name) {
+        public void Detach(string name) {
 
             IAppender appender = appenderList.Where(app => app.AppenderName == name).SingleOrDefault();
-            DetachAppender(appender);
-
-            return appender;
+            Detach(appender);
         }
 
         /// <summary>
@@ -147,6 +156,7 @@ namespace Logger.Appenders
         /// Create a new appender from its type.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
         public IAppender CreateAppender(AppenderType type, string name)
         {
@@ -171,6 +181,8 @@ namespace Logger.Appenders
         /// Create a new appender from its type.
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="clazz"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
         public IAppender CreateAppender(AppenderType type, Type clazz, string name)
         {
