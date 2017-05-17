@@ -1,5 +1,3 @@
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\x86\sqlite3.dll
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\x64\sqlite3.dll
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Logger.XML
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Logger.pdb
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\CsvHelper.dll
@@ -55,6 +53,6 @@ C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\Debug\Logger.g.resources
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\Debug\Logger.pdb
 C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Logger.dll.config
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Logger.dll
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\Debug\Logger.dll
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Logger.exe.config
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\bin\Debug\Logger.exe
+C:\Users\Anne\Documents\Visual Studio 2015\Projects\GameModeler\Main\Logger\obj\Debug\Logger.exe

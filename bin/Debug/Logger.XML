@@ -53,6 +53,13 @@
             </summary>
             <param name="log"></param>
         </member>
+        <member name="M:Logger.Appenders.DataBaseAppender.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Appends the log asynchronously
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
         <member name="T:Logger.Appenders.FileAppender">
             <summary>
             File Appender
@@ -106,6 +113,13 @@
             Appends the log
             </summary>
             <param name="log"></param>
+        </member>
+        <member name="M:Logger.Appenders.FileAppender.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Appends the log asynchronously
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
         </member>
         <member name="P:Logger.Appenders.FileAppender.Set">
             <summary>
@@ -206,6 +220,13 @@
             </summary>
             <param name="log"></param>
         </member>
+        <member name="M:Logger.Appenders.MessageBoxAppender.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Appends the log asynchronously
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
         <member name="T:Logger.Appenders.MessageBoxCustomAppender`1">
             <summary>
             Display logs into a custom message box
@@ -238,6 +259,13 @@
             Appends the log
             </summary>
             <param name="log"></param>
+        </member>
+        <member name="M:Logger.Appenders.MessageBoxCustomAppender`1.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Appends the log asynchronously
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
         </member>
         <member name="T:Logger.Appenders.ToastAppender">
             <summary>
@@ -275,6 +303,13 @@
             Appends the log
             </summary>
             <param name="log"></param>
+        </member>
+        <member name="M:Logger.Appenders.ToastAppender.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Appends the log asynchronously
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
         </member>
         <member name="T:Logger.Appenders.AppenderManager">
             <summary>
@@ -353,6 +388,7 @@
             Create a new appender from its type.
             </summary>
             <param name="type"></param>
+            <param name="name"></param>
             <returns></returns>
         </member>
         <member name="M:Logger.Appenders.AppenderManager.CreateAppender(Logger.Utils.AppenderType,System.Type,System.String)">
@@ -360,6 +396,8 @@
             Create a new appender from its type.
             </summary>
             <param name="type"></param>
+            <param name="clazz"></param>
+            <param name="name"></param>
             <returns></returns>
         </member>
         <member name="T:Logger.Appenders.ConsoleAppender">
@@ -401,6 +439,13 @@
             </summary>
             <param name="log"></param>
         </member>
+        <member name="M:Logger.Appenders.ConsoleAppender.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Appends the log asynchronously
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
         <member name="M:Logger.Appenders.ConsoleAppender.ResetConsole">
             <summary>
             Reset console parameters
@@ -424,6 +469,12 @@
         <member name="M:Logger.Interfaces.IAppender.DoAppend(Logger.Loggers.Log)">
             <summary>
             Append log
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:Logger.Interfaces.IAppender.DoAppendAsync(Logger.Loggers.Log)">
+            <summary>
+            Append log asynchronously
             </summary>
             <param name="log"></param>
         </member>
@@ -497,125 +548,265 @@
             Log's exception stacktrace
             </summary>
         </member>
+        <member name="T:Logger.Interfaces.ILoggerBase">
+            <summary>
+            Logger Base interface
+            </summary>
+        </member>
+        <member name="P:Logger.Interfaces.ILoggerBase.Id">
+            <summary>
+            Logger' id
+            </summary>
+        </member>
+        <member name="P:Logger.Interfaces.ILoggerBase.Name">
+            <summary>
+            Logger's name
+            </summary>
+        </member>
+        <member name="P:Logger.Interfaces.ILoggerBase.LoggerManager">
+            <summary>
+            Logger's manager
+            </summary>
+        </member>
+        <member name="P:Logger.Interfaces.ILoggerBase.Level">
+            <summary>
+            Logger's level
+            </summary>
+        </member>
+        <member name="P:Logger.Interfaces.ILoggerBase.Parent">
+            <summary>
+            Parent's logger
+            </summary>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerBase.DeepCopy">
+            <summary>
+            Allow to duplicate a logger
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Logger.Interfaces.ILogger">
             <summary>
             A logger
             </summary>
         </member>
-        <member name="P:Logger.Interfaces.ILogger.Id">
+        <!-- Commentaire XML incorrect pour le membre "M:Logger.Interfaces.ILogger.AddAppender(Logger.Utils.AppenderType,System.String)" -->
+        <member name="M:Logger.Interfaces.ILogger.AddAppender(Logger.Utils.AppenderType,System.Type,System.String)">
             <summary>
-            Logger' id
+            Add an appender from AppenderType.
             </summary>
         </member>
-        <member name="P:Logger.Interfaces.ILogger.Name">
+        <member name="M:Logger.Interfaces.ILogger.AddAppender(System.Type,System.String)">
             <summary>
-            Logger's name
+            Add an appender from a custom IAppender implementation.
+            </summary>		l
+        </member>
+        <member name="M:Logger.Interfaces.ILogger.Reset">
+            <summary>
+            Reset the logger appanders
             </summary>
         </member>
-        <member name="P:Logger.Interfaces.ILogger.LoggerManager">
+        <member name="M:Logger.Interfaces.ILogger.RemoveAppender(System.String)">
             <summary>
-            Logger's manager
+            Remove appender from its name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILogger.RemoveAppender(Logger.Utils.AppenderType)">
+            <summary>
+            Remove all appenders from the given type
+            </summary>
+            <param name="appenderType"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILogger.RemoveAppender(Logger.Interfaces.IAppender)">
+            <summary>
+            Remove appender
+            </summary>
+            <param name="appender"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILogger.CallAppenders(Logger.Loggers.Log)">
+            <summary>
+            Call the appender from the logger
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILogger.CallAppendersAsync(Logger.Loggers.Log)">
+            <summary>
+            Call the appender from the logger
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="T:Logger.Interfaces.ILoggerLogAsync">
+            <summary>
+            Async log methods
             </summary>
         </member>
-        <member name="P:Logger.Interfaces.ILogger.Level">
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.LogAsync(System.String)">
             <summary>
-            Logger's level
+            Log a log with log level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.LogAsync(System.String,System.Exception)">
+            <summary>
+            Log a log with log level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.ErrorAsync(System.String)">
+            <summary>
+            Logs a log with error level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.ErrorAsync(System.String,System.Exception)">
+            <summary>
+            Logs a log with error level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.InfoAsync(System.String)">
+            <summary>
+            Logs a log with info level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.InfoAsync(System.String,System.Exception)">
+            <summary>
+            Logs a log with info level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.WarnAsync(System.String)">
+            <summary>
+            Logs a log with warn level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.WarnAsync(System.String,System.Exception)">
+            <summary>
+            Logs a log with warn level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.DebugAsync(System.String)">
+            <summary>
+            Logs a log with debug level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.DebugAsync(System.String,System.Exception)">
+            <summary>
+            Logs a log with debug level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.TraceAsync(System.String)">
+            <summary>
+            Logs a log with trace level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogAsync.TraceAsync(System.String,System.Exception)">
+            <summary>
+            Logs a log with trace level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Logger.Interfaces.ILoggerLogSync">
+            <summary>
+            Logger's methods
+            Inspired from org.slf4j.Logger interface.
             </summary>
         </member>
-        <member name="P:Logger.Interfaces.ILogger.Parent">
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Log(System.String)">
             <summary>
-            Parent's logger
+            Log a log with log level
             </summary>
+            <param name="msg"></param>
         </member>
-        <member name="M:Logger.Interfaces.ILogger.DeepCopy">
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Log(System.String,System.Exception)">
             <summary>
-            Allow to duplicate a logger
+            Log a log with log level
             </summary>
-            <returns></returns>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Error(System.String)">
+            <summary>
+            Logs a log with error level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Error(System.String,System.Exception)">
+            <summary>
+            Logs a log with error level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Info(System.String)">
+            <summary>
+            Logs a log with info level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Info(System.String,System.Exception)">
+            <summary>
+            Logs a log with info level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Warn(System.String)">
+            <summary>
+            Logs a log with warn level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Warn(System.String,System.Exception)">
+            <summary>
+            Logs a log with warn level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Debug(System.String)">
+            <summary>
+            Logs a log with debug level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Debug(System.String,System.Exception)">
+            <summary>
+            Logs a log with debug level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Trace(System.String)">
+            <summary>
+            Logs a log with trace level
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Interfaces.ILoggerLogSync.Trace(System.String,System.Exception)">
+            <summary>
+            Logs a log with trace level
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
         </member>
         <member name="T:Logger.Loggers.ILoggerLog">
             <summary>
             Logger's methods
             Inspired from org.slf4j.Logger interface.
             </summary>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Log(System.String)">
-            <summary>
-            Log a log with log level
-            </summary>
-            <param name="msg"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Log(System.String,System.Exception)">
-            <summary>
-            Log a log with log level
-            </summary>
-            <param name="msg"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Error(System.String)">
-            <summary>
-            Logs a log with error level
-            </summary>
-            <param name="msg"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Error(System.String,System.Exception)">
-            <summary>
-            Logs a log with error level
-            </summary>
-            <param name="msg"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Info(System.String)">
-            <summary>
-            Logs a log with info level
-            </summary>
-            <param name="msg"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Info(System.String,System.Exception)">
-            <summary>
-            Logs a log with info level
-            </summary>
-            <param name="msg"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Warn(System.String)">
-            <summary>
-            Logs a log with warn level
-            </summary>
-            <param name="msg"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Warn(System.String,System.Exception)">
-            <summary>
-            Logs a log with warn level
-            </summary>
-            <param name="msg"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Debug(System.String)">
-            <summary>
-            Logs a log with debug level
-            </summary>
-            <param name="msg"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Debug(System.String,System.Exception)">
-            <summary>
-            Logs a log with debug level
-            </summary>
-            <param name="msg"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Trace(System.String)">
-            <summary>
-            Logs a log with trace level
-            </summary>
-            <param name="msg"></param>
-        </member>
-        <member name="M:Logger.Loggers.ILoggerLog.Trace(System.String,System.Exception)">
-            <summary>
-            Logs a log with trace level
-            </summary>
-            <param name="msg"></param>
-            <param name="e"></param>
         </member>
         <member name="M:Logger.Loggers.ILoggerLog.isDebugEnabled">
             <summary>
@@ -791,6 +982,12 @@
             </summary>
             <param name="log"></param>
         </member>
+        <member name="M:Logger.Loggers.Logger.CallAppendersAsync(Logger.Loggers.Log)">
+            <summary>
+            Call the appender from the logger
+            </summary>
+            <param name="log"></param>
+        </member>
         <member name="M:Logger.Loggers.Logger.Log(System.String)">
             <summary>
             Log a log with a message
@@ -904,6 +1101,84 @@
             Make a deep copy of the logger
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Logger.Loggers.Logger.LogAsync(System.String)">
+            <summary>
+            Log a log with a message asynchronously
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.LogAsync(System.String,System.Exception)">
+            <summary>
+            Log a log with message and exception asynchronously
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.ErrorAsync(System.String)">
+            <summary>
+            Log a log error with message asynchronously
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.ErrorAsync(System.String,System.Exception)">
+            <summary>
+            Log a log error with message and exception asynchronously
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.InfoAsync(System.String)">
+            <summary>
+            Log a log info with message asynchronously
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.InfoAsync(System.String,System.Exception)">
+            <summary>
+            Log a log info with message and asynchronously
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.WarnAsync(System.String)">
+            <summary>
+            Log a warn log with message asynchronously
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.WarnAsync(System.String,System.Exception)">
+            <summary>
+            Log a warn log with message and exception asynchronously
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.DebugAsync(System.String)">
+            <summary>
+            Log a log debug with message asynchronously
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.DebugAsync(System.String,System.Exception)">
+            <summary>
+            Log a log debug with message and exception asynchronously
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.TraceAsync(System.String)">
+            <summary>
+            Log a log trace with message asynchronously
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Logger.Loggers.Logger.TraceAsync(System.String,System.Exception)">
+            <summary>
+            Log a log trace with message and exception asynchronously
+            </summary>
+            <param name="msg"></param>
+            <param name="e"></param>
         </member>
         <member name="T:Logger.Loggers.LoggerManager">
             <summary>

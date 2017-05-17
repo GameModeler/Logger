@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F40055B5-5BFA-4553-891F-8E17F72B1DA4}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Logger</RootNamespace>
     <AssemblyName>Logger</AssemblyName>
@@ -206,10 +206,13 @@
     <Compile Include="Appenders\ConsoleAppender.cs" />
     <Compile Include="Interfaces\IAppenderManager.cs" />
     <Compile Include="Interfaces\ILog.cs" />
+    <Compile Include="Interfaces\ILoggerBase.cs" />
     <Compile Include="Interfaces\ILoggerLog.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Entities\Cake.cs" />
     <Compile Include="Entities\Book.cs" />
+    <Compile Include="Interfaces\ILoggerLogAsync.cs" />
+    <Compile Include="Interfaces\ILoggerLogSync.cs" />
     <Compile Include="Layout\LogElements.cs" />
     <Compile Include="Layout\MessageBoxCustom.xaml.cs" />
     <Compile Include="Layout\ModalBox.cs" />

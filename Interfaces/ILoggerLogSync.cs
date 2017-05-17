@@ -7,87 +7,88 @@ using System.Threading.Tasks;
 namespace Logger.Interfaces
 {
     /// <summary>
-    /// Async log methods
+    /// Logger's methods
+    /// Inspired from org.slf4j.Logger interface.
     /// </summary>
-    public interface ILoggerLogAsync
+    public interface ILoggerLogSync
     {
 
         /// <summary>
         /// Log a log with log level
         /// </summary>
         /// <param name="msg"></param>
-        Task LogAsync(string msg);
+        void Log(string msg);
 
         /// <summary>
         /// Log a log with log level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        Task LogAsync(string msg, Exception e);
+        void Log(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with error level
         /// </summary>
         /// <param name="msg"></param>
-        Task ErrorAsync(string msg);
+        void Error(string msg);
 
         /// <summary>
         /// Logs a log with error level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        Task ErrorAsync(string msg, Exception e);
+        void Error(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with info level
         /// </summary>
         /// <param name="msg"></param>
-        Task InfoAsync(string msg);
+        void Info(string msg);
 
         /// <summary>
         /// Logs a log with info level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        Task InfoAsync(string msg, Exception e);
+        void Info(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with warn level
         /// </summary>
         /// <param name="msg"></param>
-        Task WarnAsync(string msg);
+        void Warn(string msg);
 
         /// <summary>
         /// Logs a log with warn level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        Task WarnAsync(string msg, Exception e);
+        void Warn(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with debug level
         /// </summary>
         /// <param name="msg"></param>
-        Task DebugAsync(string msg);
+        void Debug(string msg);
 
         /// <summary>
         /// Logs a log with debug level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        Task DebugAsync(string msg, Exception e);
+        void Debug(string msg, Exception e);
 
         /// <summary>
         /// Logs a log with trace level
         /// </summary>
         /// <param name="msg"></param>
-        Task TraceAsync(string msg);
+        void Trace(string msg);
 
         /// <summary>
         /// Logs a log with trace level
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        Task TraceAsync(string msg, Exception e);
+        void Trace(string msg, Exception e);
     }
 }

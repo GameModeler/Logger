@@ -11,37 +11,56 @@ namespace Logger.Interfaces
     /// <summary>
     /// A logger
     /// </summary>
-    public interface ILogger
+    public interface ILogger : ILoggerBase, ILoggerLog
     {
-        /// <summary>
-        /// Logger' id
+
+        /// Add an appender from AppenderType.
         /// </summary>
-        int Id { get; }
+        IAppender AddAppender(AppenderType appenderType, string appenderName = null);
 
         /// <summary>
-        /// Logger's name
+        /// Add an appender from AppenderType.
         /// </summary>
-        string Name { get; set; }
+        IAppender AddAppender(AppenderType appenderType, Type type, string appenderName = null);
 
         /// <summary>
-        /// Logger's manager
-        /// </summary>
-        LoggerManager LoggerManager { get; }
+        /// Add an appender from a custom IAppender implementation.
+        /// </summary>		l
+        IAppender AddAppender(Type clazz, string appenderName = "");
 
         /// <summary>
-        /// Logger's level
+        /// Reset the logger appanders
         /// </summary>
-        Level Level { get; set; }
+        void Reset();
 
         /// <summary>
-        /// Parent's logger
+        /// Remove appender from its name
         /// </summary>
-        string Parent { get; set; }
+        /// <param name="name"></param>
+        void RemoveAppender(string name);
 
         /// <summary>
-        /// Allow to duplicate a logger
+        /// Remove all appenders from the given type
         /// </summary>
-        /// <returns></returns>
-        ILogger DeepCopy();
+        /// <param name="appenderType"></param>
+        void RemoveAppender(AppenderType appenderType);
+
+        /// <summary>
+        /// Remove appender
+        /// </summary>
+        /// <param name="appender"></param>
+        void RemoveAppender(IAppender appender);
+
+        /// <summary>
+        /// Call the appender from the logger
+        /// </summary>
+        /// <param name="log"></param>
+        void CallAppenders(Log log);
+
+        /// <summary>
+        /// Call the appender from the logger
+        /// </summary>
+        /// <param name="log"></param>
+        Task CallAppendersAsync(Log log);
     }
 }

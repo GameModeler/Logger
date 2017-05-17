@@ -15,49 +15,6 @@ namespace Logger
         [STAThread]
         static void Main(string[] args)
         {
-            ////////////// DATABASE ////////////////////
-
-            //// 1. Set the Database information 
-            //DbSettings settingdb1 = new DbSettings();
-            //settingdb1.DatabaseName = "db1";
-            //settingdb1.Server = "localhost";
-            //settingdb1.UserId = "root";
-
-
-            ////// 2. Choose the provider
-            ////DatabaseManager.Instance.SetProvider(ProviderType.SQLite);
-            //DbEntityManager<Car> parking = new DbEntityManager<Car>(settingdb1, ProviderType.MySQL);
-
-            //////3. Create a new Entity to manage the entity interaction with the database
-            ////DbEntityManager<Car> parking = new DbEntityManager<Car>(settingdb1);
-
-            //List<Car> cars = new List<Car>();
-
-            //cars.Add(new Car { Manufacturer = "Nissan", Model = "370Z", Year = 2012 });
-            //cars.Add(new Car { Manufacturer = "Ford", Model = "Mustang", Year = 2013 });
-            //cars.Add(new Car { Manufacturer = "Chevrolet", Model = "Camaro", Year = 2012 });
-            //cars.Add(new Car { Manufacturer = "Dodge", Model = "Charger", Year = 2013 });
-
-            //parking.Insert(cars);
-
-            //DbEntityManager<Car> parking2 = new DbEntityManager<Car>(DatabaseManager.Instance.GetDatabase("db1"));
-
-            //parking2.Insert(cars);
-
-            //Car car1 = parking.Get(1).Result;
-
-            //DbEntityManager<Car> parking4 = new DbEntityManager<Car>();
-
-            //Dictionary<string, IDbSettings> listeDb = DatabaseManager.Instance.databases;
-
-            //List<Cat> cats = new List<Cat>();
-
-            //cats.Add(new Cat { Name = "Minou", Color = "Blanc", Year = 2012 });
-            //cats.Add(new Cat { Name = "Felix", Color = "Noir", Year = 2013 });
-
-            //DbEntityManager<Cat> catHouse = new DbEntityManager<Cat>(settingdb1);
-
-            //catHouse.Insert(cats);
 
             ////////////// LOGGER ////////////////////
 
@@ -68,7 +25,7 @@ namespace Logger
             LoggerManager loggerManager = new LoggerManager();
 
             //// 2. Create a new Logger
-            Loggers.Logger myLogger = (Loggers.Logger)loggerManager.CreateLogger();
+            ILogger myLogger = loggerManager.CreateLogger();
 
             ////3. Log
             myLogger.Log("Hello World !");
@@ -77,7 +34,7 @@ namespace Logger
 
             ////////////// TESTS 1 ////////////////////
 
-            Loggers.Logger myLogger2 = (Loggers.Logger)loggerManager.CreateLogger("testLogger");
+            ILogger myLogger2 = loggerManager.CreateLogger("testLogger");
 
             string myPattern = LogElements.LOGGER_NAME.StrRef() + " / " + LogElements.MESSAGE.StrRef() + " / " + LogElements.TIMESTAMP.StrRef();
 
@@ -91,7 +48,7 @@ namespace Logger
 
             /************ Not log if log level lower than logger level *******************/
 
-            Loggers.Logger myLogger3 = (Loggers.Logger)loggerManager.CreateLogger("testLogger3");
+            ILogger myLogger3 = loggerManager.CreateLogger("testLogger3");
             myLogger3.Level = Level.ERROR;
 
             myLogger3.Trace("Un nouveau log"); // doesn't log
@@ -100,12 +57,12 @@ namespace Logger
 
             /************ Duplicate Log **************/
 
-            Loggers.Logger myLogger4 = (Loggers.Logger)loggerManager.CreateLogger("testLogger4");
+            ILogger myLogger4 = loggerManager.CreateLogger("testLogger4");
             myLogger4.Level = Level.DEBUG;
 
             myLogger4.Warn("Un warn log");
 
-            Loggers.Logger myLogger4_2 = (Loggers.Logger)loggerManager.DuplicateLogger("testLogger4");
+            ILogger myLogger4_2 = loggerManager.DuplicateLogger("testLogger4");
 
             myLogger4_2.Warn("Un warn log dupliqué");
 
@@ -124,7 +81,7 @@ namespace Logger
 
             /************ MESSAGE BOX **************/
 
-            Loggers.Logger myLogger5 = (Loggers.Logger)loggerManager.CreateLogger("testLogger5");
+            ILogger myLogger5 = loggerManager.CreateLogger("testLogger5");
 
             MessageBoxAppender myConsoleApp5 = (MessageBoxAppender)myLogger5.AddAppender(AppenderType.MESSAGE_BOX);
 
@@ -138,7 +95,7 @@ namespace Logger
 
             /************ MESSAGE BOX **************/
 
-            Loggers.Logger myLogger6 = (Loggers.Logger)loggerManager.CreateLogger("testLogger6");
+            ILogger myLogger6 = loggerManager.CreateLogger("testLogger6");
 
             MessageBoxAppender myConsoleApp6 = (MessageBoxAppender)myLogger6.AddAppender(AppenderType.MESSAGE_BOX);
 
@@ -186,7 +143,7 @@ namespace Logger
                                                       .UserId("root").ToMySqlDatabase;
 
             // Create a logger
-            Loggers.Logger myLog = (Loggers.Logger)loggerManager.CreateLogger("myLog");
+            ILogger myLog = loggerManager.CreateLogger("myLog");
 
             // Create a database Appender (correspond à une base de donnée)
             DataBaseAppender myDbApp = (DataBaseAppender)myLog.AddAppender(AppenderType.DATABASE);
@@ -199,7 +156,7 @@ namespace Logger
             /************ MESSAGE_BOX_CUSTOM with Xaml file **************/
 
             // Create a logger
-            Loggers.Logger myLogger7 = (Loggers.Logger)loggerManager.CreateLogger("testLogger7");
+            ILogger myLogger7 = loggerManager.CreateLogger("testLogger7");
             // Create a database Appender (correspond à une base de donnée)
 
             IAppender myMBCApp = myLogger7.AddAppender(AppenderType.MESSAGE_BOX_CUSTOM, typeof(MessageBoxCustom));

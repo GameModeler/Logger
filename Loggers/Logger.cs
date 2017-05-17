@@ -11,8 +11,8 @@ namespace Logger.Loggers
     /// <summary>
     /// A Logger.
     /// </summary>
-    public class Logger : ILogger, ILoggerLog, ILoggerLogAsync
-    {
+    public class Logger : ILogger
+    { 
      
         private const string DEFAULT_NAME = "GM_LOGGER";
         private const Level DEFAULT_LEVEL = Level.TRACE;
@@ -146,18 +146,14 @@ namespace Logger.Loggers
         /// Call the appender from the logger
         /// </summary>
         /// <param name="log"></param>
-        public List<Task> CallAppendersAsync(Log log)
+        public async Task CallAppendersAsync(Log log)
         {
-            List<Task> results = new List<Task>();
             foreach (IAppender appender in AppenderManager.AppenderList)
             {
                 // Dispay the log for each appender of the logger
                 //appender.DoAppend(log);
-                Task task = appender.DoAppendAsync(log);
-                results.Add(task);
+                await appender.DoAppendAsync(log);
             }
-
-            return results;
         }
 
         #region ILog methods
@@ -388,10 +384,10 @@ namespace Logger.Loggers
         /// Log a log with a message asynchronously
         /// </summary>
         /// <param name="msg"></param>
-        public void LogAsync(string msg)
+        public async Task LogAsync(string msg)
         {
             Log log = LoggerManager.MakeLog(this, msg, Level.LOG, null);
-            CallAppendersAsync(log);
+            await CallAppendersAsync(log);
 
         }
 
@@ -400,10 +396,10 @@ namespace Logger.Loggers
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        public void LogAsync(string msg, Exception e)
+        public async Task LogAsync(string msg, Exception e)
         {
             Log log = LoggerManager.MakeLog(this, msg, Level.LOG, e);
-            CallAppendersAsync(log);
+            await CallAppendersAsync(log);
         }
 
 
@@ -411,12 +407,12 @@ namespace Logger.Loggers
         /// Log a log error with message asynchronously
         /// </summary>
         /// <param name="msg"></param>
-        public void ErrorAysnc(string msg)
+        public async Task ErrorAsync(string msg)
         {
             if (Level <= Level.ERROR)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.ERROR, null);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -426,12 +422,12 @@ namespace Logger.Loggers
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        public void ErrorAsync(string msg, Exception e)
+        public async Task ErrorAsync(string msg, Exception e)
         {
             if (Level <= Level.ERROR)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.ERROR, e);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -439,12 +435,12 @@ namespace Logger.Loggers
         /// Log a log info with message asynchronously
         /// </summary>
         /// <param name="msg"></param>
-        public void InfoAsync(string msg)
+        public async Task InfoAsync(string msg)
         {
             if (Level <= Level.INFO)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.INFO, null);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -453,12 +449,12 @@ namespace Logger.Loggers
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        public void InfoAsync(string msg, Exception e)
+        public async Task InfoAsync(string msg, Exception e)
         {
             if (Level <= Level.INFO)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.INFO, e);
-                CallAppenders(log);
+               await CallAppendersAsync(log);
             }
         }
 
@@ -467,12 +463,12 @@ namespace Logger.Loggers
         /// Log a warn log with message asynchronously
         /// </summary>
         /// <param name="msg"></param>
-        public void WarnAsync(string msg)
+        public async Task WarnAsync(string msg)
         {
             if (Level <= Level.WARN)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.WARN, null);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -481,12 +477,12 @@ namespace Logger.Loggers
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        public void WarnAsync(string msg, Exception e)
+        public async Task WarnAsync(string msg, Exception e)
         {
             if (Level <= Level.WARN)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.WARN, e);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -494,12 +490,12 @@ namespace Logger.Loggers
         /// Log a log debug with message asynchronously
         /// </summary>
         /// <param name="msg"></param>
-        public void DebugAsync(string msg)
+        public async Task DebugAsync(string msg)
         {
             if (Level <= Level.DEBUG)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.DEBUG, null);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -508,12 +504,12 @@ namespace Logger.Loggers
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        public void DebugAsync(string msg, Exception e)
+        public async Task DebugAsync(string msg, Exception e)
         {
             if (Level <= Level.DEBUG)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.DEBUG, e);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -522,12 +518,12 @@ namespace Logger.Loggers
         /// Log a log trace with message asynchronously
         /// </summary>
         /// <param name="msg"></param>
-        public void TraceAsync(string msg)
+        public async Task TraceAsync(string msg)
         {
             if (Level <= Level.TRACE)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.TRACE, null);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
@@ -536,12 +532,12 @@ namespace Logger.Loggers
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="e"></param>
-        public void TraceAsync(string msg, Exception e)
+        public async Task TraceAsync(string msg, Exception e)
         {
             if (Level <= Level.TRACE)
             {
                 Log log = LoggerManager.MakeLog(this, msg, Level.TRACE, e);
-                CallAppendersAsync(log);
+                await CallAppendersAsync(log);
             }
         }
 
