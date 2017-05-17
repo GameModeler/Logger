@@ -11,7 +11,7 @@
     <copyright>Copyright 2017</copyright>
     <tags>Display and manage logs</tags>
     <dependencies>
-	  <dependency id="GameModeler.DataBase" version="1.0.2" />
+	  <dependency id="GameModeler.DataBase" version="1.0.3" />
 	  <dependency id="Microsoft.Extensions.Caching.Abstractions" version="1.1.0"  />
 	  <dependency id="Microsoft.Extensions.Caching.Memory" version="1.1.0"  />
 	  <dependency id="Microsoft.Extensions.DependencyInjection" version="1.1.0"  />

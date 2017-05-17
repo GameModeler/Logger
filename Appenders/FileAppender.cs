@@ -10,6 +10,7 @@ using DataBase.Binary;
 using DataBase.Character;
 using Logger.Appenders.FileAppenderFAPI;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Logger.Appenders
 {
@@ -146,7 +147,7 @@ namespace Logger.Appenders
             string toLog = LogPatterns.Reformate(Layout, log);
             string completPath = String.Format("{0}{1}{2}", Path, Name, ".txt");
 
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(completPath, true))
+            using (StreamWriter file = new StreamWriter(completPath, true))
             {
                 file.WriteLine(toLog);
             }

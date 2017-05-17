@@ -67,6 +67,7 @@ namespace Logger.Appenders
                 string toLog = LogPatterns.Reformate(Layout, log);
                 Console.ForegroundColor = log.Level.GetColor();
                 Console.WriteLine(toLog);
+                //Console.ReadKey();
                 ResetConsole();
 
             });

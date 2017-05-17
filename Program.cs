@@ -171,11 +171,13 @@ namespace Logger
 
             var myFileApp = (FileAppender)myLogger7.AddAppender(AppenderType.FILE);
 
-            myFileApp.Set.Name("testLoggerXml.yaml")
+            myFileApp.Set.Name("testLoggerXml")
                          .Path(@"C:\Users\")
-                         .Type(FileAppenderType.YAML);
+                         .Type(FileAppenderType.TEXT);
 
             myLogger7.Error("test du logger");
+
+            myLogger7.Info("deuxième log");
         }
     }
 }
