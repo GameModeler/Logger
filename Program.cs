@@ -109,7 +109,7 @@ namespace Logger
 
             myConsoleApp6.Box = myBox2;
 
-            //myLogger6.Error("Bonjour !");
+            myLogger6.Error("Bonjour !");
             //myLogger6.Trace("Bonjour Trace !");
             //myLogger6.Debug("Bonjour Debug !");
             //myLogger6.Info("Bonjour info !");
@@ -130,6 +130,10 @@ namespace Logger
             mytoastApp6.ToastLayout = toastLay;
 
             myLogger6.Error("Bonjour Bonjour!");
+
+            myLogger6.Error("Bonjour Hello!");
+
+
 
             ////////////// TESTS 8 ////////////////////
 

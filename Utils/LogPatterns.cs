@@ -39,7 +39,8 @@ namespace Logger.Utils
 
             foreach (string elem in lines)
             {
-                stringElements[cmpt].AppendChild(toastXml.CreateTextNode(Reformate(elem, log)));
+
+                stringElements[cmpt].InnerText = Reformate(elem, log);             
                 cmpt++;
             }
         }

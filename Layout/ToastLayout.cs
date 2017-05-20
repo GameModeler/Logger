@@ -70,6 +70,8 @@ namespace Logger.Layout
 
             Template = ToastTemplateType.ToastImageAndText04;
             ToastXml = ToastNotificationManager.GetTemplateContent(Template);
+
+           
         }
 
         /// <summary>

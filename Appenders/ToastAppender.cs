@@ -51,11 +51,17 @@ namespace Logger.Appenders
         /// <param name="log"></param>
         public void DoAppend(Log log)
         {
-            ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);
-
+            // Construction du toast
+           ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);      
+            
             var toast = new ToastNotification(ToastLayout.ToastXml);
             ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
         }
+
+        //private CreateToastLayout()
+        //{
+        //    if(ToastLayout != null)
+        //}
 
         /// <summary>
         /// Appends the log asynchronously
