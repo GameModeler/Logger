@@ -58,11 +58,6 @@ namespace Logger.Appenders
             ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
         }
 
-        //private CreateToastLayout()
-        //{
-        //    if(ToastLayout != null)
-        //}
-
         /// <summary>
         /// Appends the log asynchronously
         /// </summary>
