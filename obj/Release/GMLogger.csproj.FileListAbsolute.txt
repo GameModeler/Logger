@@ -1,5 +1,0 @@
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Release\Logger.exe.config
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Release\Logger.exe
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\bin\Release\Logger.pdb
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Release\Logger.exe
-C:\Users\Anne\Documents\Visual Studio 2015\Projects\SDKProject\Logger\Logger\obj\Release\Logger.pdb
