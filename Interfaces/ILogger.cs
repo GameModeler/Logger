@@ -1,4 +1,5 @@
-﻿using Logger.Loggers;
+﻿using Logger.Appenders;
+using Logger.Loggers;
 using Logger.Utils;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,12 @@ namespace Logger.Interfaces
         /// Add an appender from a custom IAppender implementation.
         /// </summary>		l
         IAppender AddAppender(Type clazz, string appenderName = "");
+
+
+        /// <summary>
+        /// Get the Appender Manager from a logger
+        /// </summary>
+        AppenderManager AppenderManager { get; }
 
         /// <summary>
         /// Reset the logger appanders
