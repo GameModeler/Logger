@@ -1,49 +1,74 @@
-﻿using Logger.Interfaces;
-using System;
-using Logger.Loggers;
-using Logger.Utils;
-using DataBase.Json;
-using DataBase.Yaml;
-using DataBase.Xml;
-using DataBase.Csv;
-using DataBase.Binary;
-using DataBase.Character;
-using Logger.Appenders.FileAppenderFAPI;
-using System.Threading.Tasks;
-using System.IO;
+﻿// <copyright file="FileAppender.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Logger.Appenders
 {
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using DataBase.Binary;
+    using DataBase.Character;
+    using DataBase.Csv;
+    using DataBase.Json;
+    using DataBase.Xml;
+    using DataBase.Yaml;
+    using Logger.Appenders.FileAppenderFAPI;
+    using Logger.Interfaces;
+    using Logger.Loggers;
+    using Logger.Utils;
+
     /// <summary>
     /// File Appender
     /// </summary>
     public class FileAppender : IAppender
     {
 
+        private const string DEFAULT_FILE_APPENDER_NAME = "GM_FILE_APPENDER";
+        private const string DEFAULT_FILE_PATH = @"C:\Users\";
+        private const string DEFAULT_FILE_NAME = "gm_logger";
+        private const FileAppenderType DEFAULT_FILE_TYPE = FileAppenderType.TEXT;
+
         private readonly FileAppenderFApi fileAppender;
 
         /// <summary>
-        /// Appender's type
+        /// Initializes a new instance of the <see cref="FileAppender"/> class.
+        /// Constructeur
+        /// </summary>
+        /// <param name="name">Name of the appender</param>
+        public FileAppender(string name)
+        {
+            this.Layout = LogPatternConstants.DEFAULT_PATTERN;
+            this.AppenderName = string.IsNullOrEmpty(name) ? DEFAULT_FILE_APPENDER_NAME : name;
+            this.Name = DEFAULT_FILE_NAME;
+            this.Path = DEFAULT_FILE_PATH;
+            this.Type = DEFAULT_FILE_TYPE;
+
+            this.fileAppender = new FileAppenderFApi(this);
+        }
+
+        /// <summary>
+        /// Gets appender's type
         /// </summary>
         public AppenderType AppenderType { get; }
 
         /// <summary>
-        /// Layout
+        /// Gets or sets layout
         /// </summary>
         public string Layout { get; set; }
 
         /// <summary>
-        /// Name
+        /// Gets or sets name
         /// </summary>
         public string AppenderName { get; set; }
 
         /// <summary>
-        /// Name
+        /// Gets or sets name
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Appender File Path
+        /// Gets or sets appender File Path
         /// </summary>
         public string Path { get; set; }
 
@@ -52,59 +77,39 @@ namespace Logger.Appenders
         /// </summary>
         public FileAppenderType Type { get; set; }
 
-        private const string DEFAULT_FILE_APPENDER_NAME = "GM_FILE_APPENDER";
-        private const string DEFAULT_FILE_PATH = @"C:\Users\";
-        private const string DEFAULT_FILE_NAME = "gm_logger";
-        private const FileAppenderType DEFAULT_FILE_TYPE = FileAppenderType.TEXT;
-
         /// <summary>
-        /// Constructeur
+        /// Set the path of the file
         /// </summary>
-        /// <param name="name"></param>
-        public FileAppender(string name)
-        {
-            Layout = LogPatternConstants.DEFAULT_PATTERN;
-            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_FILE_APPENDER_NAME : name;
-            Name = DEFAULT_FILE_NAME;
-            Path = DEFAULT_FILE_PATH;
-            Type = DEFAULT_FILE_TYPE;
-
-            fileAppender = new FileAppenderFApi(this);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        /// <param name="path">The file path</param>
+        /// <returns>FileAppender</returns>
         public FileAppender FilePath(string path)
         {
-            Path = path;
+            this.Path = path;
             return this;
         }
 
         /// <summary>
         /// Appends the log
         /// </summary>
-        /// <param name="log"></param>
-        public void DoAppend(Log log)
+        /// <param name="log">The Log</param>
+        public void DoAppend(ILog log)
         {
-            WriteInTypeFile(log);
+            this.WriteInTypeFile(log as Log);
         }
 
         /// <summary>
         /// Appends the log asynchronously
         /// </summary>
-        /// <param name="log"></param>
-        /// <returns></returns>
-        public async Task DoAppendAsync(Log log)
+        /// <param name="log">The log</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        public async Task DoAppendAsync(ILog log)
         {
-            await Task.Run(() => WriteInTypeFile(log));
+            await Task.Run(() => this.WriteInTypeFile(log as Log));
         }
 
         private void WriteInTypeFile(Log log)
         {
-            switch(Type)
+            switch (this.Type)
             {
                 case FileAppenderType.JSON:
 
@@ -137,15 +142,15 @@ namespace Logger.Appenders
                 case FileAppenderType.TEXT:
                 default:
 
-                    WriteToTxtFile(log);
+                    this.WriteToTxtFile(log);
                     break;
             }
         }
 
-        private void WriteToTxtFile(Log log)
+        private void WriteToTxtFile(ILog log)
         {
-            string toLog = LogPatterns.Reformate(Layout, log);
-            string completPath = String.Format("{0}{1}{2}", Path, Name, ".txt");
+            string toLog = LogPatterns.Reformate(this.Layout, log);
+            string completPath = string.Format("{0}{1}{2}", this.Path, this.Name, ".txt");
 
             using (StreamWriter file = new StreamWriter(completPath, true))
             {
@@ -154,11 +159,11 @@ namespace Logger.Appenders
         }
 
         /// <summary>
-        /// Initialize the File Appender fluent API
+        /// Gets File Appender fluent API
         /// </summary>
         public FileAppenderFApi Set
         {
-            get { return fileAppender; }
+            get { return this.fileAppender; }
         }
     }
 }

@@ -1,37 +1,23 @@
-﻿using Logger.Interfaces;
-using Logger.Loggers;
-using Logger.Utils;
-using System;
-using System.Threading.Tasks;
-
-namespace Logger.Appenders
+﻿namespace Logger.Appenders
 {
+    using System;
+    using System.Threading.Tasks;
+    using Logger.Interfaces;
+    using Logger.Loggers;
+    using Logger.Utils;
+
     /// <summary>
     /// To display log into the console
     /// </summary>
     public class ConsoleAppender : IAppender
     {
         /// <summary>
-        /// Appender's type
-        /// </summary>
-        public AppenderType AppenderType { get; }
-
-        /// <summary>
-        /// Name of the appender
-        /// </summary>
-        public string AppenderName { get; set; }
-
-        /// <summary>
         /// Default name of the appender
         /// </summary>
         private const string DEFAULT_CONSOLE_NAME = "GM_CONSOLE_APPENDER";
 
         /// <summary>
-        /// Layout of the appender
-        /// </summary>
-        public string Layout { get; set ;}
-    
-        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleAppender"/> class.
         /// Constructor
         /// </summary>
         /// <param name="name">
@@ -39,36 +25,50 @@ namespace Logger.Appenders
         /// </param>
         public ConsoleAppender(string name)
         {
-            Layout = LogPatternConstants.DEFAULT_PATTERN;
-            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_CONSOLE_NAME : name;
+            this.Layout = LogPatternConstants.DEFAULT_PATTERN;
+            this.AppenderName = string.IsNullOrEmpty(name) ? DEFAULT_CONSOLE_NAME : name;
         }
+
+        /// <summary>
+        /// Gets appender's type
+        /// </summary>
+        public AppenderType AppenderType { get; }
+
+        /// <summary>
+        /// Gets or sets name of the appender
+        /// </summary>
+        public string AppenderName { get; set; }
+
+        /// <summary>
+        /// Gets or sets layout of the appender
+        /// </summary>
+        public string Layout { get; set; }
 
         /// <summary>
         /// Appends the log
         /// </summary>
-        /// <param name="log"></param>
-        public void DoAppend(Log log)
+        /// <param name="log">The log</param>
+        public void DoAppend(ILog log)
         {
-            string toLog = LogPatterns.Reformate(Layout, log);
+            string toLog = LogPatterns.Reformate(this.Layout, log);
             Console.ForegroundColor = log.Level.GetColor();
             Console.WriteLine(toLog);
-            ResetConsole();
+            this.ResetConsole();
         }
 
         /// <summary>
         /// Appends the log asynchronously
         /// </summary>
-        /// <param name="log"></param>
-        /// <returns></returns>
-        public async Task DoAppendAsync(Log log)
+        /// <param name="log">The log</param>
+        /// <returns><see cref="Task"/> representing the asynchronous operation.</returns>
+        public async Task DoAppendAsync(ILog log)
         {
             await Task.Run(() => {
 
                 string toLog = LogPatterns.Reformate(Layout, log);
                 Console.ForegroundColor = log.Level.GetColor();
                 Console.WriteLine(toLog);
-                ResetConsole();
-
+                this.ResetConsole();
             });
         }
 

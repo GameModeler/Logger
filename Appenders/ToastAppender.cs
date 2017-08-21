@@ -1,13 +1,17 @@
-﻿using Logger.Interfaces;
-using Logger.Layout;
-using Logger.Loggers;
-using Logger.Utils;
-using System;
-using System.Threading.Tasks;
-using Windows.UI.Notifications;
+﻿// <copyright file="ToastAppender.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Logger.Appenders
 {
+    using System;
+    using System.Threading.Tasks;
+    using Logger.Interfaces;
+    using Logger.Layout;
+    using Logger.Loggers;
+    using Logger.Utils;
+    using Windows.UI.Notifications;
+
     /// <summary>
     /// Display logs into Toast
     /// </summary>
@@ -16,59 +20,58 @@ namespace Logger.Appenders
         private const string DEFAULT_TOAST_NAME = "GM_TOAST_APPENDER";
 
         /// <summary>
-        /// Appender's type
+        /// Initializes a new instance of the <see cref="ToastAppender"/> class.
+        /// </summary>
+        /// <param name="name">Name of the appender</param>
+        public ToastAppender(string name)
+        {
+            this.ToastLayout = new ToastLayout();
+            this.AppenderName = string.IsNullOrEmpty(name) ? DEFAULT_TOAST_NAME : name;
+        }
+
+        /// <summary>
+        /// Gets appender's type
         /// </summary>
         public AppenderType AppenderType { get; }
 
         /// <summary>
-        /// Appender's name
+        /// Gets or sets appender's name
         /// </summary>
         public string AppenderName { get; set; }
 
         /// <summary>
-        /// Appender's layout
+        /// Gets or sets appender's layout
         /// </summary>
-        public string Layout {get; set;}
+        public string Layout {get; set; }
 
         /// <summary>
-        /// Toast layout
+        /// Gets or sets toast layout
         /// </summary>
         public ToastLayout ToastLayout { get; set; }
 
         /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="name"></param>
-        public ToastAppender(string name)
-        {
-            ToastLayout = new ToastLayout();
-            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_TOAST_NAME : name;
-        }
-
-        /// <summary>
         /// Appends the log
         /// </summary>
-        /// <param name="log"></param>
-        public void DoAppend(Log log)
+        /// <param name="log">The log</param>
+        public void DoAppend(ILog log)
         {
             // Construction du toast
-           ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);      
-            
-            var toast = new ToastNotification(ToastLayout.ToastXml);
-            ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
+           this.ToastLayout.ToastXml.BuildXmlTemplate(this.ToastLayout.Elements, log);
+           var toast = new ToastNotification(this.ToastLayout.ToastXml);
+           ToastNotificationManager.CreateToastNotifier(this.AppenderName).Show(toast);
         }
 
         /// <summary>
         /// Appends the log asynchronously
         /// </summary>
-        /// <param name="log"></param>
-        /// <returns></returns>
-        public async Task DoAppendAsync(Log log)
+        /// <param name="log">The log</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        public async Task DoAppendAsync(ILog log)
         {
             await Task.Run(() => {
-                ToastLayout.ToastXml.BuildXmlTemplate(ToastLayout.Elements, log);
-                var toast = new ToastNotification(ToastLayout.ToastXml);
-                ToastNotificationManager.CreateToastNotifier(AppenderName).Show(toast);
+                this.ToastLayout.ToastXml.BuildXmlTemplate(this.ToastLayout.Elements, log);
+                var toast = new ToastNotification(this.ToastLayout.ToastXml);
+                ToastNotificationManager.CreateToastNotifier(this.AppenderName).Show(toast);
             });
         }
     }

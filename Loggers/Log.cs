@@ -1,85 +1,89 @@
-﻿using DataBase.Database.Utils;
-using Logger.Interfaces;
-using Logger.Utils;
-using System;
-using System.Threading;
-
-namespace Logger.Loggers
+﻿namespace Logger.Loggers
 {
+    using System;
+    using System.Threading;
+    using DataBase.Database.Utils;
+    using Interfaces;
+    using Utils;
+
     /// <summary>
     /// A log
     /// </summary>
     [Persistent]
     public class Log : ILog
     {
-        /// Add an id ?
-        public int Id { get; set; }
-
         private static int nextId;
 
         /// <summary>
-        /// Message
+        /// Gets or sets id
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets message
         /// </summary>
         public string Message { get; set; }
 
         /// <summary>
-        /// Timestamp
+        /// Gets or sets timestamp
         /// </summary>
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Logger's name
+        /// Gets or sets logger's name
         /// </summary>
         public string LoggerName { get; set;  }
 
         /// <summary>
-        /// Exception
+        /// Gets or sets exception
         /// </summary>
-        public String Exception { get; set; }
+        public string Exception { get; set; }
 
         /// <summary>
-        /// Thread's id
+        /// Gets or sets thread's id
         /// </summary>
         public int ThreadId { get; set; }
 
         /// <summary>
-        /// logger's class
+        /// Gets or sets logger's class
         /// </summary>
         public string Clazz { get; set; }
 
         /// <summary>
-        /// Log's level
+        /// Gets or sets log's level
         /// </summary>
         public Level Level { get; set; }
 
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="Log"/> class.
         /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="msg"></param>
-        /// <param name="logAlerte"></param>
-        /// <param name="e"></param>
+        /// <param name="logger">The logger</param>
+        /// <param name="msg">The Message</param>
+        /// <param name="logAlerte">Level</param>
+        /// <param name="e">Exception</param>
         public Log(ILogger logger, string msg, Level logAlerte, Exception e)
         {
-            Id = Interlocked.Increment(ref nextId);
+            this.Id = Interlocked.Increment(ref nextId);
 
-            LoggerName = logger.Name;
-            Clazz = logger.GetType().FullName;
-            Level = logAlerte;
-            Message = msg;
+            this.LoggerName = logger.Name;
+            this.Clazz = logger.GetType().FullName;
+            this.Level = logAlerte;
+            this.Message = msg;
 
-            Timestamp = DateTime.Now;
-            ThreadId = Thread.CurrentThread.ManagedThreadId; // ?
+            this.Timestamp = DateTime.Now;
+            this.ThreadId = Thread.CurrentThread.ManagedThreadId; // ?
 
-            if(e != null)
+            if (e != null)
             {
-                Exception = e.StackTrace;
+                this.Exception = e.StackTrace;
             }
         }
 
         /// <summary>
-        /// Default constructor
+        /// Initializes a new instance of the <see cref="Log"/> class.
         /// </summary>
-        public Log() {}
+        public Log()
+        {
+        }
     }
 }
