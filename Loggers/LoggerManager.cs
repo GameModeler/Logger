@@ -36,7 +36,7 @@ namespace Logger.Loggers
         /// Create a ROOT logger from the class in parameter.
         /// The class must implement ILogger interface.
         /// </summary>
-        public override ILogger CreateLogger(string name = "GM_LOGGER", Level level = Level.DEBUG, Type clazz = null) {
+        public override ILogger CreateLogger(string name = "GM_LOGGER", Level level = Level.INFO, Type clazz = null) {
 
             ILogger logger = null;
 

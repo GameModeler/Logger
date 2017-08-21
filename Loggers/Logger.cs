@@ -14,8 +14,7 @@ namespace Logger.Loggers
     public class Logger : ILogger
     { 
      
-        private const string DEFAULT_NAME = "GM_LOGGER";
-        private const Level DEFAULT_LEVEL = Level.TRACE;
+        private const Level DEFAULT_LEVEL = Level.INFO;
 
         private static int nextId;
 
@@ -62,8 +61,8 @@ namespace Logger.Loggers
             Id = Interlocked.Increment(ref nextId);
             LoggerManager = loggerManager;
             AppenderManager = new AppenderManager(this);
-            Name = DEFAULT_NAME.Equals(name) ? DEFAULT_NAME : name;
-            Level = DEFAULT_LEVEL;
+            Name = name;
+            Level = level;
         }
 
         #endregion

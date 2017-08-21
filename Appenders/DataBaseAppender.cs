@@ -1,11 +1,11 @@
-﻿using DataBase.Database;
-using DataBase.Database.DbContexts;
-using DataBase.Database.DbSettings.Interfaces;
+﻿using DataBase.Database.DbSettings;
+using DataBase.Database.DbContexts.Interfaces;
 using Logger.Interfaces;
 using Logger.Loggers;
 using Logger.Utils;
 using System;
 using System.Threading.Tasks;
+using DataBase.Database.DbSettings.Interfaces;
 
 namespace Logger.Appenders
 {
@@ -33,23 +33,16 @@ namespace Logger.Appenders
         public string Layout { get; set; }
 
         /// <summary>
-        /// Database Manager
-        /// </summary>
-        private DbManager dbManager = DbManager.Instance;
-
-        /// <summary>
         /// Universal context
         /// </summary>
-        private  UniversalContext dbContext;
+        private IUniversalContext dbContext;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name"></param>
         public DataBaseAppender(string name)
-        {
-
-            //dbContext = dbManager.ContextFactory<Log>();
+        {    
             AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_DATABASE_NAME : name;
         }
 
@@ -59,7 +52,7 @@ namespace Logger.Appenders
         /// <param name="settings"></param>
         public void AttachDB(IDbSettings settings)
         {
-            dbContext = dbManager.CreateContext(settings);
+            dbContext = DatabaseFactory.CreateContext(settings);
             //dbContext.Context(settings);
         }
 
