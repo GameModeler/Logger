@@ -1,43 +1,58 @@
-﻿using Logger.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Logger.Utils;
+﻿// <copyright file="AppenderManager.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Logger.Appenders
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Logger.Interfaces;
+    using Logger.Utils;
+
     /// <summary>
     /// Appender Manager
     /// </summary>
     public class AppenderManager : IAppenderManager
     {
-       
         /// <summary>
         /// List of appenders.
         /// </summary>
-        private SynchronizedCollection<IAppender> appenderList;
+        private readonly SynchronizedCollection<IAppender> appenderList;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppenderManager"/> class.
+        /// </summary>
+        /// <param name="logger">The logger</param>
+        public AppenderManager(ILogger logger)
+        {
+            this.Logger = logger;
+            this.appenderList = new SynchronizedCollection<IAppender>();
+        }
+
+        /// <summary>
+        /// Gets get the list of appenders.
+        /// </summary>
+        public SynchronizedCollection<IAppender> AppenderList
+        {
+            get
+            {
+                return this.appenderList;
+            }
+        }
 
         private ILogger Logger { get; }
 
         /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="logger"></param>
-        public AppenderManager(ILogger logger)
-        {
-            Logger = logger;
-            appenderList = new SynchronizedCollection<IAppender>();
-        }
-
-        /// <summary>
         /// Add an appender to the list of appenders.
         /// </summary>
-        /// <param name="appender"></param>
+        /// <param name="appender">The appender</param>
+        /// <returns>IAppender</returns>
         public IAppender AddAppender(IAppender appender)
         {
             if (appender != null)
             {
-                appenderList.Add(appender);
+                this.appenderList.Add(appender);
             }
 
             return appender;
@@ -46,19 +61,19 @@ namespace Logger.Appenders
         /// <summary>
         /// Detach an appender from the list of appenders.
         /// </summary>
-        /// <param name="appender"></param>
+        /// <param name="appender">The appender</param>
         public void Detach(IAppender appender)
         {
-            appenderList.Remove(appender);
+            this.appenderList.Remove(appender);
         }
 
         /// <summary>
         /// Detach all appender from a type
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">The appender type</param>
         public void Detach(AppenderType type)
         {
-            List<IAppender> appenders = appenderList.ToList<IAppender>();
+            List<IAppender> appenders = this.appenderList.ToList<IAppender>();
             appenders.RemoveAll(app => app.AppenderType == type);
 
         }
@@ -66,28 +81,27 @@ namespace Logger.Appenders
         /// <summary>
         /// Detach an appender from the list of appender from its name.
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">The appender name</param>
         public void Detach(string name) {
 
-            IAppender appender = appenderList.Where(app => app.AppenderName == name).SingleOrDefault();
-            Detach(appender);
+            IAppender appender = this.appenderList.SingleOrDefault(app => app.AppenderName == name);
+            this.Detach(appender);
         }
 
         /// <summary>
         /// Create and add an appender to the list of appenders
         /// if not exists yet.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <param name="name">The name of the appender</param>
+        /// <param name="type">The type of the appender</param>
+        /// <returns>IAppender</returns>
         public IAppender AddAppender(AppenderType type, string name = null)
         {
-            if (!AppenderList.IsAnAppenderName(name))
+            if (!this.AppenderList.IsAnAppenderName(name))
             {
                 // Create a new appender
-                IAppender appender = CreateAppender(type, name);
-                AddAppender(appender);
+                IAppender appender = this.CreateAppender(type, name);
+                this.AddAppender(appender);
 
                 return appender;
 
@@ -100,17 +114,17 @@ namespace Logger.Appenders
         /// <summary>
         /// Add an appender to the logger
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="clazz"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="type">The appender type</param>
+        /// <param name="clazz">The appender class</param>
+        /// <param name="name">The name of the appender</param>
+        /// <returns>IAppender</returns>
         public IAppender AddAppender(AppenderType type, Type clazz, string name = null)
         {
-            if (!AppenderList.IsAnAppenderName(name))
+            if (!this.AppenderList.IsAnAppenderName(name))
             {
                 // Create a new appender
-                IAppender appender = CreateAppender(type, clazz, name);
-                AddAppender(appender);
+                IAppender appender = this.CreateAppender(type, clazz, name);
+                this.AddAppender(appender);
 
                 return appender;
             }
@@ -123,44 +137,32 @@ namespace Logger.Appenders
         /// <summary>
         /// Add an appender to the logger
         /// </summary>
-        /// <param name="clazz"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="clazz">The appender class</param>
+        /// <param name="name">The appender name</param>
+        /// <returns>IAppender</returns>
         public IAppender AddAppender(Type clazz, string name = "")
         {
             IAppender appender = null;
 
-            if (!AppenderList.IsAnAppenderName(name)) {
-
-                if (clazz is IAppender)
-                {
-                    appender = (IAppender) Activator.CreateInstance(clazz, name);
-                    AddAppender(appender);               
-                } 
-            } 
-            return appender;
-        }
-
-        /// <summary>
-        /// Get the list of appenders.
-        /// </summary>
-        public SynchronizedCollection<IAppender> AppenderList
-        {
-            get
+            if (!this.AppenderList.IsAnAppenderName(name) && clazz is IAppender)
             {
-                return appenderList;
+                appender = Activator.CreateInstance(clazz, name) as IAppender;
+                this.AddAppender(appender);
+
             }
+
+            return appender;
         }
 
         /// <summary>
         /// Create a new appender from its type.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="type">The appender type</param>
+        /// <param name="name">Tha appender name</param>
+        /// <returns>IAppender</returns>
         public IAppender CreateAppender(AppenderType type, string name)
         {
-            switch(type)
+            switch (type)
             {
                 case AppenderType.CONSOLE:
                     return new ConsoleAppender(name);
@@ -180,21 +182,20 @@ namespace Logger.Appenders
         /// <summary>
         /// Create a new appender from its type.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="clazz"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="type">The appender type</param>
+        /// <param name="clazz">Class of the appender</param>
+        /// <param name="name">Name of the appender</param>
+        /// <returns>IAppender</returns>
         public IAppender CreateAppender(AppenderType type, Type clazz, string name)
         {
             switch (type)
             {
-
                 case AppenderType.MESSAGE_BOX_CUSTOM:
 
                     var d1 = typeof(MessageBoxCustomAppender<>);
                     var makeme = d1.MakeGenericType(clazz);
 
-                    return (IAppender) Activator.CreateInstance(makeme, name);
+                    return Activator.CreateInstance(makeme, name) as IAppender;
 
                 default:
                     return new ConsoleAppender(name);

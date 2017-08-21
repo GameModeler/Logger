@@ -1,76 +1,75 @@
-﻿using Logger.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logger.Loggers;
-using Logger.Layout;
-using System.Windows;
-using System.Reflection;
-using Logger.Utils;
+﻿// <copyright file="MessageBoxCustomAppender.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace Logger.Appenders
 {
+    using System.Reflection;
+    using System.Threading.Tasks;
+    using Logger.Interfaces;
+    using Utils;
+
     /// <summary>
     /// Display logs into a custom message box
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class MessageBoxCustomAppender<T> : IAppender where T : new()
+    /// <typeparam name="T">Type of the custom box appender</typeparam>
+    public class MessageBoxCustomAppender<T> : IAppender
+        where T : new()
     {
 
         private const string DEFAULT_MESSAGE_BOX_CUSTOM_NAME = "GM_MESSAGE_BOX_CUSTOM_APPENDER";
 
+        private T obj;
+
         /// <summary>
-        /// Appender's type
+        /// Initializes a new instance of the <see cref="MessageBoxCustomAppender{T}"/> class.
+        /// Constructor
+        /// </summary>
+        /// <param name="name">Name of the appender</param>
+        public MessageBoxCustomAppender(string name)
+        {
+            this.AppenderName = string.IsNullOrEmpty(name) ? DEFAULT_MESSAGE_BOX_CUSTOM_NAME : name;
+        }
+
+        /// <summary>
+        /// Gets appender's type
         /// </summary>
         public AppenderType AppenderType { get; }
 
         /// <summary>
-        /// Appender's layout
+        /// Gets or sets appender's layout
         /// </summary>
         public string Layout { get; set; }
 
         /// <summary>
-        /// Appender's name
+        /// Gets or sets appender's name
         /// </summary>
         public string AppenderName { get; set; }
-
-        private T obj; 
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="name"></param>
-        public MessageBoxCustomAppender(string name)
-        {
-            AppenderName = String.IsNullOrEmpty(name) ? DEFAULT_MESSAGE_BOX_CUSTOM_NAME : name;
-        }
 
         /// <summary>
         /// Appends the log
         /// </summary>
-        /// <param name="log"></param>
-        public void DoAppend(Log log)
-        { 
-            obj = new T();
+        /// <param name="log">The log</param>
+        public void DoAppend(ILog log)
+        {
+            this.obj = new T();
 
-            MethodInfo showDMethod = obj.GetType().GetMethod("ShowDialog");
-            showDMethod.Invoke(obj, null);
+            MethodInfo showDMethod = this.obj.GetType().GetMethod("ShowDialog");
+            showDMethod.Invoke(this.obj, null);
         }
 
         /// <summary>
         /// Appends the log asynchronously
         /// </summary>
-        /// <param name="log"></param>
-        /// <returns></returns>
-        public async Task DoAppendAsync(Log log)
+        /// <param name="log">The log</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        public async Task DoAppendAsync(ILog log)
         {
-            obj = new T();
+            this.obj = new T();
 
             await Task.Run(() => {
-                MethodInfo showDMethod = obj.GetType().GetMethod("ShowDialog");
-                showDMethod.Invoke(obj, null);
+                MethodInfo showDMethod = this.obj.GetType().GetMethod("ShowDialog");
+                showDMethod.Invoke(this.obj, null);
             });
         }
     }
