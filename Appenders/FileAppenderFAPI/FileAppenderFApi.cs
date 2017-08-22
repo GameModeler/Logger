@@ -1,55 +1,43 @@
-﻿using Logger.Utils;
-
-namespace Logger.Appenders.FileAppenderFAPI
+﻿namespace Logger.Appenders.FileAppenderFAPI
 {
+    using Interfaces;
+    using Utils;
+
     /// <summary>
     /// File Appender Api
     /// </summary>
-    public class FileAppenderFApi
+    public class FileAppenderFApi : IFileAppenderFApi
     {
         private readonly FileAppender file;
 
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="FileAppenderFApi"/> class.
         /// </summary>
+        /// <param name="fileFI">FileAppender</param>
         public FileAppenderFApi(FileAppender fileFI)
         {
-            file = fileFI;
+            this.file = fileFI;
         }
 
-        /// <summary>
-        /// Sets file's name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public FileAppenderFApi Name(string name)
+        /// <inheritdoc/>
+        public IFileAppenderFApi Name(string name)
         {
-            file.Name = name;
+            this.file.Name = name;
             return this;
         }
 
-        /// <summary>
-        /// Sets MySql Database's nama
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public FileAppenderFApi Type(FileAppenderType type)
+        /// <inheritdoc/>
+        public IFileAppenderFApi Type(FileAppenderType type)
         {
-            file.Type = type;
+            this.file.Type = type;
             return this;
         }
 
-        /// <summary>
-        /// Sets MySql Database Password
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public FileAppenderFApi Path(string path)
+        /// <inheritdoc/>
+        public IFileAppenderFApi Path(string path)
         {
-            file.Path = path;
+            this.file.Path = path;
             return this;
         }
     }
 }
-
-

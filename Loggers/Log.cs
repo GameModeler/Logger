@@ -15,6 +15,38 @@
         private static int nextId;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Log"/> class.
+        /// </summary>
+        /// <param name="logger">The logger</param>
+        /// <param name="msg">The Message</param>
+        /// <param name="logAlerte">Level</param>
+        /// <param name="e">Exception</param>
+        public Log(ILogger logger, string msg, Level logAlerte, Exception e)
+        {
+            this.Id = Interlocked.Increment(ref nextId);
+
+            this.LoggerName = logger.Name;
+            this.Clazz = logger.GetType().FullName;
+            this.Level = logAlerte;
+            this.Message = msg;
+
+            this.Timestamp = DateTime.Now;
+            this.ThreadId = Thread.CurrentThread.ManagedThreadId; // ?
+
+            if (e != null)
+            {
+                this.Exception = e.StackTrace;
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Log"/> class.
+        /// </summary>
+        public Log()
+        {
+        }
+
+        /// <summary>
         /// Gets or sets id
         /// </summary>
         public int Id { get; set; }
@@ -53,37 +85,5 @@
         /// Gets or sets log's level
         /// </summary>
         public Level Level { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Log"/> class.
-        /// </summary>
-        /// <param name="logger">The logger</param>
-        /// <param name="msg">The Message</param>
-        /// <param name="logAlerte">Level</param>
-        /// <param name="e">Exception</param>
-        public Log(ILogger logger, string msg, Level logAlerte, Exception e)
-        {
-            this.Id = Interlocked.Increment(ref nextId);
-
-            this.LoggerName = logger.Name;
-            this.Clazz = logger.GetType().FullName;
-            this.Level = logAlerte;
-            this.Message = msg;
-
-            this.Timestamp = DateTime.Now;
-            this.ThreadId = Thread.CurrentThread.ManagedThreadId; // ?
-
-            if (e != null)
-            {
-                this.Exception = e.StackTrace;
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Log"/> class.
-        /// </summary>
-        public Log()
-        {
-        }
     }
 }

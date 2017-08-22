@@ -7,8 +7,8 @@ namespace Logger.Appenders
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Logger.Interfaces;
-    using Logger.Utils;
+    using Interfaces;
+    using Utils;
 
     /// <summary>
     /// Appender Manager
@@ -59,41 +59,11 @@ namespace Logger.Appenders
         }
 
         /// <summary>
-        /// Detach an appender from the list of appenders.
-        /// </summary>
-        /// <param name="appender">The appender</param>
-        public void Detach(IAppender appender)
-        {
-            this.appenderList.Remove(appender);
-        }
-
-        /// <summary>
-        /// Detach all appender from a type
-        /// </summary>
-        /// <param name="type">The appender type</param>
-        public void Detach(AppenderType type)
-        {
-            List<IAppender> appenders = this.appenderList.ToList<IAppender>();
-            appenders.RemoveAll(app => app.AppenderType == type);
-
-        }
-
-        /// <summary>
-        /// Detach an appender from the list of appender from its name.
-        /// </summary>
-        /// <param name="name">The appender name</param>
-        public void Detach(string name) {
-
-            IAppender appender = this.appenderList.SingleOrDefault(app => app.AppenderName == name);
-            this.Detach(appender);
-        }
-
-        /// <summary>
         /// Create and add an appender to the list of appenders
         /// if not exists yet.
         /// </summary>
-        /// <param name="name">The name of the appender</param>
         /// <param name="type">The type of the appender</param>
+        /// <param name="name">The name of the appender</param>
         /// <returns>IAppender</returns>
         public IAppender AddAppender(AppenderType type, string name = null)
         {
@@ -105,7 +75,8 @@ namespace Logger.Appenders
 
                 return appender;
 
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -148,10 +119,38 @@ namespace Logger.Appenders
             {
                 appender = Activator.CreateInstance(clazz, name) as IAppender;
                 this.AddAppender(appender);
-
             }
 
             return appender;
+        }
+
+        /// <summary>
+        /// Detach an appender from the list of appenders.
+        /// </summary>
+        /// <param name="appender">The appender</param>
+        public void Detach(IAppender appender)
+        {
+            this.appenderList.Remove(appender);
+        }
+
+        /// <summary>
+        /// Detach all appender from a type
+        /// </summary>
+        /// <param name="type">The appender type</param>
+        public void Detach(AppenderType type)
+        {
+            List<IAppender> appenders = this.appenderList.ToList<IAppender>();
+            appenders.RemoveAll(app => app.AppenderType == type);
+        }
+
+        /// <summary>
+        /// Detach an appender from the list of appender from its name.
+        /// </summary>
+        /// <param name="name">The appender name</param>
+        public void Detach(string name) {
+
+            IAppender appender = this.appenderList.SingleOrDefault(app => app.AppenderName == name);
+            this.Detach(appender);
         }
 
         /// <summary>

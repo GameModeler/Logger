@@ -73,19 +73,16 @@ namespace Logger.Appenders
         public string Path { get; set; }
 
         /// <summary>
-        /// File type
+        /// Gets or sets file type
         /// </summary>
         public FileAppenderType Type { get; set; }
 
         /// <summary>
-        /// Set the path of the file
+        /// Gets File Appender fluent API
         /// </summary>
-        /// <param name="path">The file path</param>
-        /// <returns>FileAppender</returns>
-        public FileAppender FilePath(string path)
+        public FileAppenderFApi Set
         {
-            this.Path = path;
-            return this;
+            get { return this.fileAppender; }
         }
 
         /// <summary>
@@ -156,14 +153,6 @@ namespace Logger.Appenders
             {
                 file.WriteLine(toLog);
             }
-        }
-
-        /// <summary>
-        /// Gets File Appender fluent API
-        /// </summary>
-        public FileAppenderFApi Set
-        {
-            get { return this.fileAppender; }
         }
     }
 }

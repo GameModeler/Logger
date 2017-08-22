@@ -260,8 +260,6 @@
     <Compile Include="Interfaces\ILoggerBase.cs" />
     <Compile Include="Interfaces\ILoggerLog.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
-    <Compile Include="Entities\Cake.cs" />
-    <Compile Include="Entities\Book.cs" />
     <Compile Include="Interfaces\ILoggerLogAsync.cs" />
     <Compile Include="Interfaces\ILoggerLogSync.cs" />
     <Compile Include="Layout\LogElements.cs" />
@@ -297,6 +295,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

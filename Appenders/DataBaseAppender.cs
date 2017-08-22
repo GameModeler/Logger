@@ -4,14 +4,13 @@
 
 namespace Logger.Appenders
 {
-    using System;
     using System.Threading.Tasks;
     using DataBase.Database.DbContexts.Interfaces;
     using DataBase.Database.DbSettings;
     using DataBase.Database.DbSettings.Interfaces;
-    using Logger.Interfaces;
-    using Logger.Loggers;
-    using Logger.Utils;
+    using Interfaces;
+    using Loggers;
+    using Utils;
 
     /// <summary>
     /// Display the log into a database
@@ -50,7 +49,6 @@ namespace Logger.Appenders
         /// </summary>
         public string Layout { get; set; }
 
-
         /// <summary>
         /// Attach a database to the appender
         /// </summary>
@@ -76,7 +74,7 @@ namespace Logger.Appenders
         /// <returns><see cref="Task"/> representing the asynchronous operation.</returns>
         public async Task DoAppendAsync(ILog log)
         {
-            await Task.Run (() => this.dbContext.Entity<Log>().InsertAsync(log as Log));
+            await Task.Run(() => this.dbContext.Entity<Log>().InsertAsync(log as Log));
         }
     }
 }
