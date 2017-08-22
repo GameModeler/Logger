@@ -1,119 +1,126 @@
-﻿using Logger.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Logger.Layout
+﻿namespace Logger.Layout
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+    using Utils;
+
     /// <summary>
     /// Represent a windows Message Box
     /// </summary>
     public class ModalBox
     {
-        public string Text { get; set; }
-        public string Caption { get; set; }
-
-        /// <summary>
-        /// Icon
-        /// </summary>
-        public MessageBoxIcon Icon { get; set; }
-
-        /// <summary>
-        /// Buttons
-        /// </summary>
-        public MessageBoxButtons Buttons { get; set; }
-
         private Dictionary<DialogResult, Action> buttonsActions = new Dictionary<DialogResult, Action>();
 
-        bool hasIcon = false;
+        private bool hasIcon = false;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="ModalBox"/> class.
         /// </summary>
-        /// <param name="caption"></param>
-        /// <param name="buttons"></param>
-        /// <param name="icon"></param>
+        /// <param name="caption">Caption</param>
+        /// <param name="buttons">Buttons</param>
+        /// <param name="icon">icon</param>
         public ModalBox(string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
-        {            
-            Caption = caption;
-            Buttons = buttons;
-            Icon = icon;
-            hasIcon = true;
+        {
+            this.Caption = caption;
+            this.Buttons = buttons;
+            this.Icon = icon;
+            this.hasIcon = true;
         }
 
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="ModalBox"/> class.
         /// </summary>
-        /// <param name="caption"></param>
-        /// <param name="buttons"></param>
+        /// <param name="caption">Caption</param>
+        /// <param name="buttons">Buttons</param>
         public ModalBox(string caption, MessageBoxButtons buttons)
         {
-            Caption = caption;
-            Buttons = buttons;
+            this.Caption = caption;
+            this.Buttons = buttons;
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ModalBox"/> class.
         /// Constructor
         /// </summary>
-        /// <param name="caption"></param>
-        /// <param name="icon"></param>
+        /// <param name="caption">Caption</param>
+        /// <param name="icon">Icon</param>
         public ModalBox(string caption, MessageBoxIcon icon)
         {
-            Caption = caption;
-            Icon = icon;
-            Buttons = MessageBoxButtons.OKCancel;
-            hasIcon = true;
+            this.Caption = caption;
+            this.Icon = icon;
+            this.Buttons = MessageBoxButtons.OKCancel;
+            this.hasIcon = true;
         }
 
         /// <summary>
-        /// Construcctor
+        /// Initializes a new instance of the <see cref="ModalBox"/> class.
         /// </summary>
-        /// <param name="caption"></param>
+        /// <param name="caption">Caption</param>
         public ModalBox(string caption)
         {
-            Caption = caption;
+            this.Caption = caption;
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ModalBox"/> class.
         /// Constructor
         /// </summary>
         public ModalBox()
         {
-            Caption = LogElements.LOGGER_NAME.GetStringValue();
+            this.Caption = LogElements.LOGGER_NAME.GetStringValue();
         }
 
         /// <summary>
-        /// Checks if has icon
+        /// Gets or sets text
+        /// </summary>
+        public string Text { get; set; }
+
+        /// <summary>
+        /// Gets or sets caption
+        /// </summary>
+        public string Caption { get; set; }
+
+        /// <summary>
+        /// Gets or sets icon
+        /// </summary>
+        public MessageBoxIcon Icon { get; set; }
+
+        /// <summary>
+        /// Gets or sets buttons
+        /// </summary>
+        public MessageBoxButtons Buttons { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether checks if has icon
         /// </summary>
         public bool HasIcon
         {
             get
             {
-                return hasIcon;
+                return this.hasIcon;
+            }
+        }
+
+        /// <summary>
+        /// Gets dictionnary of buttons and their actions
+        /// </summary>
+        public Dictionary<DialogResult, Action> ButtonActions
+        {
+            get
+            {
+                return this.buttonsActions;
             }
         }
 
         /// <summary>
         /// Set an action to a button
         /// </summary>
-        /// <param name="buttonName"></param>
-        /// <param name="doAction"></param>
-        public void setAction(DialogResult buttonName, Action doAction)
+        /// <param name="buttonName">Button type</param>
+        /// <param name="doAction">The method to add</param>
+        public void SetAction(DialogResult buttonName, Action doAction)
         {
-            buttonsActions.Add(buttonName, doAction);
-        }
-
-        /// <summary>
-        /// Dictionnary of buttons and their actions
-        /// </summary>
-        public Dictionary<DialogResult, Action> ButtonAction
-        {
-            get {
-                return buttonsActions;
-            }
+            this.buttonsActions.Add(buttonName, doAction);
         }
     }
 }

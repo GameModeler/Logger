@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows; // Window, RoutedEventArgs, IInputElement, DependencyObject
-using System.Windows.Controls; // Validation
-using System.Windows.Input; // Keyboard
-
-namespace Logger.Layout
+﻿namespace Logger.Layout
 {
+    using System.Windows; // Window, RoutedEventArgs, IInputElement, DependencyObject
+
     /// <summary>
     /// Custom Message box example
     /// </summary>
     public partial class MessageBoxCustom : Window
     {
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="MessageBoxCustom"/> class.
         /// </summary>
         public MessageBoxCustom()
         {

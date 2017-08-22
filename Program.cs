@@ -16,6 +16,9 @@ namespace Logger
         static void Main(string[] args)
         {
 
+            Console.Write(typeof(string).Assembly.ImageRuntimeVersion);
+            Console.ReadKey();
+
             ////////////// LOGGER ////////////////////
 
 
@@ -103,7 +106,7 @@ namespace Logger
 
             ModalBox myBox2 = new ModalBox(captionPattern, MessageBoxIcon.Error);
             myBox2.Buttons = MessageBoxButtons.OKCancel;
-            myBox2.setAction(DialogResult.OK, () => Console.WriteLine("Anne"));
+            myBox2.SetAction(DialogResult.OK, () => Console.WriteLine("Anne"));
 
 
 

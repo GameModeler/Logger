@@ -88,7 +88,7 @@ namespace Logger.Appenders
                 result = MessageBox.Show(logMsg, capt, this.Box.Buttons);
             }
 
-            foreach (var pair in this.Box.ButtonAction)
+            foreach (var pair in this.Box.ButtonActions)
             {
                 if (result == pair.Key)
                 {

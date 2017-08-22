@@ -1,12 +1,7 @@
-﻿using Logger.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Logger.Layout
+﻿namespace Logger.Layout
 {
+    using Utils;
+
     /// <summary>
     /// Elements of a logger
     /// </summary>

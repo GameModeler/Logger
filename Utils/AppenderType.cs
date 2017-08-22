@@ -1,4 +1,8 @@
-﻿namespace Logger.Utils
+﻿// <copyright file="AppenderType.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace Logger.Utils
 {
     /// <summary>
     /// Types of appenders
@@ -24,7 +28,7 @@
         /// Custom message box appender
         /// </summary>
         MESSAGE_BOX_CUSTOM,
-        
+
         /// <summary>
         /// Toast appender
         /// </summary>

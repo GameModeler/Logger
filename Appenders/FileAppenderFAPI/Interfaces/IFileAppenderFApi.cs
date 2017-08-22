@@ -1,7 +1,7 @@
-﻿using Logger.Utils;
-
-namespace Logger.Appenders.FileAppenderFAPI.Interfaces
+﻿namespace Logger.Appenders.FileAppenderFAPI.Interfaces
 {
+    using Utils;
+
     /// <summary>
     /// File Appender Fluent Api
     /// </summary>
@@ -10,23 +10,23 @@ namespace Logger.Appenders.FileAppenderFAPI.Interfaces
         /// <summary>
         /// File type
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        FileAppenderFApi Type(FileAppenderType type);
+        /// <param name="type">File Type</param>
+        /// <returns>IFileAppenderFApi</returns>
+        IFileAppenderFApi Type(FileAppenderType type);
 
         /// <summary>
         /// File name
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        FileAppenderFApi Name(string name);
+        /// <param name="name">File Name</param>
+        /// <returns>IFileAppenderFApi</returns>
+        IFileAppenderFApi Name(string name);
 
         /// <summary>
         /// File path
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        FileAppenderFApi Path(string path);
+        /// <param name="path">File Path</param>
+        /// <returns>IFileAppenderFApi</returns>
+        IFileAppenderFApi Path(string path);
 
     }
 }

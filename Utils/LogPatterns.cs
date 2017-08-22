@@ -39,7 +39,6 @@ namespace Logger.Utils
 
             foreach (string elem in lines)
             {
-
                 stringElements[cmpt].InnerText = Reformate(elem, log);             
                 cmpt++;
             }
